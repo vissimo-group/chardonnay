@@ -1,5 +1,0 @@
-import{j as t,a as n,F as e}from"./jsx-runtime-9d752963.js";import{M as a}from"./index-80bddf12.js";import{T as m}from"./tokensGrid-ae2874a3.js";import{u as r}from"./index-e8c3912b.js";import"./index-e03f90b5.js";import"./_commonjsHelpers-725317a4.js";import"./iframe-3456edd4.js";import"../sb-preview/runtime.js";import"./extends-7bcc7a57.js";import"./index-d475d2ea.js";import"./index-72c8896a.js";import"./index-d37d4223.js";import"./tslib.es6-17d83084.js";import"./index-356e4a49.js";import"./styled-components.browser.esm-20549aa5.js";import"./emotion-unitless.esm-7c38d562.js";const p={1:"0px",2:"4px",3:"8px",4:"100px"};function i(o){const s=Object.assign({h1:"h1",h2:"h2"},r(),o.components);return n(e,{children:[t(a,{title:"Tokens/Border radius"}),`
-`,t(s.h1,{id:"radius",children:"Radius"}),`
-`,t(s.h2,{id:"essas-são-os-radius-utilizados",children:"Essas são os Radius utilizados"}),`
-`,t(m,{tokens:p})]})}function T(o={}){const{wrapper:s}=Object.assign({},r(),o.components);return s?t(s,Object.assign({},o,{children:t(i,o)})):i(o)}export{T as default};
-//# sourceMappingURL=radius-4589c9c4.js.map
