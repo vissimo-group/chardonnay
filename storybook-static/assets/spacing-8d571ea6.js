@@ -1,0 +1,5 @@
+import{j as o,a as r,F as e}from"./jsx-runtime-9d752963.js";import{M as a}from"./index-80bddf12.js";import{T as m}from"./tokensGrid-ae2874a3.js";import{s as p}from"./spacing-292a1c0b.js";import{u as n}from"./index-e8c3912b.js";import"./index-e03f90b5.js";import"./_commonjsHelpers-725317a4.js";import"./iframe-3456edd4.js";import"../sb-preview/runtime.js";import"./extends-7bcc7a57.js";import"./index-d475d2ea.js";import"./index-72c8896a.js";import"./index-d37d4223.js";import"./tslib.es6-17d83084.js";import"./index-356e4a49.js";import"./styled-components.browser.esm-20549aa5.js";import"./emotion-unitless.esm-7c38d562.js";function i(t){const s=Object.assign({h1:"h1",h2:"h2"},n(),t.components);return r(e,{children:[o(a,{title:"Tokens/Spacing"}),`
+`,o(s.h1,{id:"spacing",children:"Spacing"}),`
+`,o(s.h2,{id:"essas-são-os-spacing-utilizados",children:"Essas são os Spacing utilizados"}),`
+`,o(m,{tokens:p,hasRemValue:!0})]})}function X(t={}){const{wrapper:s}=Object.assign({},n(),t.components);return s?o(s,Object.assign({},t,{children:o(i,t)})):i(t)}export{X as default};
+//# sourceMappingURL=spacing-8d571ea6.js.map

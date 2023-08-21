@@ -1,0 +1,4 @@
+import{j as o,a as r,F as s}from"./jsx-runtime-9d752963.js";import{M as m}from"./index-80bddf12.js";import{u as e}from"./index-e8c3912b.js";import"./index-e03f90b5.js";import"./_commonjsHelpers-725317a4.js";import"./iframe-3456edd4.js";import"../sb-preview/runtime.js";import"./extends-7bcc7a57.js";import"./index-d475d2ea.js";import"./index-72c8896a.js";import"./index-d37d4223.js";import"./tslib.es6-17d83084.js";import"./index-356e4a49.js";function i(t){const n=Object.assign({h1:"h1",p:"p"},e(),t.components);return r(s,{children:[o(m,{title:"README"}),`
+`,o(n.h1,{id:"vissimo",children:"Vissimo"}),`
+`,o(n.p,{children:"designer system evino"})]})}function b(t={}){const{wrapper:n}=Object.assign({},e(),t.components);return n?o(n,Object.assign({},t,{children:o(i,t)})):i(t)}export{b as default};
+//# sourceMappingURL=README-e9a4a3ec.js.map

@@ -1,0 +1,1 @@
+# tsp para fazer o transforme do ts para js, ele e mais rapido pq usa vite por de baixo dos panos
