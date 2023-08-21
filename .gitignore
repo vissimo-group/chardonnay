@@ -64,3 +64,5 @@ coverage/
 .DS_Store
 
 .idea/
+
+.storybook-static/
