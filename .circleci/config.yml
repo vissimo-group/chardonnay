@@ -1,11 +1,24 @@
 version: 2
+
+defaults: &defaults
+  working_directory: ~/home/circleci/chardonnay
+
 jobs:
   build:
-      filters:
-        tags:
-          only: /^release-V_.*/
+    <<: *defaults
+    docker:
+      - image: cimg/node:18.17.1
+        auth:
+          username: $DOCKERHUB_USER
+          password: $DOCKERHUB_PASSWORD
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run lint
+      - run: npm run test
+
   test:
-    working_directory: ~/home/circleci/chardonnay
+    <<: *defaults
     parallelism: 1
     shell: /bin/bash --login
     docker:
@@ -17,7 +30,7 @@ jobs:
       - run: npm run test
 
   publish-npm:
-    working_directory: ~/home/circleci/chardonnay
+    <<: *defaults
     parallelism: 1
     shell: /bin/bash --login
     docker:
@@ -36,6 +49,7 @@ jobs:
         auth:
           username: $DOCKERHUB_USER
           password: $DOCKERHUB_PASSWORD
+    <<: *defaults
     steps:
       - checkout
       - setup_remote_docker
@@ -53,17 +67,9 @@ workflows:
   build-and-publish:
     jobs:
       - build:
-          <<: *defaults
-          docker:
-            - image: cimg/node:18.17.1
-              auth:
-                username: $DOCKERHUB_USER
-                password: $DOCKERHUB_PASSWORD
-          steps:
-            - checkout
-            - run: npm install
-            - run: npm run lint
-            - run: npm run test
+          filters:
+            tags:
+              only: /^release-V_.*/
       - test:
           filters:
             branches:
