@@ -6,7 +6,7 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "lint": "eslint src/**/*.ts* --fix",
+    "lint": "eslint src/**/*.ts*",
     "storybook": "storybook dev -p 6006",
     "build": "storybook build",
     "test": "vitest"

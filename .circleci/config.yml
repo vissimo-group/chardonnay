@@ -1,5 +1,9 @@
 version: 2
 jobs:
+  build:
+      filters:
+        tags:
+          only: /^release-V_.*/
   test:
     working_directory: ~/home/circleci/chardonnay
     parallelism: 1
@@ -35,18 +39,31 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
+      - run: cd /home/circleci/chardonnay
       - run: npm install
       - run: npm run build
       - run: AWS_ACCESS_KEY_ID=$aws_access_key_production AWS_SECRET_ACCESS_KEY=$aws_secret_access_key_production
       - run: aws configure set default.region us-east-1
       - run: aws configure set aws_access_key_id $aws_access_key_production
       - run: aws configure set aws_secret_access_key $aws_secret_access_key_production
-      - run: aws s3 sync storybook-static s3://evino-static-production/storybook-static/index.html --acl public-read
+      - run: aws s3 cp storybook-static s3://evino-static-production/storybook-static/index.html --recursive --acl public-read
 
 workflows:
   version: 2
   build-and-publish:
     jobs:
+      - build:
+          <<: *defaults
+          docker:
+            - image: cimg/node:18.17.1
+              auth:
+                username: $DOCKERHUB_USER
+                password: $DOCKERHUB_PASSWORD
+          steps:
+            - checkout
+            - run: npm install
+            - run: npm run lint
+            - run: npm run test
       - test:
           filters:
             branches:
