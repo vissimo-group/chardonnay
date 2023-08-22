@@ -36,12 +36,12 @@ jobs:
       - checkout
       - setup_remote_docker
       - run: npm install
-      - run: npm build
+      - run: npm run build
       - run: AWS_ACCESS_KEY_ID=$aws_access_key_production AWS_SECRET_ACCESS_KEY=$aws_secret_access_key_production
       - run: aws configure set default.region us-east-1
       - run: aws configure set aws_access_key_id $aws_access_key_production
       - run: aws configure set aws_secret_access_key $aws_secret_access_key_production
-      - run: aws s3 sync storybook-static s3://evino-static-production/storybook-static --acl public-read
+      - run: aws s3 sync storybook-static s3://evino-static-production/storybook-static/index.html --acl public-read
 
 workflows:
   version: 2
