@@ -59,7 +59,7 @@ workflows:
             tags:
               only: /^release-V_.*/
             branches:
-              only: main
+              ignore: /.*/
       - deploy-prod:
           filters:
             tags:

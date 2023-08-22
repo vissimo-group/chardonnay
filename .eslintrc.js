@@ -52,7 +52,7 @@ module.exports = {
   },
   settings: {
     'import/resolver': {
-      typescript: {}, // Remova as aspas duplas
+      typescript: {},
     },
     react: {
       version: 'detect',
