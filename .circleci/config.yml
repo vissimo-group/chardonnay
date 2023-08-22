@@ -53,7 +53,7 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      - run: cd /home/circleci/chardonnay
+      - run: cd ~/home/circleci/chardonnay
       - run: npm install
       - run: npm run build
       - run: AWS_ACCESS_KEY_ID=$aws_access_key_production AWS_SECRET_ACCESS_KEY=$aws_secret_access_key_production
@@ -83,6 +83,8 @@ workflows:
             branches:
               only: main
       - deploy-prod:
+          requires:
+            - test
           filters:
             tags:
               only: /^release-V_.*/
