@@ -10,7 +10,7 @@ jobs:
       - checkout
       - run: npm install
       - run: npm run lint
-      - run: npm run vitest
+      - run: npm run test
 
   publish-npm:
     working_directory: ~/home/circleci/chardonnay
