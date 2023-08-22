@@ -23,6 +23,9 @@ jobs:
     shell: /bin/bash --login
     docker:
       - image: evinobr/node-awscli:18.13.0
+        auth:
+          username: $DOCKERHUB_USER
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       - run: npm install
@@ -35,6 +38,9 @@ jobs:
     shell: /bin/bash --login
     docker:
       - image: evinobr/node-awscli:18.13.0
+        auth:
+          username: $DOCKERHUB_USER
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       - run: npm install
