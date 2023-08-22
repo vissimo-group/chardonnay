@@ -5,7 +5,7 @@ jobs:
     parallelism: 1
     shell: /bin/bash --login
     docker:
-      - image: circleci/node:18.17.1
+      - image: cimg/node:18.17.1
     steps:
       - checkout
       - run: npm install
@@ -17,7 +17,7 @@ jobs:
     parallelism: 1
     shell: /bin/bash --login
     docker:
-      - image: circleci/node:18.17.1
+      - image: cimg/node:18.17.1
     steps:
       - checkout
       - run: npm install
@@ -28,7 +28,7 @@ jobs:
 
   deploy-prod:
     docker:
-      - image: circleci/node:18.17.1
+      - image: cimg/node:18.17.1
         auth:
           username: $DOCKERHUB_USER
           password: $DOCKERHUB_PASSWORD
