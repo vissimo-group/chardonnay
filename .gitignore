@@ -65,4 +65,4 @@ coverage/
 
 .idea/
 
-.storybook-static/
+storybook-static/
