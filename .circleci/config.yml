@@ -47,7 +47,7 @@ jobs:
       - run:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > .npmrc
-      - run: npm publish
+      - run: npm publish --access=public
 
   deploy-prod:
     docker:
