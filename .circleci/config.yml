@@ -49,33 +49,14 @@ jobs:
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > .npmrc
       - run: npm publish --access=public
 
-  deploy-prod:
-    docker:
-      - image: evinobr/node-awscli:18.13.0
-        auth:
-          username: $DOCKERHUB_USER
-          password: $DOCKERHUB_PASSWORD
-    <<: *defaults
-    steps:
-      - checkout
-      - setup_remote_docker
-      - run: cd ~/home/circleci/chardonnay
-      - run: npm install
-      - run: npm run build
-      - run: AWS_ACCESS_KEY_ID=$aws_access_key_production AWS_SECRET_ACCESS_KEY=$aws_secret_access_key_production
-      - run: aws configure set default.region us-east-1
-      - run: aws configure set aws_access_key_id $aws_access_key_production
-      - run: aws configure set aws_secret_access_key $aws_secret_access_key_production
-      - run: aws s3 cp storybook-static/ s3://evino-storybook-static/ --recursive --acl public-read
-
 workflows:
   version: 2
   build-and-publish:
     jobs:
       - build:
           filters:
-            tags:
-              only: /^release-V_.*/
+            branches:
+              only: main
       - test:
           filters:
             branches:
@@ -84,15 +65,5 @@ workflows:
           requires:
             - test
           filters:
-            tags:
-              only: /^release-V_.*/
-            branches:
-              only: main
-      - deploy-prod:
-          requires:
-            - test
-          filters:
-            tags:
-              only: /^release-V_.*/
             branches:
               only: main
