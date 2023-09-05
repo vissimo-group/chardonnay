@@ -49,23 +49,26 @@ jobs:
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > .npmrc
       - run: npm publish
 
-    publish-docs:
-      <<: *defaults
-      parallelism: 1
-      shell: /bin/bash --login
-      docker:
-        - image: circleci/node:16
-          auth:
-            username: $DOCKERHUB_USER
-            password: $DOCKERHUB_PASSWORD
-      steps:
-        - checkout
-        - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            - v1-dependencies-
-        - run: npm install
-        - run: npx chromatic --project-token=$PROJECT_CHROMATIC_TOKEN
+
+
+  publish-docs:
+    <<: *defaults
+    parallelism: 1
+    shell: /bin/bash --login
+    docker:
+      - image: circleci/node:16
+        auth:
+          username: $DOCKERHUB_USER
+          password: $DOCKERHUB_PASSWORD
+    steps:
+      - checkout
+      - restore_cache:
+        keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+      - run: npm install
+      - run: npx chromatic --project-token=$PROJECT_CHROMATIC_TOKEN
+
 
 workflows:
   version: 2
