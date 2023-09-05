@@ -49,14 +49,12 @@ jobs:
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > .npmrc
       - run: npm publish
 
-
-
   publish-docs:
     <<: *defaults
     parallelism: 1
     shell: /bin/bash --login
     docker:
-      - image: circleci/node:16
+      - image: evinobr/node-awscli:18.13.0
         auth:
           username: $DOCKERHUB_USER
           password: $DOCKERHUB_PASSWORD
