@@ -1,4 +1,4 @@
-const spacing = {
+const Spacing = {
   1: '0.125rem',
   2: '0.25rem',
   3: '0.5rem',
@@ -10,4 +10,4 @@ const spacing = {
   9: '3.5rem',
 }
 
-export default spacing
+export default Spacing

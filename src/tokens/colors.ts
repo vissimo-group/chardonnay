@@ -1,4 +1,4 @@
-const colors = {
+const Colors = {
   light: {
     neutral: {
       neutral100: '#FFFFFF',
@@ -91,4 +91,4 @@ const colors = {
   },
 }
 
-export default colors
+export default Colors

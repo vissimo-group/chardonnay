@@ -1,14 +1,28 @@
+var __defProp = Object.defineProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+
+// src/tokens/index.ts
+var tokens_exports = {};
+__export(tokens_exports, {
+  BorderRadius: () => radius_default,
+  Colors: () => colors_default,
+  Spacing: () => spacing_default
+});
+
 // src/tokens/radius.ts
-var borderRadius = {
+var BorderRadius = {
   1: "0px",
   2: "4px",
   3: "8px",
   4: "100px"
 };
-var radius_default = borderRadius;
+var radius_default = BorderRadius;
 
 // src/tokens/colors.ts
-var colors = {
+var Colors = {
   light: {
     neutral: {
       neutral100: "#FFFFFF",
@@ -100,9 +114,10 @@ var colors = {
     }
   }
 };
+var colors_default = Colors;
 
 // src/tokens/spacing.ts
-var spacing = {
+var Spacing = {
   1: "0.125rem",
   2: "0.25rem",
   3: "0.5rem",
@@ -113,12 +128,42 @@ var spacing = {
   8: "3rem",
   9: "3.5rem"
 };
-var spacing_default = spacing;
+var spacing_default = Spacing;
 
-// src/tokens/index.ts
-var tokens_default = colors;
+// src/components/index.tsx
+var components_exports = {};
+__export(components_exports, {
+  Button: () => Button
+});
+
+// src/components/Button/index.ts
+import styled from "styled-components";
+var Button = styled.button`
+  max-width: 300px;
+  width: 100%;
+  background-color: ${colors_default.light.action.action200};
+  color: ${colors_default.light.background.background100};
+  cursor: pointer;
+  font-weight: 30;
+  font-family: Arial, serif;
+  border-radius: 8px;
+
+  &:hover {
+    background-color: ${colors_default.light.action.action300};
+  }
+
+  ${(props) => props.size === "big" && `
+    font-size: 32px;
+    padding: ${spacing_default["3"]};
+  `}
+
+  ${(props) => props.size === "small" && `
+    font-size: 12px;
+    padding: ${spacing_default["1"]};
+  `}
+`;
+Button.displayName = "Button";
 export {
-  radius_default as borderRadius,
-  tokens_default as default,
-  spacing_default as spacing
+  components_exports as Components,
+  tokens_exports as Tokens
 };

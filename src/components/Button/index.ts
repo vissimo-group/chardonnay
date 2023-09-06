@@ -1,42 +1,44 @@
 import { ComponentProps, ElementType } from 'react'
-import styled from 'styled-components';
-import { spacing, colors } from "../../tokens";
+import styled from 'styled-components'
+import { Colors, Spacing } from '../../tokens'
 
-type ButtonStyledProps = {
-    size?: 'big' | 'small';
-};
+interface ButtonStyledProps {
+  size?: 'big' | 'small'
+}
 
-export const Button = styled.button<ButtonStyledProps>`
+const Button = styled.button<ButtonStyledProps>`
   max-width: 300px;
   width: 100%;
-  background-color: ${colors.light.action.action200};
-  color: ${colors.light.background.background100};
+  background-color: ${Colors.light.action.action200};
+  color: ${Colors.light.background.background100};
   cursor: pointer;
   font-weight: 30;
-  font-family: Arial,serif;
+  font-family: Arial, serif;
   border-radius: 8px;
 
-  &:hover{
-    background-color: ${colors.light.action.action300};
+  &:hover {
+    background-color: ${Colors.light.action.action300};
   }
 
-  ${props => props.size === 'big' && `
+  ${(props) =>
+    props.size === 'big' &&
+    `
     font-size: 32px;
-    padding: ${spacing["3"]};
+    padding: ${Spacing['3']};
   `}
 
-  ${props => props.size === 'small'  && `
+  ${(props) =>
+    props.size === 'small' &&
+    `
     font-size: 12px;
-    padding: ${spacing["1"]};
-  `}
-
-  ${props => !props.big && !props.small && `
-    font-size: 16px;
+    padding: ${Spacing['1']};
   `}
 `
 
 export interface ButtonProps extends ComponentProps<typeof Button> {
-    as?: ElementType;
+  as?: ElementType
 }
 
-Button.displayName = "Button"
+Button.displayName = 'Button'
+
+export { Button }

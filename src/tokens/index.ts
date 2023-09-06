@@ -1,5 +1,5 @@
-import borderRadius from './radius'
-import colors from './colors'
-import spacing from './spacing'
+import BorderRadius from './radius'
+import Colors from './colors'
+import Spacing from './spacing'
 
-export { borderRadius, colors, spacing }
+export { BorderRadius, Colors, Spacing }

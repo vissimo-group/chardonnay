@@ -1,11 +1,15 @@
-declare const borderRadius: {
+import * as styled_components from 'styled-components';
+import * as styled_components_dist_types from 'styled-components/dist/types';
+import * as react from 'react';
+
+declare const BorderRadius: {
     1: string;
     2: string;
     3: string;
     4: string;
 };
 
-declare const colors: {
+declare const Colors: {
     light: {
         neutral: {
             neutral100: string;
@@ -98,7 +102,7 @@ declare const colors: {
     };
 };
 
-declare const spacing: {
+declare const Spacing: {
     1: string;
     2: string;
     3: string;
@@ -110,4 +114,27 @@ declare const spacing: {
     9: string;
 };
 
-export { borderRadius, colors as default, spacing };
+declare const index$1_BorderRadius: typeof BorderRadius;
+declare const index$1_Colors: typeof Colors;
+declare const index$1_Spacing: typeof Spacing;
+declare namespace index$1 {
+  export {
+    index$1_BorderRadius as BorderRadius,
+    index$1_Colors as Colors,
+    index$1_Spacing as Spacing,
+  };
+}
+
+interface ButtonStyledProps {
+    size?: 'big' | 'small';
+}
+declare const Button: styled_components.IStyledComponent<"web", styled_components_dist_types.Substitute<react.DetailedHTMLProps<react.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>, ButtonStyledProps>>;
+
+declare const index_Button: typeof Button;
+declare namespace index {
+  export {
+    index_Button as Button,
+  };
+}
+
+export { index as Components, index$1 as Tokens };

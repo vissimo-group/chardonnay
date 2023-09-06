@@ -28,7 +28,7 @@ export const withTheme = (Story, context) => {
     const { theme } = context.globals;
 
     return (
-        <ThemeProvider theme={THEMES[theme] || THEMES["dark"]}>
+        <ThemeProvider theme={THEMES[theme] || THEMES["light"]}>
             <GlobalStyles />
             <Story />
         </ThemeProvider>
