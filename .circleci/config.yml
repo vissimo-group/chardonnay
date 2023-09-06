@@ -62,7 +62,7 @@ jobs:
     steps:
       - checkout
       - run: npm install
-      - run: npx chromatic --project-token=$PROJECT_CHROMATIC_TOKEN
+      - run: npx chromatic --auto-accept-changes --project-token=$PROJECT_CHROMATIC_TOKEN
 
 
 workflows:
