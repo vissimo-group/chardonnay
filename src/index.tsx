@@ -1,4 +1,5 @@
-import * as Tokens from './tokens'
-import * as Components from './components'
+import { Colors, BorderRadius, Spacing } from './tokens'
+import { Button } from './components'
 
-export { Components, Tokens }
+// export components, token publish npm
+export { Button, Colors, BorderRadius, Spacing }

@@ -48,7 +48,7 @@ jobs:
       - run:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > .npmrc
-      - run: npm publish --force
+      - run: npm publish
 
   publish-docs:
     <<: *defaults
@@ -63,7 +63,6 @@ jobs:
       - checkout
       - run: npm install
       - run: npx chromatic --auto-accept-changes --project-token=$PROJECT_CHROMATIC_TOKEN
-
 
 workflows:
   version: 2
