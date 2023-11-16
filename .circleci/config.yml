@@ -72,7 +72,6 @@ workflows:
     jobs:
       - build:
       - test:
-          filters:
       - publish-npm:
           requires:
             - test
