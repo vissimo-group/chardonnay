@@ -9,7 +9,8 @@ envProd: &envProd
 jobs:
   build:
     <<: *defaults
-    <<: *envProd
+    environment:
+      <<: *envProd
     docker:
       - image: evinobr/node-awscli:18.13.0
         auth:
