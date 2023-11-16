@@ -70,4 +70,3 @@ storybook-static/
 # icons package
 packages/icons/dist/
 packages/icons/src/icons/components/*
-packages/icons/src/icons/index.tsx

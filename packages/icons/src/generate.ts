@@ -44,11 +44,7 @@ axios.request(options)
 
   const FilterIcon = document.children.filter(({name}) => name.includes("Ícones"))[0]
 
-  // const filteredNames = ["Países", "Taças", "Food", "Essential", "Wine", "Ecommerce", "Social","Elemento suporte"];
-
-  // const filteredNames = ["Elemento suporte","Essential"]
-
-  const filteredNames = ["Ecommerce"]
+  const filteredNames = ["Países", "Taças", "Food", "Essential", "Wine", "Ecommerce", "Social","Elemento suporte"];
 
   const Filterpername = FilterIcon.children.filter(item => filteredNames.includes(item.name));
 
