@@ -4,7 +4,8 @@ import fs from "fs-extra";
 import path from "path";
 import dotenv from "dotenv";
 
-dotenv.config()
+const envPath = path.resolve(__dirname, '../../../.env');
+dotenv.config({ path: envPath });
 
 const { FIGMA_API_TOKEN } = process.env
 const { FIGMA_FILE_ID } = process.env
@@ -17,7 +18,7 @@ if (
     !FIGMA_CANVAS ||
     FIGMA_API_TOKEN === 'NOT SET'
 ) {
-    console.error('Environment Variables not set.')
+    console.error('ERROR: Environment Variables not set.')
     process.exit(1)
 }
 
