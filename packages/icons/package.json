@@ -7,7 +7,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "icons": "ts-node src/generate.ts && npm run build",
-    "build": "tsup src/index.tsx --format esm,cjs --dts --external react"
+    "build": "tsup src/index.ts --format esm,cjs --dts --external react"
   },
   "keywords": [],
   "author": "",
