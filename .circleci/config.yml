@@ -69,13 +69,8 @@ workflows:
   build-and-publish:
     jobs:
       - build:
-          filters:
-            branches:
-              only: main
       - test:
           filters:
-            branches:
-              only: main
       - publish-npm:
           requires:
             - test
@@ -85,6 +80,3 @@ workflows:
       - publish-docs:
           requires:
             - test
-          filters:
-            branches:
-              only: main
