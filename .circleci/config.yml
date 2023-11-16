@@ -38,7 +38,7 @@ jobs:
       - save_cache:
           key: icons-components-cache-{{ checksum "packages/icons/src/icons/components" }}-{{ arch }}
           paths:
-            - ~/home/circleci/project/packages/icons/src/icons/components/
+            - ~/home/circleci/chardonnay/components/icons/src/icons/components/
 
       - run: npm run lint
       - run: npm run test
