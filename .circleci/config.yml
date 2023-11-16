@@ -3,9 +3,13 @@ version: 2
 defaults: &defaults
   working_directory: ~/home/circleci/chardonnay
 
+envProd: &envProd
+  ENV_CONFIG_BUCKET: evino-storybook-static
+
 jobs:
   build:
     <<: *defaults
+    <<: *envProd
     docker:
       - image: evinobr/node-awscli:18.13.0
         auth:
@@ -13,7 +17,26 @@ jobs:
           password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
+      - run: AWS_ACCESS_KEY_ID=$aws_access_key_production AWS_SECRET_ACCESS_KEY=$aws_secret_access_key_production
+      - run: aws configure set default.region us-east-1
+      - run: aws configure set aws_access_key_id $aws_access_key_production
+      - run: aws configure set aws_secret_access_key $aws_secret_access_key_production
+      - run: aws s3 cp s3://$ENV_CONFIG_BUCKET/.env .
+      
+      - restore_cache:
+          key: npm-cache-{{ checksum "package-lock.json" }}
+      - restore_cache:
+          key: icons-components-cache-{{ checksum "packages/icons/src/icons/components" }}-{{ arch }}
       - run: npm install
+      - save_cache:
+          key: npm-cache-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+      - save_cache:
+          key: icons-components-cache-{{ checksum "packages/icons/src/icons/components" }}-{{ arch }}
+          paths:
+            - packages/icons/src/icons/components
+
       - run: npm run lint
       - run: npm run test
       - run: npm run build-icons
@@ -47,6 +70,12 @@ jobs:
       - checkout
       - run: npm install
       - run: npm run build
+
+      - run: echo "export CIRCLE_TAG=$(git describe --tags --abbrev=0)" >> $BASH_ENV
+      - run: source $BASH_ENV
+
+      - run: npm version --no-git-tag-version $CIRCLE_TAG
+
       - run:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > .npmrc
@@ -64,6 +93,10 @@ jobs:
     steps:
       - checkout
       - run: npm install
+
+      - restore_cache:
+          key: icons-components-cache-{{ checksum "packages/icons/src/icons/components" }}-{{ arch }}
+
       - run: npx chromatic --auto-accept-changes --project-token=$PROJECT_CHROMATIC_TOKEN
 
 workflows:
