@@ -30,6 +30,7 @@ jobs:
           key: icons-components-cache-{{ checksum "/home/circleci/chardonnay/packages/icons/src/icons/components/" }}-{{ arch }}
 
       - run: npm install
+      - run: npm run build-icons
     
       - save_cache:
           key: npm-cache-{{ checksum "package-lock.json" }}
@@ -42,7 +43,6 @@ jobs:
 
       - run: npm run lint
       - run: npm run test
-      - run: npm run build-icons
       - run: npm run build
 
   test:
