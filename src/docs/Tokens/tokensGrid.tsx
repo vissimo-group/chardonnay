@@ -1,50 +1,23 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 interface TokensGridProps {
-    tokens: Record<string, string>
-    hasRemValue?: boolean
-}
-
-export function TokensGrid({ tokens, hasRemValue = false }: TokensGridProps) {
-    return (
-        <TableGrid>
-            <TokensGridHeader>
-            <tr>
-                <th>Name</th>
-                <th>Value</th>
-                {hasRemValue && <th>Pixels</th>}
-            </tr>
-            </TokensGridHeader>
-            <TokensGridBody>
-            {Object.entries(tokens).map(([key, value]) => {
-                return (
-                    <tr key={key}>
-                        <td>{key}</td>
-                        <td>{value}</td>
-                        {hasRemValue && (
-                            <td>{Number(value.replace('rem', '')) * 16}px</td>
-                        )}
-                    </tr>
-                )
-            })}
-            </TokensGridBody>
-        </TableGrid>
-    )
+  tokens: Record<string, string>
+  hasRemValue?: boolean
 }
 
 export const TableGrid = styled.table`
   width: 100%;
   font-family: sans-serif;
-  color: #FFF;
+  color: #fff;
   border-collapse: collapse;
-`;
+`
 
 export const TokensGridHeader = styled.thead`
   th {
     padding: 0.75rem 1rem;
     text-align: left;
   }
-`;
+`
 
 export const TokensGridBody = styled.tbody`
   td {
@@ -65,4 +38,31 @@ export const TokensGridBody = styled.tbody`
   tr:nth-child(even) td {
     background: #444;
   }
-`;
+`
+
+export function TokensGrid({ tokens, hasRemValue = false }: TokensGridProps) {
+  return (
+    <TableGrid>
+      <TokensGridHeader>
+        <tr>
+          <th>Name</th>
+          <th>Value</th>
+          {hasRemValue && <th>Pixels</th>}
+        </tr>
+      </TokensGridHeader>
+      <TokensGridBody>
+        {Object.entries(tokens).map(([key, value]) => {
+          return (
+            <tr key={key}>
+              <td>{key}</td>
+              <td>{value}</td>
+              {hasRemValue && (
+                <td>{Number(value.replace('rem', '')) * 16}px</td>
+              )}
+            </tr>
+          )
+        })}
+      </TokensGridBody>
+    </TableGrid>
+  )
+}
