@@ -28,7 +28,9 @@ jobs:
           key: npm-cache-{{ checksum "package-lock.json" }}
       - restore_cache:
           key: icons-components-cache-{{ checksum "packages/icons/src/icons/components" }}-{{ arch }}
+
       - run: npm install
+    
       - save_cache:
           key: npm-cache-{{ checksum "package-lock.json" }}
           paths:
@@ -36,7 +38,7 @@ jobs:
       - save_cache:
           key: icons-components-cache-{{ checksum "packages/icons/src/icons/components" }}-{{ arch }}
           paths:
-            - packages/icons/src/icons/components
+            - ~/home/circleci/project/packages/icons/src/icons/components/
 
       - run: npm run lint
       - run: npm run test
