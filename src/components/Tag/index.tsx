@@ -1,29 +1,29 @@
-import React, { HTMLAttributes } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { Colors } from '../../tokens'
+import { Severity, ThemeType, Props, PropsSeverity } from '../../types'
 
-export type Severity = 'info' | 'warning' | 'error'
-
-export interface TagProps extends HTMLAttributes<HTMLDivElement> {
+export interface TagProps {
   icon?: React.ReactNode
-  severity?: 'info' | 'warning' | 'error'
+  severity?: Severity
   value?: string
-  theme?: 'light' | 'dark'
+  theme?: ThemeType
+  tagProps?: React.ButtonHTMLAttributes<HTMLDivElement>
 }
 
-const severityColors: Record<Severity, (props: TagProps) => string> = {
-  info: (props) => Colors[props.theme].background.backgroundInfo,
-  warning: (props) => Colors[props.theme].background.backgroundWarning,
-  error: (props) => Colors[props.theme].background.backgroundError,
+const severityColors = {
+  info: (props: Props) => Colors[props.theme].background.backgroundInfo,
+  warning: (props: Props) => Colors[props.theme].background.backgroundWarning,
+  error: (props: Props) => Colors[props.theme].background.backgroundError,
 }
 
-const colorMap: Record<Severity, (props: TagProps) => string> = {
-  info: (props) => Colors[props.theme].feedback.feedbackInfo100,
-  warning: (props) => Colors[props.theme].feedback.feedbackWarning100,
-  error: (props) => Colors[props.theme].feedback.feedbackError100,
+const colorMap = {
+  info: (props: Props) => Colors[props.theme].feedback.feedbackInfo100,
+  warning: (props: Props) => Colors[props.theme].feedback.feedbackWarning100,
+  error: (props: Props) => Colors[props.theme].feedback.feedbackError100,
 }
 
-const StyledTag = styled.div<TagProps>`
+const StyledTag = styled.div<PropsSeverity>`
   display: inline-flex;
   align-items: center;
   color: ${(props) => colorMap[props.severity](props)};
@@ -39,12 +39,18 @@ const Tag: React.FC<TagProps> = ({
   icon,
   severity,
   value,
-  ...props
+  ...tagProps
 }) => (
-  <StyledTag severity={severity || 'info'} theme={theme || 'light'} {...props}>
+  <StyledTag
+    severity={severity || 'info'}
+    theme={theme || 'light'}
+    {...tagProps}
+  >
     {icon}
     {value}
   </StyledTag>
 )
+
+Tag.displayName = 'Tag'
 
 export default Tag

@@ -1,16 +1,18 @@
-import React from 'react'
+import React, { HTMLAttributes } from 'react'
 import styled from 'styled-components'
 import { BorderRadius, Colors } from '../../tokens'
+import { Props, ThemeType } from '../../types'
 
-interface InputProps extends React.HTMLProps<HTMLInputElement> {
+interface InputProps {
   label?: string
   icon?: React.ReactNode
-  theme?: 'light' | 'dark' | string
+  theme?: ThemeType
   type?: string
   placeholder?: string
+  inputProps: HTMLAttributes<HTMLInputElement>
 }
 
-const InputContainer = styled.div`
+const InputContainer = styled.div<Props>`
   position: relative;
   min-width: 20rem;
   height: 3.438rem;
@@ -18,16 +20,16 @@ const InputContainer = styled.div`
   display: flex;
   align-items: center;
   border-radius: ${BorderRadius['3']};
-  border: 1px solid ${(props) => Colors[props.theme].neutral.neutral300};
+  border: 1px solid ${(props: Props) => Colors[props.theme].neutral.neutral300};
 `
 
-const Label = styled.label`
+const Label = styled.label<Props>`
   position: absolute;
   left: 1rem;
   top: 0.8rem;
   font-size: 1rem;
   padding: 0 0.5rem;
-  color: ${(props) => Colors[props.theme].neutral.neutral400};
+  color: ${(props: Props) => Colors[props.theme].neutral.neutral400};
   cursor: text;
   transition:
     top 150ms ease-in,
@@ -68,19 +70,30 @@ const Icon = styled.div`
 `
 
 const Input: React.FC<InputProps> = ({
-  type = 'text',
-  placeholder = '',
+  type,
+  placeholder,
   icon,
-  theme = 'light',
-  ...props
+  theme,
+  ...inputProps
 }) => {
   return (
-    <InputContainer theme={theme}>
-      <InputCustom type={type} placeholder="" autoComplete="off" {...props} />
-      <Label theme={theme}>{placeholder}</Label>
+    <InputContainer theme={theme as ThemeType}>
+      <InputCustom
+        type={type}
+        placeholder=""
+        autoComplete="off"
+        {...inputProps}
+      />
+      <Label theme={theme as ThemeType}>{placeholder}</Label>
       <Icon>{icon}</Icon>
     </InputContainer>
   )
+}
+
+Input.defaultProps = {
+  type: 'text',
+  theme: 'light',
+  placeholder: '',
 }
 
 export default Input

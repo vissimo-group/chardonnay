@@ -1,13 +1,15 @@
-import React, { FC, ReactChildren, ReactNode } from 'react'
+import React, { FC, HTMLAttributes, ReactNode } from 'react'
 import styled from 'styled-components'
 import { Close } from '@vissimo/icons'
 import { Colors, Spacing, BorderRadius } from '../../tokens'
+import { Props, ThemeType } from '../../types'
 
-export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ModalProps {
   onClose?: () => void
   isOpen?: boolean
   theme?: string
-  children?: ReactNode | ReactChildren
+  children?: ReactNode
+  modalProps?: HTMLAttributes<HTMLDivElement>
 }
 
 const defaultProps: Partial<ModalProps> = {
@@ -24,7 +26,7 @@ const Overlay = styled.div<ModalProps>`
   display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
 `
 
-const ModalWrapper = styled.div<ModalProps>`
+const ModalWrapper = styled.div<React.HTMLAttributes<HTMLDivElement> & Props>`
   position: fixed;
   min-width: 558px;
   height: 513px;
@@ -33,14 +35,14 @@ const ModalWrapper = styled.div<ModalProps>`
   transform: translate(-50%, -50%);
   padding: ${Spacing[8]};
   border-radius: ${BorderRadius[3]};
-  border: 1px solid ${({ theme }) => Colors[theme].neutral.neutral200};
-  background-color: ${({ theme }) => Colors[theme].neutral.neutral100};
+  border: 1px solid ${(props: Props) => Colors[props.theme].neutral.neutral200};
+  background-color: ${(props: Props) => Colors[props.theme].neutral.neutral100};
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   z-index: 2;
   gap: ${Spacing[4]};
-  color: ${({ theme }) => Colors[theme].neutral.neutral500};
+  color: ${(props: Props) => Colors[props.theme].neutral.neutral500};
 `
 
 const CloseButton = styled.button`
@@ -58,13 +60,13 @@ const Modal: FC<ModalProps> = ({
   onClose,
   isOpen,
   theme,
-  ...props
+  ...modalProps
 }) => {
   return (
     <>
       <Overlay isOpen={isOpen || false} onClick={onClose || (() => {})} />
       {isOpen && (
-        <ModalWrapper theme={theme} {...props}>
+        <ModalWrapper theme={theme as ThemeType} {...modalProps}>
           <CloseButton onClick={onClose}>
             <Close size={26} />
           </CloseButton>
@@ -74,6 +76,7 @@ const Modal: FC<ModalProps> = ({
     </>
   )
 }
+Modal.displayName = 'Modal'
 
 Modal.defaultProps = defaultProps
 

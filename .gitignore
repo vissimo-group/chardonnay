@@ -66,6 +66,7 @@ coverage/
 .idea/
 
 storybook-static/
+dist
 
 # icons package
 packages/icons/dist/

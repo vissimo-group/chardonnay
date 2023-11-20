@@ -2,17 +2,22 @@ import React from 'react'
 import styled from 'styled-components'
 import { Close } from '@vissimo/icons'
 import { BorderRadius, Colors } from '../../tokens'
-
-type Severity = 'info' | 'warning' | 'error'
+import {
+  Position,
+  ThemeType,
+  Severity,
+  PropsSeverity,
+  Props,
+} from '../../types'
 
 interface TooltipProps {
-  content: React.ReactNode
-  children: React.ReactNode
+  content?: React.ReactNode
+  children?: React.ReactNode
   isHovered?: boolean
   handleMouseEnter?: () => void
   handleMouseLeave?: () => void
-  position?: 'top-start' | 'top-end' | 'bottom-start' | 'bottom-end'
-  theme?: 'light' | 'dark'
+  position?: Position
+  theme?: ThemeType
   severity?: Severity
 }
 
@@ -23,10 +28,13 @@ const defaultProps: Partial<TooltipProps> = {
   severity: 'info',
 }
 
-const colorMap: Record<Severity, (props: TooltipProps) => string> = {
-  info: (props) => Colors[props.theme]?.feedback?.feedbackInfo100 || '',
-  warning: (props) => Colors[props.theme]?.feedback?.feedbackWarning100 || '',
-  error: (props) => Colors[props.theme]?.feedback?.feedbackError100 || '',
+const colorMap = {
+  info: (props: PropsSeverity) =>
+    Colors[props.theme]?.feedback?.feedbackInfo100,
+  warning: (props: PropsSeverity) =>
+    Colors[props.theme]?.feedback?.feedbackWarning100,
+  error: (props: PropsSeverity) =>
+    Colors[props.theme]?.feedback?.feedbackError100,
 }
 
 const TooltipContainer = styled.div`
@@ -49,13 +57,15 @@ const TooltipContent = styled.div`
   text-align: center;
 `
 
-const ContentContainer = styled.div<TooltipProps>`
+const ContentContainer = styled.div<
+  PropsSeverity & { visible?: boolean; position?: Position }
+>`
   position: absolute;
   min-width: 316px;
   left: 50%;
   transform: translateX(-50%);
-  background: ${(props) => colorMap[props.severity]?.(props)};
-  color: ${(props) => Colors[props.theme]?.neutral?.neutral100 || ''};
+  background: ${(props) => colorMap[props.severity](props)};
+  color: ${(props: Props) => Colors[props.theme].neutral.neutral100};
   padding: 0 16px 16px 16px;
   border-radius: ${BorderRadius['3']};
   opacity: ${(props) => (props.visible ? 1 : 0)};
@@ -75,7 +85,7 @@ const ContentContainer = styled.div<TooltipProps>`
     border-width: 13px;
     border-style: solid;
     border-color: transparent transparent
-      ${(props) => colorMap[props.severity]?.(props) || ''} transparent;
+      ${(props) => colorMap[props.severity](props)} transparent;
   }
 
   ${(props) => {
@@ -149,17 +159,16 @@ const Tooltip: React.FC<TooltipProps> = ({
   handleMouseLeave,
 }) => (
   <TooltipContainer
-    theme={theme}
     onMouseEnter={handleMouseEnter}
     onMouseLeave={handleMouseLeave}
   >
     {isHovered && <TooltipOverlay />}
     {children}
     <ContentContainer
-      theme={theme}
-      position={position || 'top-start'}
-      severity={severity || 'info'}
-      visible={isHovered}
+      theme={theme as ThemeType}
+      position={position as Position}
+      severity={severity as Severity}
+      visible={isHovered as boolean}
     >
       <CloseButton>
         <Close onClick={handleMouseLeave} size={24} />
@@ -168,6 +177,8 @@ const Tooltip: React.FC<TooltipProps> = ({
     </ContentContainer>
   </TooltipContainer>
 )
+
+Tooltip.displayName = 'Tooltip'
 
 Tooltip.defaultProps = defaultProps
 

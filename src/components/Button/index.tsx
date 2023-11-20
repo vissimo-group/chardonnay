@@ -1,45 +1,55 @@
-import { HTMLProps, ReactChildren } from 'react'
+import { HTMLProps } from 'react'
 import styled from 'styled-components'
 import { Loading } from '@vissimo/icons'
 import { darken } from 'polished'
 import { Colors, Spacing, BorderRadius } from '../../tokens'
+import { ThemeColors } from '../../tokens/colors'
+
+type ThemeType = 'light' | 'dark'
+const ThemeDefault = 'light' || 'dark'
 
 interface ButtonProps extends HTMLProps<HTMLButtonElement> {
   loading?: boolean
   sizeLoading?: number
-  disabled?: boolean | undefined
+  disabled?: boolean
   label?: string
-  severity?: 'primary' | 'success' | 'warning' | 'danger' | undefined
-  theme?: 'light' | 'dark' | undefined
-  props?: ReactChildren | React.ReactNode | string
+  severity?: 'primary' | 'success' | 'warning' | 'danger'
+  theme?: ThemeType
 }
 
-interface ButtonStyledProps extends ButtonProps {}
-
-interface ColorMap {
-  [key: string]: (props: ButtonStyledProps) => string
+const colorMap: Record<
+  string,
+  (props: { theme?: ThemeType }) => string | undefined
+> = {
+  primary: ({ theme = ThemeDefault }) => Colors[theme]?.action?.action100,
+  success: ({ theme = ThemeDefault }) => Colors[theme]?.action?.action100,
+  warning: ({ theme = ThemeDefault }) => Colors[theme]?.renomados?.renomados100,
+  danger: ({ theme = ThemeDefault }) => Colors[theme]?.brand?.brand100,
 }
 
-const colorMap: ColorMap = {
-  primary: (props) => Colors[props.theme!].action.action100,
-  success: (props) => Colors[props.theme!].action.action100,
-  warning: (props) => Colors[props.theme!].renomados.renomados100,
-  danger: (props) => Colors[props.theme!].brand.brand100,
+interface StyledButtonProps {
+  severity?: keyof typeof colorMap | string
+  theme?: ThemeType
 }
 
-const StyledButton = styled.button<ButtonProps>`
+const StyledButton = styled.button<StyledButtonProps>`
   display: flex;
   position: relative;
-  min-width: 108px;
+  width: 100%;
   height: 56px;
   padding: 16px 24px;
   justify-content: center;
   align-items: center;
   gap: ${Spacing['3']};
   border-radius: ${BorderRadius['3']};
-  background: ${(props) => colorMap[props.severity](props)};
+  background: ${(props) => colorMap[props?.severity as string](props) || ''};
 
-  color: ${(props) => Colors[props.theme].neutral.neutral100};
+  color: ${(props) =>
+    (props?.theme &&
+      Colors[props.theme as keyof ThemeColors]?.neutral?.neutral100) ||
+    ''};
+
+
   overflow: hidden;
   box-shadow: none;
   cursor: pointer;
@@ -50,33 +60,46 @@ const StyledButton = styled.button<ButtonProps>`
     color 0.3s;
 
   &:hover {
-    background: ${(props) => darken(0.1, colorMap[props.severity](props))};
+    background: ${(props) =>
+      darken(0.1, colorMap[props?.severity as string](props) || '')};
 
-    color: ${(props) => darken(0.2, Colors[props.theme].neutral.neutral100)};
+
+    color: ${(props) =>
+      darken(
+        0.2,
+        props?.theme &&
+          Colors[props.theme as keyof ThemeColors]?.neutral?.neutral100,
+      ) || ''};
   }
 
   &:disabled {
     cursor: not-allowed;
-    background: ${(props) => Colors[props.theme].neutral.neutral400};
-    color: ${(props) => Colors[props.theme].neutral.neutral100};
+    background: ${(props) =>
+      (props?.theme &&
+        Colors[props.theme as keyof ThemeColors]?.neutral?.neutral400) ||
+      ''};
+    color: ${(props) =>
+      (props?.theme &&
+        Colors[props.theme as keyof ThemeColors]?.neutral?.neutral100) ||
+      ''};
   }
 }`
 
 function Button({
-  label,
-  sizeLoading,
   loading,
+  sizeLoading,
   disabled,
-  theme,
+  label,
   severity,
+  theme,
   ...props
 }: ButtonProps) {
   return (
     <StyledButton
-      severity={severity}
-      theme={theme}
+      severity={severity || 'primary'}
+      theme={theme || 'light'}
       disabled={disabled}
-      {...props}
+      {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}
     >
       {loading ? <Loading size={sizeLoading || 26} /> : label}
     </StyledButton>
@@ -93,5 +116,5 @@ Button.defaultProps = {
 
 Button.displayName = 'Button'
 
-export { ButtonProps }
+export type { ButtonProps }
 export default Button

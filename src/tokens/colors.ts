@@ -1,4 +1,22 @@
-const Colors = {
+export interface ColorShades {
+  [key: string]: string
+}
+
+export interface ColorGroups {
+  neutral: ColorShades
+  action: ColorShades
+  brand: ColorShades
+  renomados: ColorShades
+  feedback: ColorShades
+  background: ColorShades
+}
+
+export interface ThemeColors {
+  light: ColorGroups
+  dark: ColorGroups
+}
+
+const Colors: ThemeColors = {
   light: {
     neutral: {
       neutral100: '#FFFFFF',

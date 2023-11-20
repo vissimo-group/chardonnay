@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Colors } from '../../tokens'
 
-const TopBar = styled.header<null>`
+const TopBar = styled.header`
   height: 40px;
   background-color: ${Colors.light.brand.brand100};
   color: ${Colors.light.background.background100};

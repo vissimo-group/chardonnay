@@ -7,7 +7,6 @@ export default {
   tags: ['autodocs'],
 } as Meta<null>
 
-/** Essa e uma forma de descrever o componente */
 export const topBar: { args: { children: string } } = {
   args: {
     children: 'Digite seu cep',

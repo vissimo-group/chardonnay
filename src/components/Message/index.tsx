@@ -1,29 +1,34 @@
-import React, { ReactNode } from 'react'
+import React, { HTMLAttributes, ReactNode } from 'react'
 import styled from 'styled-components'
 import { BorderRadius, Colors, Spacing } from '../../tokens'
+import { Severity, ThemeType } from '../../types'
 
-export type Severity = 'info' | 'warning' | 'error'
-
-interface MessageProps extends React.HTMLAttributes<HTMLDivElement> {
+interface MessageProps {
   message?: string | ReactNode
   icon?: ReactNode
-  theme?: 'light' | 'dark'
+  theme?: ThemeType
   severity?: Severity
+  messageProps?: HTMLAttributes<HTMLDivElement>
 }
 
-const severityColors: Record<Severity, (props: MessageProps) => string> = {
-  info: (props) => Colors[props.theme].background.backgroundInfo,
-  warning: (props) => Colors[props.theme].background.backgroundWarning,
-  error: (props) => Colors[props.theme].background.backgroundError,
+interface Props {
+  theme: ThemeType
+  severity: Severity
 }
 
-const colorMap: Record<Severity, (props: MessageProps) => string> = {
-  info: (props) => Colors[props.theme].feedback.feedbackInfo100,
-  warning: (props) => Colors[props.theme].feedback.feedbackWarning100,
-  error: (props) => Colors[props.theme].feedback.feedbackError100,
+const severityColors = {
+  info: (props: Props) => Colors[props.theme].background.backgroundInfo,
+  warning: (props: Props) => Colors[props.theme].background.backgroundWarning,
+  error: (props: Props) => Colors[props.theme].background.backgroundError,
 }
 
-const MessageText = styled.p<{ severity: Severity }>`
+const colorMap = {
+  info: (props: Props) => Colors[props.theme].feedback.feedbackInfo100,
+  warning: (props: Props) => Colors[props.theme].feedback.feedbackWarning100,
+  error: (props: Props) => Colors[props.theme].feedback.feedbackError100,
+}
+
+const MessageText = styled.p<Props>`
   color: ${(props) => colorMap[props.severity](props)};
   font-weight: 400;
   line-height: 20px;
@@ -31,7 +36,7 @@ const MessageText = styled.p<{ severity: Severity }>`
   text-align: center;
 `
 
-const MessageContainer = styled.div<{ severity: Severity }>`
+const MessageContainer = styled.div<Props>`
   display: flex;
   height: 40px;
   gap: ${Spacing['3']};
@@ -46,12 +51,16 @@ const Message: React.FC<MessageProps> = ({
   icon,
   theme,
   severity,
-  ...props
+  ...messageProps
 }) => {
   return (
-    <MessageContainer severity={severity || 'error'} theme={theme} {...props}>
+    <MessageContainer
+      severity={severity || 'info'}
+      theme={theme as ThemeType}
+      {...messageProps}
+    >
       {icon}
-      <MessageText severity={severity || 'error'} theme={theme}>
+      <MessageText severity={severity || 'info'} theme={theme as ThemeType}>
         {message}
       </MessageText>
     </MessageContainer>
