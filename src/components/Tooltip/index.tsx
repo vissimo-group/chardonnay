@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Close } from '@vissimo/icons'
+import { Close } from 'semillon'
 import { BorderRadius, Colors } from '../../tokens'
 import {
   Position,

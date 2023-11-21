@@ -14,9 +14,6 @@
     "build": "tsup src/index.ts --format esm,cjs --dts --external react",
     "test": "vitest"
   },
-  "workspaces": [
-    "packages/*"
-  ],
   "files": [
     "dist"
   ],
@@ -45,6 +42,7 @@
     "@storybook/addon-onboarding": "^1.0.8",
     "@storybook/addon-styling": "^1.3.6",
     "@storybook/blocks": "^7.2.1",
+    "@storybook/cli": "*",
     "@storybook/react": "^7.2.1",
     "@storybook/react-vite": "^7.2.1",
     "@storybook/testing-library": "^0.2.0",
@@ -52,8 +50,6 @@
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.3.0",
     "@typescript-eslint/parser": "^6.3.0",
-    "@vissimo/icons": "*",
-    "@storybook/cli": "*",
     "airbnb": "^0.0.2",
     "chromatic": "^7.0.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -84,6 +80,7 @@
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.33.1",
     "polished": "^4.2.2",
+    "semillon": "^1.0.0",
     "styled-components": "^6.0.6"
   },
   "eslintConfig": {

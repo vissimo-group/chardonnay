@@ -1,6 +1,6 @@
 import { HTMLProps } from 'react'
 import styled from 'styled-components'
-import { Loading } from '@vissimo/icons'
+import { Loading } from 'semillon'
 import { darken } from 'polished'
 import { Colors, Spacing, BorderRadius } from '../../tokens'
 import { ThemeColors } from '../../tokens/colors'

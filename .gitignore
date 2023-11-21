@@ -67,7 +67,3 @@ coverage/
 
 storybook-static/
 dist
-
-# icons package
-packages/icons/dist/
-packages/icons/src/icons/components/*

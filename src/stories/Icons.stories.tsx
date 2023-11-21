@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react'
-import * as Icons from '@vissimo/icons'
+import * as Icons from 'semillon'
 
 type IconProps = {
   color?: string

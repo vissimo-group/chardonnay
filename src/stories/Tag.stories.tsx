@@ -1,6 +1,6 @@
 import React from 'react'
 import type { Meta } from '@storybook/react'
-import { Delivery } from '@vissimo/icons'
+import { Delivery } from 'semillon'
 import { Tag } from '../components'
 import { TagProps } from '../components/Tag'
 

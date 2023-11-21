@@ -1,4 +1,4 @@
-import Icons from '@vissimo/icons'
+
 import {
   Button,
   Tooltip,
@@ -12,7 +12,6 @@ import {
 
 export {
   Button,
-  Icons,
   Tooltip,
   Modal,
   Message,

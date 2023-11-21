@@ -1,5 +1,5 @@
 import type { Meta, Story } from '@storybook/react'
-import { WarningExclamation } from '@vissimo/icons'
+import { WarningExclamation } from 'semillon'
 import React from 'react'
 import { Message } from '../components'
 import { Severity } from '../components/Message'

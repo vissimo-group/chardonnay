@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent } from 'react'
-import * as Icon from '@vissimo/icons'
+import * as Icon from 'semillon'
 import styled from 'styled-components'
-import { Search } from '@vissimo/icons'
+import { Search } from 'semillon'
 import { Input } from '../../components'
 
 interface IconInfo {

@@ -1,4 +1,4 @@
-import { Delivery, Pin } from '@vissimo/icons'
+import { Delivery, Pin } from 'semillon'
 import styled from 'styled-components'
 import { mediaQueries } from '../../tokens'
 import { Modal, Tag, TopBar } from '..'

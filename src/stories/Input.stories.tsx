@@ -1,5 +1,5 @@
 import { Meta, Story } from '@storybook/react'
-import { Search } from '@vissimo/icons'
+import { Search } from 'semillon'
 import React from 'react'
 import { Input } from '../components'
 

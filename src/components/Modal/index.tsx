@@ -1,6 +1,6 @@
 import React, { FC, HTMLAttributes, ReactNode } from 'react'
 import styled from 'styled-components'
-import { Close } from '@vissimo/icons'
+import { Close } from 'semillon'
 import { Colors, Spacing, BorderRadius } from '../../tokens'
 import { Props, ThemeType } from '../../types'
 
