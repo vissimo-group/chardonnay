@@ -7,43 +7,6 @@ envProd: &envProd
   ENV_CONFIG_BUCKET: evino-storybook-static
 
 jobs:
-  build:
-    <<: *defaults
-    environment:
-      <<: *envProd
-    docker:
-      - image: evinobr/node-awscli:18.13.0
-        auth:
-          username: $DOCKERHUB_USER
-          password: $DOCKERHUB_PASSWORD
-    steps:
-      - checkout
-      - run: AWS_ACCESS_KEY_ID=$aws_access_key_production AWS_SECRET_ACCESS_KEY=$aws_secret_access_key_production
-      - run: aws configure set default.region us-east-1
-      - run: aws configure set aws_access_key_id $aws_access_key_production
-      - run: aws configure set aws_secret_access_key $aws_secret_access_key_production
-      - run: aws s3 cp s3://$ENV_CONFIG_BUCKET/.env .
-      
-      - restore_cache:
-          key: npm-cache-{{ checksum "package-lock.json" }}
-      - restore_cache:
-          key: icons-components-cache-{{ checksum "/home/circleci/chardonnay/packages/icons/src/icons/components/" }}-{{ arch }}
-
-      - run: npm install
-      - run: npm run build-icons
-    
-      - save_cache:
-          key: npm-cache-{{ checksum "package-lock.json" }}
-          paths:
-            - node_modules
-      - save_cache:
-          key: icons-components-cache-{{ checksum "/home/circleci/chardonnay/packages/icons/src/icons/components/" }}-{{ arch }}
-          paths:
-            - /home/circleci/chardonnay/packages/icons/src/icons/components/
-
-      - run: npm run lint
-      - run: npm run test
-      - run: npm run build
 
   test:
     <<: *defaults
@@ -107,7 +70,7 @@ workflows:
   build-and-publish:
     jobs:
       - test
-      - build
+      - publish-docs
       - publish-npm:
           requires:
             - test
@@ -115,7 +78,3 @@ workflows:
             branches:
               only:
                 - main
-      - publish-docs:
-          requires:
-            - test
-            - build
