@@ -44,7 +44,7 @@ const ModalCep = () => {
         </ContainerCep>
         <Tag
           colorText="white"
-          severity="danger"
+          severity="error"
           icon={<Delivery size={26} />}
           value="Frete grátis em toda loja!"
         />
