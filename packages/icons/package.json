@@ -1,10 +1,10 @@
 {
   "name": "@vissimo/icons",
   "version": "1.0.0",
-  "description": "",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "description": "Vissimo group icon pack",
+  "main": "packages/icons/dist/index.js",
+  "module": "packages/icons/dist/index.mjs",
+  "types": "packages/icons/dist/index.d.ts",
   "scripts": {
     "icons": "ts-node src/generate.ts && npm run build",
     "build": "tsup src/index.ts --format esm,cjs --dts --external react"
