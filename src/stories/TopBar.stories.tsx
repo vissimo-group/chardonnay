@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react'
 import React from 'react'
+import { Delivery } from 'semillon'
 import { TopBar } from '../components'
-import {Delivery} from "semillon";
 
 export default {
   title: 'Components/TopBar',

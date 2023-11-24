@@ -1,13 +1,15 @@
+import React from 'react';
 import styled from 'styled-components';
-import { Colors, mediaQueries } from '../../tokens';
 import { Pin } from 'semillon';
-import { Tag } from '../index';
-import React,{ReactNode} from 'react';
+
+import { Colors, mediaQueries } from '../../tokens';
+import Tag from "../Tag";
+
 
 interface TopBarProps {
     cepText?: string;
     tagValue?: string;
-    iconTag?: ReactNode;
+    iconTag?: React.ReactNode;
     infoText1?: string;
     infoText2?: string;
     infoText3?: string;
