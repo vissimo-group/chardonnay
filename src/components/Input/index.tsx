@@ -21,6 +21,13 @@ const InputContainer = styled.div<Props>`
   align-items: center;
   border-radius: ${BorderRadius['3']};
   border: 1px solid ${(props: Props) => Colors[props.theme].neutral.neutral300};
+
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.0025em;
+  text-align: left;
+
 `
 
 const Label = styled.label<Props>`

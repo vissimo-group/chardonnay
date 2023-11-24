@@ -61,7 +61,7 @@ CardAddressLight.args = {
   typeAddress: 'Casa',
   address: 'Rua Pires da Mota, 974 - Aclimação, São Paulo - SP',
   postcode: '29172-009',
-  complement: 'Complemento',
+  complement: '15º andar - Escritório Evino',
 }
 
 export const CardAddressDark = (args) => <Template {...args} />
@@ -71,5 +71,5 @@ CardAddressDark.args = {
   typeAddress: 'Casa',
   address: 'Rua jhon, 000 - Aclimação, Espirito Santo - ES',
   postcode: '00000-000',
-  complement: 'Complemento',
+  complement: 'Apto 41 - Ao lado do cartório',
 }

@@ -65,6 +65,13 @@ const CardAddressContainer = styled.div<Crosschecked>`
   flex-direction: column;
   justify-content: space-between;
   color: ${(props: Props) => Colors[props.theme].neutral.neutral500};
+
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.0025em;
+  text-align: center;
+
 `
 
 const AddressDetails = styled.div`

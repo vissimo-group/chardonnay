@@ -35,6 +35,10 @@ interface StyledButtonProps {
 const StyledButton = styled.button<StyledButtonProps>`
   display: flex;
   position: relative;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+  letter-spacing: -0.0025em;
   width: 100%;
   height: 56px;
   padding: 16px 24px;

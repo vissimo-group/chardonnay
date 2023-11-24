@@ -75,6 +75,11 @@ const ContentContainer = styled.div<
     visibility 0.2s ease-in-out;
   z-index: 2;
 
+  font-size: 1rem;
+  line-height: 20px;
+  letter-spacing: -0.0025em;
+  text-align: center;
+  
   &::before {
     content: '';
     position: absolute;
