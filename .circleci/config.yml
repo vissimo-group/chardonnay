@@ -72,7 +72,9 @@ workflows:
   build-and-publish:
     jobs:
       - test
-      - publish-docs
+      - publish-docs:
+          requires:
+            - test
       - publish-npm:
           requires:
             - test
