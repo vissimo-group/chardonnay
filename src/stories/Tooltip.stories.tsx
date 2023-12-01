@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Meta } from '@storybook/react'
 import styled from 'styled-components'
 import { Tooltip } from '../components'
+import { TooltipProps } from '../components/Tooltip'
 
 export default {
   title: 'Components/Tooltip',
@@ -13,13 +14,13 @@ export default {
       options: ['top-start', 'top-end', 'bottom-start', 'bottom-end'],
     },
   },
-} as Meta
+} as Meta<TooltipProps>
 
 const StyledLink = styled.u`
   cursor: pointer;
 `
 
-const TooltipStory = (args) => {
+const TooltipStory = (args: TooltipProps) => {
   const [isHovered, setIsHovered] = useState(true)
 
   const handleMouseEnter = () => {
@@ -65,4 +66,3 @@ const TooltipStory = (args) => {
 }
 
 export const ToolTip = TooltipStory.bind({})
-ToolTip.args = {}

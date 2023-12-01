@@ -3,13 +3,13 @@ import styled from 'styled-components'
 import { BorderRadius, Colors } from '../../tokens'
 import { Props, ThemeType } from '../../types'
 
-interface InputProps {
+interface InputProps extends HTMLAttributes<HTMLInputElement> {
   label?: string
+  value?: string
   icon?: React.ReactNode
   theme?: ThemeType
   type?: string
   placeholder?: string
-  inputProps: HTMLAttributes<HTMLInputElement>
 }
 
 const InputContainer = styled.div<Props>`
@@ -27,7 +27,6 @@ const InputContainer = styled.div<Props>`
   line-height: 20px;
   letter-spacing: -0.0025em;
   text-align: left;
-
 `
 
 const Label = styled.label<Props>`

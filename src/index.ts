@@ -1,4 +1,3 @@
-
 import {
   Button,
   Tooltip,
@@ -10,13 +9,4 @@ import {
   TopBar,
 } from './components'
 
-export {
-  Button,
-  Tooltip,
-  Modal,
-  Message,
-  Tag,
-  Input,
-  CardAddress,
-  TopBar,
-}
+export { Button, Tooltip, Modal, Message, Tag, Input, CardAddress, TopBar }

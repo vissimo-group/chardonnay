@@ -9,7 +9,6 @@ export interface ModalProps {
   isOpen?: boolean
   theme?: string
   children?: ReactNode
-  modalProps?: HTMLAttributes<HTMLDivElement>
 }
 
 const defaultProps: Partial<ModalProps> = {
@@ -55,7 +54,7 @@ const CloseButton = styled.button`
   font-size: 1rem;
 `
 
-const Modal: FC<ModalProps> = ({
+const Modal: FC<ModalProps & HTMLAttributes<HTMLDivElement>> = ({
   children,
   onClose,
   isOpen,

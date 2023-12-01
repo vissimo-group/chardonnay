@@ -26,7 +26,7 @@ export default {
   },
 } as Meta<TagProps>
 
-export const LightTag = (args) => <Tag {...args} />
+export const LightTag = (args: TagProps) => <Tag {...args} />
 LightTag.args = {
   icon: <Delivery size={26} />,
   severity: 'info',
@@ -34,7 +34,7 @@ LightTag.args = {
   value: 'Frete grátis em toda loja!',
 }
 
-export const DarkTag = (args) => <Tag {...args} />
+export const DarkTag = (args: TagProps) => <Tag {...args} />
 DarkTag.args = {
   icon: <Delivery size={26} />,
   severity: 'error',

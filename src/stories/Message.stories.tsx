@@ -2,12 +2,13 @@ import type { Meta, Story } from '@storybook/react'
 import { WarningExclamation } from 'semillon'
 import React from 'react'
 import { Message } from '../components'
-import { Severity } from '../components/Message'
+import { Severity } from '../types'
 
 interface MessageArgs {
   theme?: 'light' | 'dark'
   message?: string | React.ReactNode
   severity?: Severity
+  icon?: React.ReactNode
 }
 
 export default {

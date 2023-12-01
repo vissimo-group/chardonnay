@@ -3,12 +3,11 @@ import styled from 'styled-components'
 import { BorderRadius, Colors, Spacing } from '../../tokens'
 import { Severity, ThemeType } from '../../types'
 
-interface MessageProps {
+interface MessageProps extends HTMLAttributes<HTMLDivElement> {
   message?: string | ReactNode
   icon?: ReactNode
   theme?: ThemeType
   severity?: Severity
-  messageProps?: HTMLAttributes<HTMLDivElement>
 }
 
 interface Props {

@@ -28,9 +28,7 @@ export function IconsRender() {
   }
 
   const filteredIcons: IconInfo[] = Object.entries(Icon)
-    .filter(([name, _]) =>
-      name.toLowerCase().includes(searchTerm?.toLowerCase()),
-    )
+    .filter(([name]) => name.toLowerCase().includes(searchTerm?.toLowerCase()))
     .map(([name, component]) => ({ name, component }))
 
   return (

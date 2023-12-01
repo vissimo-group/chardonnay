@@ -5,7 +5,6 @@ type IconProps = {
   color?: string
   size?: number
   autoSize?: boolean
-  svgProps?: React.SVGProps<SVGSVGElement>
 } & Omit<React.HTMLProps<HTMLSpanElement>, 'color' | 'size'>
 
 export default {
@@ -20,5 +19,4 @@ Icon.args = {
   color: 'red',
   size: 32,
   autoSize: false,
-  svgProps: { className: 'custom-class' },
 }

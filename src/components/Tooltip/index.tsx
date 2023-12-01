@@ -10,7 +10,7 @@ import {
   Props,
 } from '../../types'
 
-interface TooltipProps {
+export interface TooltipProps {
   content?: React.ReactNode
   children?: React.ReactNode
   isHovered?: boolean
@@ -79,7 +79,7 @@ const ContentContainer = styled.div<
   line-height: 20px;
   letter-spacing: -0.0025em;
   text-align: center;
-  
+
   &::before {
     content: '';
     position: absolute;

@@ -3,12 +3,11 @@ import styled from 'styled-components'
 import { Colors } from '../../tokens'
 import { Severity, ThemeType, Props, PropsSeverity } from '../../types'
 
-export interface TagProps {
+export interface TagProps extends React.ButtonHTMLAttributes<HTMLDivElement> {
   icon?: React.ReactNode
   severity?: Severity
   value?: string
   theme?: ThemeType
-  tagProps?: React.ButtonHTMLAttributes<HTMLDivElement>
 }
 
 const severityColors = {

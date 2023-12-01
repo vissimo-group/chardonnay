@@ -55,7 +55,9 @@ const Template = ({
   )
 }
 
-export const CardAddressLight = (args) => <Template {...args} />
+export const CardAddressLight = (args: CardAddressProps) => (
+  <Template {...args} />
+)
 CardAddressLight.args = {
   theme: 'light',
   typeAddress: 'Casa',
@@ -64,7 +66,9 @@ CardAddressLight.args = {
   complement: '15º andar - Escritório Evino',
 }
 
-export const CardAddressDark = (args) => <Template {...args} />
+export const CardAddressDark = (args: CardAddressProps) => (
+  <Template {...args} />
+)
 CardAddressDark.args = {
   theme: 'dark',
   checked: true,

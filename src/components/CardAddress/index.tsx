@@ -3,14 +3,13 @@ import styled from 'styled-components'
 import { Colors } from '../../tokens'
 import { Props, ThemeType } from '../../types'
 
-interface CardAddressProps {
+interface CardAddressProps extends HTMLAttributes<HTMLInputElement> {
   checked?: boolean
   theme?: ThemeType
   typeAddress?: string
   address?: string
   postcode?: string
   complement?: string
-  cardAddressProps?: HTMLAttributes<HTMLInputElement>
 }
 
 const RadioButtonLabel = styled.label`
@@ -71,7 +70,6 @@ const CardAddressContainer = styled.div<Crosschecked>`
   line-height: 20px;
   letter-spacing: -0.0025em;
   text-align: center;
-
 `
 
 const AddressDetails = styled.div`
