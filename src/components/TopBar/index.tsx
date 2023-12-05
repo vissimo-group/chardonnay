@@ -6,28 +6,21 @@ import { Colors, mediaQueries } from '../../tokens'
 import Tag from '../Tag'
 
 interface CepProps {
-  cepText?: string
-}
-
-export interface TopBarProps {
-  cepText?: string
-  tagValue?: string
-  iconTag?: React.ReactNode
-  infoText1?: string
-  infoText2?: string
-  infoText3?: string
+  cepText?: string | undefined
 }
 
 interface InfoProps {
-  infoText1?: string
-  infoText2?: string
-  infoText3?: string
+  infoText1?: string | undefined
+  infoText2?: string | undefined
+  infoText3?: string | undefined
 }
 
 interface TagValueProps {
-  tagValue?: string
-  iconTag?: React.ReactNode
+  tagValue?: string | undefined
+  iconTag?: React.ReactNode | undefined
 }
+
+export interface TopBarProps extends InfoProps, TagValueProps, CepProps {}
 
 const ContainerCep = styled.div`
   display: flex;

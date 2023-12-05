@@ -20,7 +20,7 @@ const IconsGrid = styled.div`
   grid-gap: 70px;
 `
 
-export function IconsRender() {
+export const IconsRender = () => {
   const [searchTerm, setSearchTerm] = useState<string>('')
 
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {

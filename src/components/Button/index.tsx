@@ -89,7 +89,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   }
 }`
 
-function Button({
+const Button = ({
   loading,
   sizeLoading,
   disabled,
@@ -97,7 +97,7 @@ function Button({
   severity,
   theme,
   ...props
-}: ButtonProps) {
+}: ButtonProps) => {
   return (
     <StyledButton
       severity={severity || 'primary'}
