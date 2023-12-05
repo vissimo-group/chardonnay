@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from 'react'
 import styled from 'styled-components'
 import { BorderRadius, Colors } from '../../tokens'
-import { Props, ThemeType } from '../../types'
+import { CommomProps, ThemeType } from '../../types'
 
 interface InputProps extends HTMLAttributes<HTMLInputElement> {
   label?: string
@@ -12,7 +12,7 @@ interface InputProps extends HTMLAttributes<HTMLInputElement> {
   placeholder?: string
 }
 
-const InputContainer = styled.div<Props>`
+const InputContainer = styled.div<CommomProps>`
   position: relative;
   min-width: 20rem;
   height: 3.438rem;
@@ -20,7 +20,8 @@ const InputContainer = styled.div<Props>`
   display: flex;
   align-items: center;
   border-radius: ${BorderRadius['3']};
-  border: 1px solid ${(props: Props) => Colors[props.theme].neutral.neutral300};
+  border: 1px solid
+    ${(props: CommomProps) => Colors[props.theme].neutral.neutral300};
 
   font-size: 1rem;
   font-weight: 400;
@@ -29,13 +30,13 @@ const InputContainer = styled.div<Props>`
   text-align: left;
 `
 
-const Label = styled.label<Props>`
+const Label = styled.label<CommomProps>`
   position: absolute;
   left: 1rem;
   top: 0.8rem;
   font-size: 1rem;
   padding: 0 0.5rem;
-  color: ${(props: Props) => Colors[props.theme].neutral.neutral400};
+  color: ${(props: CommomProps) => Colors[props.theme].neutral.neutral400};
   cursor: text;
   transition:
     top 150ms ease-in,

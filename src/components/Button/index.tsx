@@ -1,4 +1,4 @@
-import { HTMLProps } from 'react'
+import React, { HTMLProps } from 'react'
 import styled from 'styled-components'
 import { Loading } from 'semillon'
 import { darken } from 'polished'
@@ -89,7 +89,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   }
 }`
 
-const Button = ({
+const Button: React.FC<ButtonProps> = ({
   loading,
   sizeLoading,
   disabled,
@@ -97,7 +97,7 @@ const Button = ({
   severity,
   theme,
   ...props
-}: ButtonProps) => {
+}) => {
   return (
     <StyledButton
       severity={severity || 'primary'}

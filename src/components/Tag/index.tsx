@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Colors } from '../../tokens'
-import { Severity, ThemeType, Props, PropsSeverity } from '../../types'
+import { Severity, ThemeType, CommomProps, PropsSeverity } from '../../types'
 
 export interface TagProps extends React.ButtonHTMLAttributes<HTMLDivElement> {
   icon?: React.ReactNode
@@ -11,15 +11,17 @@ export interface TagProps extends React.ButtonHTMLAttributes<HTMLDivElement> {
 }
 
 const severityColors = {
-  info: (props: Props) => Colors[props.theme].background.backgroundInfo,
-  warning: (props: Props) => Colors[props.theme].background.backgroundWarning,
-  error: (props: Props) => Colors[props.theme].background.backgroundError,
+  info: (props: CommomProps) => Colors[props.theme].background.backgroundInfo,
+  warning: (props: CommomProps) =>
+    Colors[props.theme].background.backgroundWarning,
+  error: (props: CommomProps) => Colors[props.theme].background.backgroundError,
 }
 
 const colorMap = {
-  info: (props: Props) => Colors[props.theme].feedback.feedbackInfo100,
-  warning: (props: Props) => Colors[props.theme].feedback.feedbackWarning100,
-  error: (props: Props) => Colors[props.theme].feedback.feedbackError100,
+  info: (props: CommomProps) => Colors[props.theme].feedback.feedbackInfo100,
+  warning: (props: CommomProps) =>
+    Colors[props.theme].feedback.feedbackWarning100,
+  error: (props: CommomProps) => Colors[props.theme].feedback.feedbackError100,
 }
 
 const StyledTag = styled.div<PropsSeverity>`

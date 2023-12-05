@@ -7,7 +7,7 @@ import {
   ThemeType,
   Severity,
   PropsSeverity,
-  Props,
+  CommomProps,
 } from '../../types'
 
 export interface TooltipProps {
@@ -65,7 +65,7 @@ const ContentContainer = styled.div<
   left: 50%;
   transform: translateX(-50%);
   background: ${(props) => colorMap[props.severity](props)};
-  color: ${(props: Props) => Colors[props.theme].neutral.neutral100};
+  color: ${(props: CommomProps) => Colors[props.theme].neutral.neutral100};
   padding: 0 16px 16px 16px;
   border-radius: ${BorderRadius['3']};
   opacity: ${(props) => (props.visible ? 1 : 0)};

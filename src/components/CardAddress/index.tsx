@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from 'react'
 import styled from 'styled-components'
 import { Colors } from '../../tokens'
-import { Props, ThemeType } from '../../types'
+import { CommomProps, ThemeType } from '../../types'
 
 interface CardAddressProps extends HTMLAttributes<HTMLInputElement> {
   checked?: boolean
@@ -17,7 +17,7 @@ const RadioButtonLabel = styled.label`
   align-items: center;
 `
 
-interface Crosschecked extends Props {
+interface Crosschecked extends CommomProps {
   checked: boolean
 }
 
@@ -27,10 +27,12 @@ const RadioButtonInput = styled.input<Crosschecked & { checked?: boolean }>`
   height: 20px;
   border-radius: 50%;
   margin-right: 10px;
-  background-color: ${(props: Props) => Colors[props.theme].neutral.neutral100};
+  background-color: ${(props: CommomProps) =>
+    Colors[props.theme].neutral.neutral100};
   outline: none;
   cursor: pointer;
-  border: 2px solid ${(props: Props) => Colors[props.theme].neutral.neutral400};
+  border: 2px solid
+    ${(props: CommomProps) => Colors[props.theme].neutral.neutral400};
 
   &:checked {
     border: 4px solid
@@ -63,7 +65,7 @@ const CardAddressContainer = styled.div<Crosschecked>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  color: ${(props: Props) => Colors[props.theme].neutral.neutral500};
+  color: ${(props: CommomProps) => Colors[props.theme].neutral.neutral500};
 
   font-size: 1rem;
   font-weight: 500;
@@ -86,9 +88,9 @@ const AddressLine = styled.span`
   text-align: left;
 `
 
-const ComplementLine = styled.span<Props>`
+const ComplementLine = styled.span<CommomProps>`
   margin-bottom: 8px;
-  color: ${(props: Props) => Colors[props.theme].neutral.neutral300};
+  color: ${(props: CommomProps) => Colors[props.theme].neutral.neutral300};
   font-size: 12px;
   font-weight: 400;
   line-height: 15px;

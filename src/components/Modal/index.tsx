@@ -2,7 +2,7 @@ import React, { FC, HTMLAttributes, ReactNode } from 'react'
 import styled from 'styled-components'
 import { Close } from 'semillon'
 import { Colors, Spacing, BorderRadius } from '../../tokens'
-import { Props, ThemeType } from '../../types'
+import { CommomProps, ThemeType } from '../../types'
 
 export interface ModalProps {
   onClose?: () => void
@@ -25,7 +25,9 @@ const Overlay = styled.div<ModalProps>`
   display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
 `
 
-const ModalWrapper = styled.div<React.HTMLAttributes<HTMLDivElement> & Props>`
+const ModalWrapper = styled.div<
+  React.HTMLAttributes<HTMLDivElement> & CommomProps
+>`
   position: fixed;
   min-width: 558px;
   height: 513px;
@@ -34,14 +36,16 @@ const ModalWrapper = styled.div<React.HTMLAttributes<HTMLDivElement> & Props>`
   transform: translate(-50%, -50%);
   padding: ${Spacing[8]};
   border-radius: ${BorderRadius[3]};
-  border: 1px solid ${(props: Props) => Colors[props.theme].neutral.neutral200};
-  background-color: ${(props: Props) => Colors[props.theme].neutral.neutral100};
+  border: 1px solid
+    ${(props: CommomProps) => Colors[props.theme].neutral.neutral200};
+  background-color: ${(props: CommomProps) =>
+    Colors[props.theme].neutral.neutral100};
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   z-index: 2;
   gap: ${Spacing[4]};
-  color: ${(props: Props) => Colors[props.theme].neutral.neutral500};
+  color: ${(props: CommomProps) => Colors[props.theme].neutral.neutral500};
 `
 
 const CloseButton = styled.button`
