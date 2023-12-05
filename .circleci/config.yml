@@ -3,19 +3,10 @@ version: 2
 defaults: &defaults
   working_directory: ~/home/circleci/chardonnay
 
+envProd: &envProd
+  ENV_CONFIG_BUCKET: evino-storybook-static
+
 jobs:
-  build:
-    <<: *defaults
-    docker:
-      - image: evinobr/node-awscli:18.13.0
-        auth:
-          username: $DOCKERHUB_USER
-          password: $DOCKERHUB_PASSWORD
-    steps:
-      - checkout
-      - run: npm install
-      - run: npm run lint
-      - run: npm run test
 
   test:
     <<: *defaults
@@ -45,6 +36,12 @@ jobs:
       - checkout
       - run: npm install
       - run: npm run build
+
+      - run: echo "export CIRCLE_TAG=$(git describe --tags --abbrev=0)" >> $BASH_ENV
+      - run: source $BASH_ENV
+
+      - run: npm version --no-git-tag-version $CIRCLE_TAG
+
       - run:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > .npmrc
@@ -62,6 +59,12 @@ jobs:
     steps:
       - checkout
       - run: npm install
+      - run: npm run build-storybook
+      - run: npm run build
+
+      - restore_cache:
+          key: icons-components-cache-{{ checksum "/home/circleci/chardonnay/packages/icons/src/icons/components/" }}-{{ arch }}
+
       - run: npx chromatic --auto-accept-changes --project-token=$PROJECT_CHROMATIC_TOKEN
 
 workflows:
@@ -69,14 +72,10 @@ workflows:
   build-and-publish:
     jobs:
       - test
-      - publish-npm:
+      - publish-docs:
           requires:
             - test
-          filters:
-            branches:
-              only:
-                - main
-      - publish-docs:
+      - publish-npm:
           requires:
             - test
           filters:

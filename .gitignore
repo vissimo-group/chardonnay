@@ -66,3 +66,4 @@ coverage/
 .idea/
 
 storybook-static/
+dist
