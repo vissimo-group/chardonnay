@@ -5,8 +5,19 @@ import {
   Message,
   Tag,
   Input,
-  CardAddress,
+  SelectAddress,
   TopBar,
+  ShippingAddress,
 } from './components'
 
-export { Button, Tooltip, Modal, Message, Tag, Input, CardAddress, TopBar }
+export {
+  Button,
+  Tooltip,
+  Modal,
+  Message,
+  Tag,
+  Input,
+  SelectAddress,
+  TopBar,
+  ShippingAddress,
+}

@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from 'react'
 import styled from 'styled-components'
-import { Colors } from '../../tokens'
-import { CommomProps, ThemeType } from '../../types'
+import { Colors } from '../../../tokens'
+import { CommomProps, ThemeType } from '../../../types'
 
 interface CardAddressProps extends HTMLAttributes<HTMLInputElement> {
   checked?: boolean
@@ -98,7 +98,7 @@ const ComplementLine = styled.span<CommomProps>`
   text-align: left;
 `
 
-const CardAddress: React.FC<CardAddressProps> = ({
+const SelectAddress: React.FC<CardAddressProps> = ({
   checked,
   theme,
   typeAddress,
@@ -134,7 +134,7 @@ const CardAddress: React.FC<CardAddressProps> = ({
   )
 }
 
-CardAddress.defaultProps = {
+SelectAddress.defaultProps = {
   checked: false,
   theme: 'light',
   typeAddress: 'Casa',
@@ -143,4 +143,4 @@ CardAddress.defaultProps = {
   complement: 'evino',
 }
 
-export default CardAddress
+export default SelectAddress
