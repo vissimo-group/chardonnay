@@ -96,9 +96,7 @@ const ShippingAddress: React.FC<ShippingAddressProps> = ({
       <ContainerHeader theme={theme}>
         <Delivery size={24} color={colorIcon} />
         <Title>{typeAddress}</Title>
-        <Button link {...propsButton}>
-          Editar
-        </Button>
+        <Button {...propsButton}>Editar</Button>
       </ContainerHeader>
       <ContainerBody>
         <Text>{address}</Text>
