@@ -1,6 +1,6 @@
 {
   "name": "chardonnay",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A mobile first frontend framework made with wine",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

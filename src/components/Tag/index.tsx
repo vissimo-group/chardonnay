@@ -22,7 +22,8 @@ const StyledTag = styled.div<PropsSeverity>`
   align-items: center;
   color: ${(props: CommomProps) => Colors[props.theme].neutral.neutral100};
   background-color: ${(props) => severityColors[props.severity](props)};
-  min-height: 24px;
+  width: fit-content;
+  height: 24px;
   padding: 0 8px;
   border-radius: 8px;
   gap: 8px;
