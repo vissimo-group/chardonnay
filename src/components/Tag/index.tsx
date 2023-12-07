@@ -17,17 +17,10 @@ const severityColors = {
   error: (props: CommomProps) => Colors[props.theme].background.backgroundError,
 }
 
-const colorMap = {
-  info: (props: CommomProps) => Colors[props.theme].feedback.feedbackInfo100,
-  warning: (props: CommomProps) =>
-    Colors[props.theme].feedback.feedbackWarning100,
-  error: (props: CommomProps) => Colors[props.theme].feedback.feedbackError100,
-}
-
 const StyledTag = styled.div<PropsSeverity>`
   display: inline-flex;
   align-items: center;
-  color: ${(props) => colorMap[props.severity](props)};
+  color: ${(props: CommomProps) => Colors[props.theme].neutral.neutral100};
   background-color: ${(props) => severityColors[props.severity](props)};
   min-height: 24px;
   padding: 0 8px;
