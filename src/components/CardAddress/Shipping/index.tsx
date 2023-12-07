@@ -4,11 +4,10 @@ import { Delivery } from 'semillon'
 import { CommomProps, ThemeType } from '../../../types'
 import { Colors } from '../../../tokens'
 
-interface HeaderProps extends HTMLAttributes<HTMLButtonElement> {
-  typeAddress?: string | undefined
-}
+interface HeaderProps extends HTMLAttributes<HTMLButtonElement> {}
 
 export interface ShippingAddressProps extends HeaderProps {
+  typeAddress?: string | undefined
   theme?: ThemeType
   address?: string | undefined
   deadline?: string | undefined
@@ -36,7 +35,7 @@ const ContainerShipping = styled.div<ShippingAddressProps>`
 
 const Title = styled.span`
   font-size: 16px;
-  font-weight: 500;
+  font-weight: bold;
   line-height: 20px;
   letter-spacing: -0.0025em;
   text-align: left;
@@ -45,7 +44,6 @@ const Title = styled.span`
 const Button = styled.button`
   margin-left: auto;
   font-size: 16px;
-  font-weight: 500;
   line-height: 20px;
   letter-spacing: -0.0025em;
   text-align: left;
@@ -55,6 +53,7 @@ const Button = styled.button`
   outline: none;
   cursor: pointer;
   text-decoration: underline;
+  font-weight: bold;
 `
 
 const ContainerBody = styled.div`
