@@ -7,7 +7,7 @@ export interface TopBarProps {
   children?: React.ReactNode
 }
 
-const ContainerTopBar = styled.header`
+const ContainerTopBar = styled.div`
   height: 40px;
   background-color: ${Colors.light.brand.brand100};
   color: ${Colors.light.background.background100};
@@ -20,9 +20,17 @@ const ContainerTopBar = styled.header`
   white-space: nowrap;
   align-content: center;
 
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+
   > :nth-child(2) {
     justify-self: center;
     align-self: center;
+  }
+
+  > :nth-child(3) {
+    justify-self: end;
   }
 
   @media screen and (max-width: ${mediaQueries.screenMd}) {
