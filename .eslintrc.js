@@ -49,12 +49,13 @@ module.exports = {
     'jsx-a11y/aria-unsupported-elements': 'warn',
     'jsx-a11y/role-has-required-aria-props': 'warn',
     'jsx-a11y/role-supports-aria-props': 'warn',
-    'camelcase': ['error', { 'properties': 'always' }],
+    camelcase: ['error', { properties: 'always' }],
     'import/prefer-default-export': 'off',
     'react/jsx-props-no-spreading': 'off',
     'react/require-default-props': 'off',
     'react/function-component-definition': 'off',
     'import/no-extraneous-dependencies': 'off',
+    'react/jsx-no-useless-fragment': 'off',
   },
   settings: {
     'import/resolver': {

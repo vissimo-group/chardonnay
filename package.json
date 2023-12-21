@@ -11,7 +11,9 @@
     "dev": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "build": "tsup src/index.ts --format esm,cjs --dts --external react",
-    "test": "vitest"
+    "test": "vitest run --coverage",
+    "test:dev": "vitest watch",
+    "test:ui": "vitest --ui"
   },
   "files": [
     "dist"
@@ -45,10 +47,17 @@
     "@storybook/react": "^7.2.1",
     "@storybook/react-vite": "^7.2.1",
     "@storybook/testing-library": "^0.2.0",
+    "@testing-library/jest-dom": "^6.1.5",
+    "@testing-library/react": "^14.1.2",
+    "@types/jest": "^29.5.11",
+    "@types/jest-axe": "^3.5.9",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.3.0",
     "@typescript-eslint/parser": "^6.3.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "@vitest/coverage-v8": "^1.1.0",
+    "@vitest/ui": "^1.1.0",
     "airbnb": "^0.0.2",
     "chromatic": "^7.0.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -67,7 +76,8 @@
     "storybook": "^7.2.1",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2",
-    "vitest": "^0.34.2"
+    "vite": "^5.0.10",
+    "vitest": "^1.1.0"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
