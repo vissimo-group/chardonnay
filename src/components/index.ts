@@ -8,16 +8,18 @@ import Tooltip from './Tooltip'
 import TopBar from './TopBar'
 import TagCep from './TagCep'
 import InfoTopBar from './InfoTopBar'
+import * as SidePanel from './SidePanel'
 
 export {
   Button,
   CardAddress,
+  InfoTopBar,
   Input,
   Message,
   Modal,
+  SidePanel,
   Tag,
+  TagCep,
   Tooltip,
   TopBar,
-  TagCep,
-  InfoTopBar,
 }
