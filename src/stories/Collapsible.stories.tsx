@@ -1,10 +1,11 @@
-import { useState, HTMLAttributes, ReactNode } from 'react'
 import styled from 'styled-components'
 import { Meta, StoryObj } from '@storybook/react'
 
 import { BorderRadius, Colors, Spacing } from '../tokens'
-import { StyledCollapsibleContent } from '../components/Collapsible/CollapsibleContent/style'
-import { UnstyledButton } from '../components/UnstyledButton'
+import * as Collapsible from '../components/Collapsible'
+import { CollapsibleRootProps } from '../components/Collapsible/CollapsibleRoot/types'
+import { CollapsibleContentProps } from '../components/Collapsible/CollapsibleContent/types'
+import { CollapsibleTriggerProps } from '../components/Collapsible/CollapsibleTrigger/types'
 
 //* DECORATORS */
 
@@ -14,56 +15,52 @@ const StoryPlaceholder = styled.div`
   border-radius: ${BorderRadius['3']};
   border: 1px solid ${Colors.light.neutral.neutral200};
 `
-const StyledSpan = styled.span`
+const StyledSpan = styled.header`
   color: ${Colors.light.neutral.neutral400};
   font-weight: 600;
+  margin-bottom: 1rem;
 `
 
-type CollapsibleToggleComponentProps = {
-  children: ReactNode
-} & HTMLAttributes<HTMLDivElement>
-
-const CollapsibleToggleComponent = ({
-  children: content,
-}: CollapsibleToggleComponentProps) => {
-  const [open, setOpen] = useState(false)
-
-  const toggleOpenSate = () => {
-    setOpen((isOpen) => !isOpen)
-  }
-
-  const buttonContent = open ? 'Hide' : 'See more...'
-
-  return (
-    <div>
-      <StyledCollapsibleContent $open={open}>
-        {content}
-      </StyledCollapsibleContent>
-
-      <UnstyledButton onClick={toggleOpenSate}>{buttonContent}</UnstyledButton>
-    </div>
-  )
-}
-
-export default {
+const meta: Meta<
+  CollapsibleRootProps & CollapsibleContentProps & CollapsibleTriggerProps
+> = {
   title: 'Components/Collapsible',
-  component: CollapsibleToggleComponent,
+  tags: ['autodocs'],
+  argTypes: {
+    openByDefault: {
+      description:
+        'This property is responsible for defining whether the component should start with the content open or closed.',
+      control: {
+        type: 'boolean',
+      },
+    },
+    ifOpen: {
+      control: { type: 'text' },
+      description:
+        'Customizes the button when the content is open. Accepts any react node value. Icons, texts, etc.',
+    },
+    ifClosed: {
+      control: { type: 'text' },
+      description:
+        'Customizes the button when the content is closed. Accepts any react node value. Icons, texts, etc.',
+    },
+  },
   decorators: [
     (Story) => (
       <StoryPlaceholder>
-        <StyledSpan>
-          You can use a helper function with a button to toggle the component.
-        </StyledSpan>
+        <StyledSpan>Your content</StyledSpan>
 
         <Story />
       </StoryPlaceholder>
     ),
   ],
-} as Meta
+}
+
+export default meta
 
 //* STORIES */
 
-const paragraph = (
+const content = (
   <p>
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui
     consequuntur cumque. Asperiores veniam iure, deserunt laborum magni rerum
@@ -72,7 +69,26 @@ const paragraph = (
   </p>
 )
 
-export const CollapsibleWithParagraph: StoryObj = {
-  name: 'With a paragraph',
-  args: { children: paragraph },
+type StoryType = StoryObj<CollapsibleRootProps & CollapsibleTriggerProps>
+
+export const Open: StoryType = {
+  name: 'Open by default state',
+  args: { openByDefault: true, ifOpen: 'Show less', ifClosed: 'Show more' },
+  render: ({ openByDefault, ifOpen, ifClosed }) => (
+    <Collapsible.Root openByDefault={openByDefault}>
+      <Collapsible.Content>{content}</Collapsible.Content>
+      <Collapsible.Trigger ifOpen={ifOpen} ifClosed={ifClosed} />
+    </Collapsible.Root>
+  ),
+}
+
+export const Closed: StoryType = {
+  name: 'Closed by default state',
+  args: { openByDefault: false, ifOpen: 'Show less', ifClosed: 'Show more' },
+  render: ({ openByDefault, ifOpen, ifClosed }) => (
+    <Collapsible.Root openByDefault={openByDefault}>
+      <Collapsible.Content>{content}</Collapsible.Content>
+      <Collapsible.Trigger ifOpen={ifOpen} ifClosed={ifClosed} />
+    </Collapsible.Root>
+  ),
 }
