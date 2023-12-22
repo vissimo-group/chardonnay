@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react'
 import React from 'react'
-import { Radio } from '../components/Radio'
-import { RadioContentProps } from '../components/Radio/type'
+import { Radio } from './index'
+import { RadioContentProps } from './type'
 
 export default {
   title: 'Components/Radio',

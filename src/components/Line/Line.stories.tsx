@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react'
 import React from 'react'
-import { Line } from '../components/Line'
-import { LineProps } from '../components/Line/type'
+import { Line } from './index'
+import { LineProps } from './type'
 
 export default {
   title: 'Components/Line',

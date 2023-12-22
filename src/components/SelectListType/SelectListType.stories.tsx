@@ -1,8 +1,8 @@
 import type { Meta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components'
-import { SelectListType } from '../components/SelectListType'
-import { Line } from '../components/Line'
+import { SelectListType } from './index'
+import { Line } from '../Line'
 
 export default {
   title: 'Components/SelectListType',
@@ -25,12 +25,14 @@ export const SelectListTypeDefault = () => (
       <SelectListType.Radio theme={theme} />
 
       <Flex>
-        <SelectListType.Title>TITLE</SelectListType.Title>
-        <SelectListType.SubTitle>Sub Title</SelectListType.SubTitle>
-        <SelectListType.Price>00,00 R$</SelectListType.Price>
+        <SelectListType.Title theme={theme}>TITLE</SelectListType.Title>
+        <SelectListType.SubTitle theme={theme}>
+          Sub Title
+        </SelectListType.SubTitle>
+        <SelectListType.Price theme={theme}>00,00 R$</SelectListType.Price>
       </Flex>
 
-      <SelectListType.Action />
+      <SelectListType.Action theme={theme} />
     </SelectListType.Root>
     <Line />
 

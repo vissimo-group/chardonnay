@@ -1,8 +1,8 @@
 import React from 'react'
 import * as Icons from 'semillon'
-import { SelectListActionProps } from './type'
 import { StyledButton } from './style'
-import { Colors } from '../../tokens'
+import { Colors } from '../../../tokens'
+import { SelectListActionProps } from './type'
 
 const SelectListAction: React.FC<SelectListActionProps> = ({
   theme = 'light',

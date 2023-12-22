@@ -1,7 +1,7 @@
 import React from 'react'
-import { Text } from '../Text'
+import { Text } from '../../Text'
 import { SelectListTitleProp } from './type'
-import { Colors } from '../../tokens'
+import { Colors } from '../../../tokens'
 
 const SelectListTitle: React.FC<SelectListTitleProp> = ({
   children,

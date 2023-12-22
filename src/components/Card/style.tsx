@@ -8,6 +8,7 @@ const StyledCard = styled.div<CardProps>`
   padding: 16px;
   gap: 16px;
   justify-content: space-between;
+  border-radius: ${(props: CardProps) => props.borderRadius};
 
   background: ${(props) =>
     props.selected ? Colors[props.theme].background.background200 : 'inherit'};

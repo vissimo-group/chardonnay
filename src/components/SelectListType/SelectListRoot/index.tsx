@@ -1,6 +1,6 @@
 import React from 'react'
 import { SelectListRootProp } from './type'
-import { Card } from '../Card'
+import { Card } from '../../Card'
 
 const SelectListRoot: React.FC<SelectListRootProp> = ({
   children,

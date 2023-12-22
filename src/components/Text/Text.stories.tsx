@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react'
 import React from 'react'
-import { TextProps, TypeAs } from '../components/Text/type'
-import { Text } from '../components/Text'
+import { TextProps, TypeAs } from './type'
+import { Text } from './index'
 
 export default {
   title: 'Components/Text',

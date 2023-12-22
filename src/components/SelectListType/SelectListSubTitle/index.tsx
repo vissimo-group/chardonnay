@@ -1,9 +1,9 @@
 import React from 'react'
-import { Text } from '../Text'
-import { SelectListTitleProp } from './type'
-import { Colors } from '../../tokens'
+import { Text } from '../../Text'
+import { SelectListSubTitleProp } from './type'
+import { Colors } from '../../../tokens'
 
-const SelectListSubTitle: React.FC<SelectListTitleProp> = ({
+const SelectListSubTitle: React.FC<SelectListSubTitleProp> = ({
   children,
   theme = 'light',
 }) => {

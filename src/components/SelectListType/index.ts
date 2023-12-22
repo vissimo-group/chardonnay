@@ -1,17 +1,17 @@
-import { SelectListTitle } from './SelectListTitle'
 import { SelectListRoot } from './SelectListRoot'
+import { SelectListTitle } from './SelectListTitle'
 import { SelectListSubTitle } from './SelectListSubTitle'
 import { SelectListPrice } from './SelectListPrice'
-import { SelectListAction } from './SelectListAction'
 import { SelectListRadio } from './SelectListRadio'
+import { SelectListAction } from './SelectListAction'
 
 const SelectListType = {
-  Root: SelectListRoot,
-  Title: SelectListTitle,
-  SubTitle: SelectListSubTitle,
-  Price: SelectListPrice,
   Action: SelectListAction,
+  Price: SelectListPrice,
   Radio: SelectListRadio,
+  Root: SelectListRoot,
+  SubTitle: SelectListSubTitle,
+  Title: SelectListTitle,
 }
 
 export { SelectListType }
