@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { BorderRadius, Spacing } from '../../../tokens'
+import { Spacing } from '../../../tokens'
 
 import type { GridRowProps } from './type'
 
@@ -10,7 +10,6 @@ const GridRow = styled.div<GridRowProps>`
   grid-template-columns: ${({ amount }) => `repeat(${amount}, 1fr)`};
   gap: ${Spacing['4']};
   margin: 0;
-  border-radius: ${BorderRadius['3']};
 `
 
 export { GridRow }

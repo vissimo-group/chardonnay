@@ -2,14 +2,10 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import styled from 'styled-components'
 
-import { BorderRadius, Colors, Spacing } from '../tokens'
+import { BorderRadius, Colors, Spacing } from '../../tokens'
 
-import type {
-  GridColProps,
-  GridRootProps,
-  GridRowProps,
-} from '../components/Grid'
-import * as Grid from '../components/Grid'
+import type { GridColProps, GridRootProps, GridRowProps } from '.'
+import * as Grid from '.'
 
 //* DECORATORS */
 
