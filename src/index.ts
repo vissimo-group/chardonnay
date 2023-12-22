@@ -1,38 +1,27 @@
 import {
   Button,
-  CardAddress,
+  SelectAddress,
   Input,
   Message,
   Modal,
   Tag,
   Tooltip,
   TopBar,
+  ShippingAddress,
   TagCep,
   InfoTopBar,
 } from './components'
 
 export {
   Button,
-  Tooltip,
-  Modal,
-  Message,
-  Tag,
-  Input,
   SelectAddress,
+  Input,
+  Message,
+  Modal,
+  Tag,
+  Tooltip,
   TopBar,
   ShippingAddress,
-} from './components'
-
-export {
-  Button,
-  Tooltip,
-  Modal,
-  Message,
-  Tag,
-  Input,
-  SelectAddress,
-  TopBar,
-  ShippingAddress,
-  InfoTopBar,
   TagCep,
+  InfoTopBar,
 }
