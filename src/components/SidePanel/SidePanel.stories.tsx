@@ -2,10 +2,10 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { styled } from 'styled-components'
 
-import * as SidePanel from '../components/SidePanel'
+import * as SidePanel from '.'
 
-import { BorderRadius, Colors } from '../tokens'
-import { SidePanelRootProps } from '../components/SidePanel/SidePanelRoot/type'
+import { BorderRadius, Colors } from '../../tokens'
+import { SidePanelRootProps } from './SidePanelRoot/type'
 
 //* PLACEHOLDERS */
 

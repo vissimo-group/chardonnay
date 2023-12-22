@@ -38,7 +38,7 @@ const SidePanelProvider = ({
   //* only opens panel
   const openPanel = useCallback(() => {
     startTransition(() => {
-      setOpen((prev) => !prev)
+      setOpen(true)
     })
   }, [setOpen])
 
