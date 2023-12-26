@@ -3,6 +3,7 @@ import { SidePanelRootProps } from './type'
 
 const SidePanelRoot = ({
   children,
+  onOpenChange,
   open,
   fullscreen,
   maxWidth,
@@ -16,6 +17,7 @@ const SidePanelRoot = ({
       minWidth={minWidth}
       fullscreen={fullscreen}
       open={open}
+      onOpenChange={onOpenChange}
     >
       {children}
     </SidePanelProvider>

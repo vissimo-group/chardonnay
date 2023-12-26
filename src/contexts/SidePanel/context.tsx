@@ -20,6 +20,7 @@ const SidePanelContext = createContext<SidePanelContextProps>({
 
 const SidePanelProvider = ({
   children,
+  onOpenChange,
   open: defaultOpen,
   fullscreen: isFullscreen,
   minWidth: defaultMinWidth,
@@ -39,15 +40,17 @@ const SidePanelProvider = ({
   const openPanel = useCallback(() => {
     startTransition(() => {
       setOpen(true)
+      onOpenChange?.(true)
     })
-  }, [setOpen])
+  }, [setOpen, onOpenChange])
 
   //* only closes the panel
   const closePanel = useCallback(() => {
     startTransition(() => {
       setOpen(false)
+      onOpenChange?.(false)
     })
-  }, [setOpen])
+  }, [setOpen, onOpenChange])
 
   useEffect(() => {
     if (defaultOpen !== undefined) setOpen(defaultOpen)

@@ -2,12 +2,14 @@ import { useSidePanelContext } from '../../../contexts/SidePanel'
 import { SidePanelCloseStyled } from './style'
 import { SidePanelCloseProps } from './type'
 
-const SidePanelClose = ({ children }: SidePanelCloseProps) => {
+const SidePanelClose = ({ children, className = '' }: SidePanelCloseProps) => {
   const [context] = useSidePanelContext()
   const { closePanel } = context
 
   return (
-    <SidePanelCloseStyled onClick={closePanel}>{children}</SidePanelCloseStyled>
+    <SidePanelCloseStyled className={className} onClick={closePanel}>
+      {children}
+    </SidePanelCloseStyled>
   )
 }
 

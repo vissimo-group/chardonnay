@@ -3,6 +3,7 @@ import { SidePanelMeasures } from '../../../contexts/SidePanel/type'
 
 type SidePanelRootProps = {
   children?: ReactNode
+  onOpenChange?(open: boolean): void
   open?: boolean
   fullscreen?: boolean
   minWidth?: SidePanelMeasures

@@ -26,6 +26,7 @@ type SidePanelContextProps = {
 
 type SidePanelProviderProps = {
   children?: ReactNode
+  onOpenChange?(open: boolean): void
   open?: boolean
   fullscreen?: boolean
   minWidth?: SidePanelMeasures
