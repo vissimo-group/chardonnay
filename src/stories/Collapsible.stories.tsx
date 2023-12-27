@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Meta, StoryObj } from '@storybook/react'
+import { useArgs } from '@storybook/preview-api'
 
 import { BorderRadius, Colors, Spacing } from '../tokens'
 import * as Collapsible from '../components/Collapsible'
@@ -27,22 +28,12 @@ const meta: Meta<
   title: 'Components/Collapsible',
   tags: ['autodocs'],
   argTypes: {
-    openByDefault: {
+    isCollapsed: {
       description:
         'This property is responsible for defining whether the component should start with the content open or closed.',
       control: {
         type: 'boolean',
       },
-    },
-    ifOpen: {
-      control: { type: 'text' },
-      description:
-        'Customizes the button when the content is open. Accepts any react node value. Icons, texts, etc.',
-    },
-    ifClosed: {
-      control: { type: 'text' },
-      description:
-        'Customizes the button when the content is closed. Accepts any react node value. Icons, texts, etc.',
     },
   },
   decorators: [
@@ -69,26 +60,61 @@ const content = (
   </p>
 )
 
-type StoryType = StoryObj<CollapsibleRootProps & CollapsibleTriggerProps>
+type StoryType = StoryObj<typeof Collapsible.Root>
+
+const CustomText = styled.span`
+  cursor: pointer;
+  padding: 0.5rem;
+  background-color: #00557c;
+  border-radius: 8px;
+  color: white;
+  &:hover {
+    background-color: #01608d;
+  }
+`
 
 export const Open: StoryType = {
-  name: 'Open by default state',
-  args: { openByDefault: true, ifOpen: 'Show less', ifClosed: 'Show more' },
-  render: ({ openByDefault, ifOpen, ifClosed }) => (
-    <Collapsible.Root openByDefault={openByDefault}>
-      <Collapsible.Content>{content}</Collapsible.Content>
-      <Collapsible.Trigger ifOpen={ifOpen} ifClosed={ifClosed} />
-    </Collapsible.Root>
-  ),
+  name: 'Open state',
+  args: {
+    isCollapsed: true,
+  },
+  render: function Render(args) {
+    const [{ isCollapsed }, updateArgs] = useArgs()
+
+    const onChange = () => {
+      updateArgs({ isCollapsed: !isCollapsed })
+    }
+
+    return (
+      <Collapsible.Root {...args}>
+        <Collapsible.Content>{content}</Collapsible.Content>
+        <Collapsible.Trigger onToggle={onChange}>
+          <CustomText>{isCollapsed ? 'Show less' : 'Show more'}</CustomText>
+        </Collapsible.Trigger>
+      </Collapsible.Root>
+    )
+  },
 }
 
 export const Closed: StoryType = {
-  name: 'Closed by default state',
-  args: { openByDefault: false, ifOpen: 'Show less', ifClosed: 'Show more' },
-  render: ({ openByDefault, ifOpen, ifClosed }) => (
-    <Collapsible.Root openByDefault={openByDefault}>
-      <Collapsible.Content>{content}</Collapsible.Content>
-      <Collapsible.Trigger ifOpen={ifOpen} ifClosed={ifClosed} />
-    </Collapsible.Root>
-  ),
+  name: 'Closed state',
+  args: {
+    isCollapsed: false,
+  },
+  render: function Render(args) {
+    const [{ isCollapsed }, updateArgs] = useArgs()
+
+    const onChange = () => {
+      updateArgs({ isCollapsed: !isCollapsed })
+    }
+
+    return (
+      <Collapsible.Root {...args}>
+        <Collapsible.Content>{content}</Collapsible.Content>
+        <Collapsible.Trigger onToggle={onChange}>
+          <CustomText>{isCollapsed ? 'Show less' : 'Show more'}</CustomText>
+        </Collapsible.Trigger>
+      </Collapsible.Root>
+    )
+  },
 }
