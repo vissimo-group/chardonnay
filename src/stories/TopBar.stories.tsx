@@ -1,58 +1,74 @@
 import type { Meta } from '@storybook/react'
 import React from 'react'
 import { Delivery } from 'semillon'
-import { TopBar } from '../components'
-import { TopBarProps } from '../components/TopBar'
+import TopBar, { TopBarProps } from '../components/TopBar'
+import Tag from '../components/Tag'
+import TagCep from '../components/TagCep'
+import InfoTopBar from '../components/InfoTopBar'
 
 export default {
   title: 'Components/TopBar',
   component: TopBar,
   tags: ['autodocs'],
-  argTypes: {
-    cepText: {
-      control: 'text',
-    },
-    tagValue: {
-      control: 'text',
-    },
-    infoText1: {
-      control: 'text',
-    },
-    infoText2: {
-      control: 'text',
-    },
-    infoText3: {
-      control: 'text',
-    },
-  },
+  argTypes: {},
 } as Meta<TopBarProps>
 
-export const topBar = (args: TopBarProps) => <TopBar {...args} />
-topBar.args = {
-  cepText: 'Informe seu CEP',
-  tagValue: 'Frete grátis em toda loja!',
-  iconTag: <Delivery size={26} />,
-  infoText1: 'Nossas lojas',
-  infoText2: 'Contato',
-  infoText3: 'Evino Delivery',
+export const TopBarDefault = () => {
+  return (
+    <TopBar>
+      <TagCep cepText="Informe seu CEP" />
+      <Tag
+        severity="error"
+        icon={<Delivery size={26} color="#fff" />}
+        value="Frete grátis em toda loja!"
+      />
+      <InfoTopBar>
+        <p>Nossas lojas</p>
+        <p>Contato</p>
+        <p>Evino Delivery</p>
+      </InfoTopBar>
+    </TopBar>
+  )
 }
 
-export const topBarLeftComponent = (args: TopBarProps) => <TopBar {...args} />
-topBarLeftComponent.args = {
-  cepText: 'Informe seu CEP',
+export const topBarLeftComponent = () => {
+  return (
+    <TopBar>
+      <TagCep cepText="Informe seu CEP" />
+      <div />
+      <div />
+    </TopBar>
+  )
 }
 
-export const topBarCenterComponent = (args: TopBarProps) => <TopBar {...args} />
-topBarCenterComponent.args = {
-  tagValue: 'Frete grátis em toda loja!',
-  iconTag: <Delivery size={26} />,
+export const topBarCenterComponent = () => {
+  return (
+    <TopBar>
+      <div />
+      <Tag
+        severity="error"
+        icon={<Delivery size={26} color="#fff" />}
+        value="Frete grátis em toda loja!"
+      />
+      <div />
+    </TopBar>
+  )
 }
 
-export const topBarRightComponent = (args: TopBarProps) => <TopBar {...args} />
-topBarRightComponent.args = {
-  infoText1: 'Nossas lojas',
-  infoText2: 'Contato',
-  infoText3: 'Evino Delivery',
+export const topBarRightComponent = () => {
+  return (
+    <TopBar>
+      <div />
+      <div />
+      <InfoTopBar>
+        <p>Nossas lojas</p>
+        <p>Contato</p>
+        <p>Evino Delivery</p>
+      </InfoTopBar>
+    </TopBar>
+  )
 }
 
-export const topBarEmptyComponent: React.FC = () => <TopBar />
+export const topBarEmptyComponent = () => {
+  return <TopBar />
+}
