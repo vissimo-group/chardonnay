@@ -113,12 +113,11 @@ const ShippingAddress: React.FC<ShippingAddressProps> = ({
 }
 
 ShippingAddress.defaultProps = {
-  typeAddress: 'Casa',
-  address:
-    'Rua Bela Cintra, 986 - Escritório / Bairro Consolação - São Paulo, SP - CEP 01415-000',
-  deadline: 'Até 18 de Dezembro',
-  name: 'Giovanni Antony',
-  tel: '(99) 99999 9999',
+  typeAddress: ' ',
+  address: ' ',
+  deadline: ' ',
+  name: ' ',
+  tel: ' ',
   theme: 'light',
 }
 
