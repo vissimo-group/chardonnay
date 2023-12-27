@@ -1,5 +1,6 @@
 import Button from './Button'
-import CardAddress from './CardAddress'
+import SelectAddress from './CardAddress/Select'
+import ShippingAddress from './CardAddress/Shipping'
 import Input from './Input'
 import Message from './Message'
 import Modal from './Modal'
@@ -11,13 +12,14 @@ import InfoTopBar from './InfoTopBar'
 
 export {
   Button,
-  CardAddress,
+  SelectAddress,
   Input,
   Message,
   Modal,
   Tag,
   Tooltip,
   TopBar,
+  ShippingAddress,
   TagCep,
   InfoTopBar,
 }

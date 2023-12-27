@@ -71,13 +71,8 @@ workflows:
   version: 2
   build-and-publish:
     jobs:
-      - test
-      - publish-docs:
-          requires:
-            - test
+      - publish-docs
       - publish-npm:
-          requires:
-            - test
           filters:
             branches:
               only:
