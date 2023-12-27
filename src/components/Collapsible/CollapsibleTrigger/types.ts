@@ -1,8 +1,8 @@
 import { ReactNode } from 'react'
 
 type CollapsibleTriggerProps = {
-  ifOpen: ReactNode
-  ifClosed: ReactNode
+  children: ReactNode
+  onToggle?: () => void
 }
 
 export type { CollapsibleTriggerProps }

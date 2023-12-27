@@ -1,17 +1,23 @@
 import { useContext } from 'react'
 import { CollapsibleContext } from '../../../contexts/CollapsibleContext'
 import { CollapsibleTriggerProps } from './types'
+import { CollapsibleTriggerStyled } from './styles'
 
 const CollapsibleTrigger = ({
-  ifOpen = 'Ver menos',
-  ifClosed = 'Ver mais',
+  children,
+  onToggle,
 }: CollapsibleTriggerProps) => {
-  const { isCollapsed, toggleIsCollapsed } = useContext(CollapsibleContext)
+  const { toggleIsCollapsed } = useContext(CollapsibleContext)
+
+  const toggleState = () => {
+    toggleIsCollapsed()
+    onToggle?.()
+  }
 
   return (
-    <button type="button" onClick={toggleIsCollapsed}>
-      {isCollapsed ? ifOpen : ifClosed}
-    </button>
+    <CollapsibleTriggerStyled type="button" onClick={toggleState}>
+      {children}
+    </CollapsibleTriggerStyled>
   )
 }
 
