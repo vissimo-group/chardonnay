@@ -137,6 +137,10 @@ const SelectAddress: React.FC<CardAddressProps> = ({
 SelectAddress.defaultProps = {
   checked: false,
   theme: 'light',
+  typeAddress: ' ',
+  address: ' ',
+  postcode: ' ',
+  complement: ' ',
 }
 
 export default SelectAddress
