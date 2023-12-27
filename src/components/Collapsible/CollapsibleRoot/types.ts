@@ -2,7 +2,8 @@ import { ReactNode } from 'react'
 
 type CollapsibleRootProps = {
   children: ReactNode
-  openByDefault?: boolean
+  isCollapsed?: boolean
+  onToggle?: () => void
 }
 
 export type { CollapsibleRootProps }
