@@ -7,12 +7,10 @@ const Border: React.FC<BorderProps> = ({
   theme = 'light',
   bg = '#FFF',
   ...props
-}) => {
-  return (
-    <StyledBorder theme={theme} bg={bg as string} {...props}>
-      {children}
-    </StyledBorder>
-  )
-}
+}) => (
+  <StyledBorder theme={theme} bg={bg as string} {...props}>
+    {children}
+  </StyledBorder>
+)
 
 export { Border }

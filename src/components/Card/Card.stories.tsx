@@ -1,32 +1,51 @@
-import type { Meta } from '@storybook/react'
 import React from 'react'
+import { Meta, Story } from '@storybook/react'
 import { Card } from './index'
-import { CardProps } from './type'
 import { Text } from '../Text'
+import { CardProps } from './type'
 
 export default {
   title: 'Components/Card',
   component: Card,
   tags: ['autodocs'],
-  render: () => Card,
+  argTypes: {
+    theme: {
+      control: {
+        type: 'select',
+        options: ['light', 'dark'],
+      },
+    },
+    maxWidth: {
+      control: 'text',
+    },
+    selected: {
+      control: 'boolean',
+    },
+  },
 } as Meta<CardProps>
+
+const Template: Story<CardProps> = (args) => (
+  <Card {...args}>
+    <Text color="#212425">Lorem Ipsum</Text>
+  </Card>
+)
 
 const theme = 'light'
 
-export const CardDefault = (args: CardProps) => (
-  <Card theme={theme} {...args}>
-    <Text color="#212425">Lorem Ipsum</Text>
-  </Card>
-)
+export const CardDefault = Template.bind({})
+CardDefault.args = {
+  theme,
+}
 
-export const CardSelect = (args: CardProps) => (
-  <Card {...args} theme={theme} selected>
-    <Text color="#212425">Lorem Ipsum</Text>
-  </Card>
-)
+export const CardMaxWidth = Template.bind({})
+CardMaxWidth.args = {
+  theme,
+  selected: true,
+  maxWidth: '50%',
+}
 
-export const CardMaxWidth = (args: CardProps) => (
-  <Card {...args} theme={theme} selected maxWidth="50%">
-    <Text color="#212425">Lorem Ipsum</Text>
-  </Card>
-)
+export const CardIsSelected = Template.bind({})
+CardIsSelected.args = {
+  theme,
+  selected: false,
+}

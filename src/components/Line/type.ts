@@ -1,9 +1,12 @@
 import { HTMLAttributes } from 'react'
+import { CommomProps } from '../../types'
 
 type LineProps = {
   maxWidth?: string
   dashed?: boolean
   color?: string
-} & HTMLAttributes<HTMLDivElement>
+  thickness?: string | undefined
+} & HTMLAttributes<HTMLDivElement> &
+  CommomProps
 
-export { LineProps }
+export type { LineProps }

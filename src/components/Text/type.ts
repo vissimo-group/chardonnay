@@ -10,4 +10,4 @@ interface TextProps {
   highContrast?: boolean
 }
 
-export { TextProps, TypeAs }
+export type { TextProps, TypeAs }

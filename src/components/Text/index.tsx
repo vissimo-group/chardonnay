@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import { readableColor } from 'polished'
 import { TextProps } from './type'
 
-const Text: React.FC<TextProps> = ({ as = 'div', ...restProps }) => {
+const Text: React.FC<TextProps> = ({ as = 'div', ...props }) => {
   const StyledText = styled[as]<TextProps>`
     font-family: Colfax, sans-serif;
 
@@ -39,8 +39,10 @@ const Text: React.FC<TextProps> = ({ as = 'div', ...restProps }) => {
         outline: 2px solid ${readableColor(color || 'black', 'black', 'white')};
       `}
   `
-
-  return <StyledText {...restProps} />
+  // ignoring why it is necessary to render the element in the dom according to the prop as passed
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  return <StyledText {...props} />
 }
 
 export { Text }

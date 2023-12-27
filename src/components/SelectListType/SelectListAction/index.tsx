@@ -6,7 +6,7 @@ import { SelectListActionProps } from './type'
 
 const SelectListAction: React.FC<SelectListActionProps> = ({
   theme = 'light',
-  props,
+  ...props
 }) => {
   const Color = Colors[theme].neutral.neutral400
   return (

@@ -5,7 +5,7 @@ import { SelectListRadioProp } from './type'
 const SelectListRadio: React.FC<SelectListRadioProp> = ({
   theme = 'light',
   checked,
-  props,
+  ...props
 }) => {
   return <Radio theme={theme} checked={checked} {...props} />
 }

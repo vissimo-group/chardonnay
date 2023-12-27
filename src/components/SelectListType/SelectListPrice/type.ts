@@ -3,4 +3,4 @@ import { CommomProps } from '../../../types'
 
 type SelectListPriceProp = { children: string } & TextProps & CommomProps
 
-export { SelectListPriceProp }
+export type { SelectListPriceProp }

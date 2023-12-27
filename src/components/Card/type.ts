@@ -9,4 +9,4 @@ type CardProps = {
 } & HTMLAttributes<HTMLDivElement> &
   CommomProps
 
-export { CardProps }
+export type { CardProps }

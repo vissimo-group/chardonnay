@@ -1,5 +1,5 @@
-import type { Meta } from '@storybook/react'
 import React from 'react'
+import { Meta, Story as StoryType } from '@storybook/react'
 import styled from 'styled-components'
 import { SelectListType } from './index'
 import { Line } from '../Line'
@@ -8,6 +8,20 @@ export default {
   title: 'Components/SelectListType',
   component: SelectListType,
   tags: ['autodocs'],
+  argTypes: {
+    theme: {
+      control: {
+        type: 'select',
+        options: ['light', 'dark'],
+      },
+    },
+    selected: {
+      control: 'boolean',
+    },
+    checked: {
+      control: 'boolean',
+    },
+  },
 } as Meta<null>
 
 const theme = 'light'
@@ -19,7 +33,10 @@ const Flex = styled.div`
   flex: 1 0 0;
 `
 
-export const SelectListTypeDefault = () => (
+const Template: StoryType<{ selected: boolean; checked: boolean }> = ({
+  selected,
+  checked,
+}) => (
   <>
     <SelectListType.Root>
       <SelectListType.Radio theme={theme} />
@@ -36,51 +53,33 @@ export const SelectListTypeDefault = () => (
     </SelectListType.Root>
     <Line />
 
-    <SelectListType.Root selected>
-      <SelectListType.Radio checked theme={theme} />
+    <SelectListType.Root selected={selected}>
+      <SelectListType.Radio checked={checked} theme={theme} />
 
       <Flex>
-        <SelectListType.Title>TITLE</SelectListType.Title>
-        <SelectListType.SubTitle>Sub Title</SelectListType.SubTitle>
-        <SelectListType.Price>00,00 R$</SelectListType.Price>
+        <SelectListType.Title theme={theme}>TITLE</SelectListType.Title>
+        <SelectListType.SubTitle theme={theme}>
+          Sub Title
+        </SelectListType.SubTitle>
+        <SelectListType.Price theme={theme}>00,00 R$</SelectListType.Price>
       </Flex>
 
-      <SelectListType.Action />
+      <SelectListType.Action theme={theme} />
     </SelectListType.Root>
     <Line />
   </>
 )
 
-export const Select = () => (
-  <>
-    <SelectListType.Root selected>
-      <SelectListType.Radio checked theme={theme} />
+export const SelectListTypeDefault = Template.bind({})
 
-      <Flex>
-        <SelectListType.Title>TITLE</SelectListType.Title>
-        <SelectListType.SubTitle>Sub Title</SelectListType.SubTitle>
-        <SelectListType.Price>00,00 R$</SelectListType.Price>
-      </Flex>
+export const Select = Template.bind({})
+Select.args = {
+  selected: true,
+  checked: true,
+}
 
-      <SelectListType.Action />
-    </SelectListType.Root>
-    <Line />
-  </>
-)
-
-export const NoSelect = () => (
-  <>
-    <SelectListType.Root>
-      <SelectListType.Radio theme={theme} />
-
-      <Flex>
-        <SelectListType.Title>TITLE</SelectListType.Title>
-        <SelectListType.SubTitle>Sub Title</SelectListType.SubTitle>
-        <SelectListType.Price>00,00 R$</SelectListType.Price>
-      </Flex>
-
-      <SelectListType.Action />
-    </SelectListType.Root>
-    <Line />
-  </>
-)
+export const NoSelect = Template.bind({})
+NoSelect.args = {
+  selected: false,
+  checked: false,
+}

@@ -4,4 +4,4 @@ type SelectListRootProp = {
   children: ReactNode
 } & HTMLAttributes<HTMLInputElement>
 
-export { SelectListRootProp }
+export type { SelectListRootProp }

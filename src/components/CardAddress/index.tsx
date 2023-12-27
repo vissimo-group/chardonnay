@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from 'react'
 import styled from 'styled-components'
-import { Colors } from '../../tokens'
+import { Colors, Spacing } from '../../tokens'
 import { CommomProps, ThemeType } from '../../types'
 
 import { Radio } from '../Radio'
@@ -25,7 +25,7 @@ interface Crosschecked extends CommomProps {
 }
 
 const Label = styled.span`
-  font-size: 16px;
+  font-size: ${Spacing[4]};
   font-weight: bold;
   line-height: 20px;
   letter-spacing: -0.0025em;
@@ -112,10 +112,10 @@ const CardAddress: React.FC<CardAddressProps> = ({
 CardAddress.defaultProps = {
   checked: false,
   theme: 'light',
-  typeAddress: 'Casa',
-  address: 'evino',
-  postcode: '29999999',
-  complement: 'evino',
+  typeAddress: ' ',
+  address: ' ',
+  postcode: ' ',
+  complement: ' ',
 }
 
 export default CardAddress
