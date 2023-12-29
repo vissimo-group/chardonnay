@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Colors } from '../../../tokens'
 
-const StyledCollapsibleContent = styled.div<{ $open?: boolean }>`
+const CollapsibleContentStyled = styled.div<{ $open?: boolean }>`
   height: ${({ $open }) => ($open ? 'fit-content' : '0px')};
   opacity: ${({ $open }) => ($open ? '1' : '0')};
   overflow: hidden;
@@ -9,4 +9,4 @@ const StyledCollapsibleContent = styled.div<{ $open?: boolean }>`
   transition: 0.3s ease-out;
 `
 
-export { StyledCollapsibleContent }
+export { CollapsibleContentStyled }

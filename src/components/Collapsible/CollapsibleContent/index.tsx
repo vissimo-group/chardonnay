@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { StyledCollapsibleContent } from './style'
+import { CollapsibleContentStyled } from './style'
 import { CollapsibleContext } from '../../../contexts/CollapsibleContext'
 import { CollapsibleContentProps } from './types'
 
@@ -10,9 +10,9 @@ const CollapsibleContent = ({
   const { isCollapsed } = useContext(CollapsibleContext)
 
   return (
-    <StyledCollapsibleContent $open={isCollapsed} {...props}>
+    <CollapsibleContentStyled $open={isCollapsed} {...props}>
       {children}
-    </StyledCollapsibleContent>
+    </CollapsibleContentStyled>
   )
 }
 
