@@ -4,9 +4,6 @@ import { useArgs } from '@storybook/preview-api'
 
 import { BorderRadius, Colors, Spacing } from '../tokens'
 import * as Collapsible from '../components/Collapsible'
-import { CollapsibleRootProps } from '../components/Collapsible/CollapsibleRoot/types'
-import { CollapsibleContentProps } from '../components/Collapsible/CollapsibleContent/types'
-import { CollapsibleTriggerProps } from '../components/Collapsible/CollapsibleTrigger/types'
 
 //* DECORATORS */
 
@@ -22,10 +19,9 @@ const StyledSpan = styled.header`
   margin-bottom: 1rem;
 `
 
-const meta: Meta<
-  CollapsibleRootProps & CollapsibleContentProps & CollapsibleTriggerProps
-> = {
+const meta: Meta<typeof Collapsible.Root> = {
   title: 'Components/Collapsible',
+  component: Collapsible.Root,
   tags: ['autodocs'],
   argTypes: {
     isCollapsed: {
