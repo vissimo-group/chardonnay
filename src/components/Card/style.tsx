@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { Colors } from '../../tokens'
 import { CardProps } from './type'
+import { ThemeType } from '../../types'
 
 const StyledCard = styled.div<CardProps>`
   display: flex;
@@ -10,8 +11,10 @@ const StyledCard = styled.div<CardProps>`
   justify-content: space-between;
   border-radius: ${(props: CardProps) => props.borderRadius};
 
-  background: ${(props) =>
-    props.selected ? Colors[props.theme].background.background200 : 'inherit'};
+  background: ${(props: CardProps) =>
+    props.selected
+      ? Colors[props.theme as ThemeType].background.background200
+      : 'inherit'};
 `
 
 export { StyledCard }

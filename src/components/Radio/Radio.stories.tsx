@@ -1,5 +1,5 @@
 import React from 'react'
-import { Meta, Story as StoryType } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import { Radio } from './index'
 import { RadioContentProps } from './type'
 
@@ -30,23 +30,29 @@ export default {
   ],
 } as Meta<RadioContentProps>
 
-const Template: StoryType<RadioContentProps> = (args) => <Radio {...args} />
+type Story = StoryObj<RadioContentProps & { size: string }>
 
-const theme = 'light'
-
-export const EmptyRadio = Template.bind({})
-EmptyRadio.args = {
-  theme,
+export const EmptyRadio: Story = {
+  args: {},
+  render: function Render(args: RadioContentProps) {
+    return <Radio {...args} />
+  },
 }
 
-export const CheckedRadio = Template.bind({})
-CheckedRadio.args = {
-  theme,
-  checked: true,
+export const CheckedRadio: Story = {
+  args: {
+    checked: true,
+  },
+  render: function Render(args: RadioContentProps) {
+    return <Radio {...args} />
+  },
 }
 
-export const BigRadio = Template.bind({})
-BigRadio.args = {
-  theme,
-  size: '50px',
+export const BigRadio: Story = {
+  args: {
+    size: '50px',
+  },
+  render: function Render(args: RadioContentProps) {
+    return <Radio {...args} />
+  },
 }

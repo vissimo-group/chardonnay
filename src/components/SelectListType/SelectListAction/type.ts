@@ -1,8 +1,6 @@
 import { HTMLAttributes } from 'react'
 import { CommomProps } from '../../../types'
 
-type SelectListActionProps = null &
-  HTMLAttributes<HTMLButtonElement> &
-  CommomProps
+type SelectListActionProps = HTMLAttributes<HTMLButtonElement> & CommomProps
 
-export { SelectListActionProps }
+export type { SelectListActionProps }

@@ -1,30 +1,8 @@
-import React from 'react'
-import { Meta, Story as StoryType } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import styled from 'styled-components'
 import { SelectListType } from './index'
 import { Line } from '../Line'
-
-export default {
-  title: 'Components/SelectListType',
-  component: SelectListType,
-  tags: ['autodocs'],
-  argTypes: {
-    theme: {
-      control: {
-        type: 'select',
-        options: ['light', 'dark'],
-      },
-    },
-    selected: {
-      control: 'boolean',
-    },
-    checked: {
-      control: 'boolean',
-    },
-  },
-} as Meta<null>
-
-const theme = 'light'
+import { ThemeType } from '../../types'
 
 const Flex = styled.div`
   display: flex;
@@ -33,53 +11,151 @@ const Flex = styled.div`
   flex: 1 0 0;
 `
 
-const Template: StoryType<{ selected: boolean; checked: boolean }> = ({
-  selected,
-  checked,
-}) => (
-  <>
-    <SelectListType.Root>
-      <SelectListType.Radio theme={theme} />
+export default {
+  title: 'Components/SelectListType',
+  tags: ['autodocs'],
+  component: SelectListType.Root,
+  argTypes: {
+    theme: {
+      control: {
+        type: 'select',
+        options: ['light', 'dark'],
+      },
+      defaultValue: 'light',
+    },
+    selected: {
+      control: 'boolean',
+    },
+    checked: {
+      control: 'boolean',
+    },
+  },
+} as Meta
 
-      <Flex>
-        <SelectListType.Title theme={theme}>TITLE</SelectListType.Title>
-        <SelectListType.SubTitle theme={theme}>
-          Sub Title
-        </SelectListType.SubTitle>
-        <SelectListType.Price theme={theme}>00,00 R$</SelectListType.Price>
-      </Flex>
+type Story = StoryObj<{
+  checked: boolean
+  selected: boolean
+  theme: ThemeType
+}>
 
-      <SelectListType.Action theme={theme} />
-    </SelectListType.Root>
-    <Line />
+export const SelectListTypeDefault: Story = {
+  render: function Render({ theme }) {
+    return (
+      <>
+        <SelectListType.Root theme={theme}>
+          <SelectListType.Radio theme={theme} />
 
-    <SelectListType.Root selected={selected}>
-      <SelectListType.Radio checked={checked} theme={theme} />
+          <Flex>
+            <SelectListType.Title theme={theme}>TITLE</SelectListType.Title>
+            <SelectListType.SubTitle theme={theme}>
+              Sub Title
+            </SelectListType.SubTitle>
+            <SelectListType.Price theme={theme}>00,00 R$</SelectListType.Price>
+          </Flex>
 
-      <Flex>
-        <SelectListType.Title theme={theme}>TITLE</SelectListType.Title>
-        <SelectListType.SubTitle theme={theme}>
-          Sub Title
-        </SelectListType.SubTitle>
-        <SelectListType.Price theme={theme}>00,00 R$</SelectListType.Price>
-      </Flex>
+          <SelectListType.Action theme={theme} />
+        </SelectListType.Root>
+        <Line theme={theme} />
 
-      <SelectListType.Action theme={theme} />
-    </SelectListType.Root>
-    <Line />
-  </>
-)
+        <SelectListType.Root theme={theme}>
+          <SelectListType.Radio theme={theme} />
 
-export const SelectListTypeDefault = Template.bind({})
+          <Flex>
+            <SelectListType.Title theme={theme}>TITLE</SelectListType.Title>
+            <SelectListType.SubTitle theme={theme}>
+              Sub Title
+            </SelectListType.SubTitle>
+            <SelectListType.Price theme={theme}>00,00 R$</SelectListType.Price>
+          </Flex>
 
-export const Select = Template.bind({})
-Select.args = {
-  selected: true,
-  checked: true,
+          <SelectListType.Action theme={theme} />
+        </SelectListType.Root>
+        <Line theme={theme} />
+      </>
+    )
+  },
 }
 
-export const NoSelect = Template.bind({})
-NoSelect.args = {
-  selected: false,
-  checked: false,
+export const Select: Story & { checked?: boolean } = {
+  args: {
+    selected: true,
+    checked: true,
+  },
+  render: function Render({ selected, checked, theme }) {
+    return (
+      <>
+        <SelectListType.Root theme={theme}>
+          <SelectListType.Radio theme={theme} />
+
+          <Flex>
+            <SelectListType.Title theme={theme}>TITLE</SelectListType.Title>
+            <SelectListType.SubTitle theme={theme}>
+              Sub Title
+            </SelectListType.SubTitle>
+            <SelectListType.Price theme={theme}>00,00 R$</SelectListType.Price>
+          </Flex>
+
+          <SelectListType.Action theme={theme} />
+        </SelectListType.Root>
+        <Line theme={theme} />
+
+        <SelectListType.Root theme={theme} selected={selected}>
+          <SelectListType.Radio theme={theme} checked={checked} />
+
+          <Flex>
+            <SelectListType.Title theme={theme}>TITLE</SelectListType.Title>
+            <SelectListType.SubTitle theme={theme}>
+              Sub Title
+            </SelectListType.SubTitle>
+            <SelectListType.Price theme={theme}>00,00 R$</SelectListType.Price>
+          </Flex>
+
+          <SelectListType.Action theme={theme} />
+        </SelectListType.Root>
+        <Line theme={theme} />
+      </>
+    )
+  },
+}
+
+export const NoSelect: Story = {
+  args: {
+    selected: false,
+    checked: false,
+  },
+  render: function Render({ selected, checked, theme }) {
+    return (
+      <>
+        <SelectListType.Root theme={theme}>
+          <SelectListType.Radio theme={theme} />
+
+          <Flex>
+            <SelectListType.Title theme={theme}>TITLE</SelectListType.Title>
+            <SelectListType.SubTitle theme={theme}>
+              Sub Title
+            </SelectListType.SubTitle>
+            <SelectListType.Price theme={theme}>00,00 R$</SelectListType.Price>
+          </Flex>
+
+          <SelectListType.Action theme={theme} />
+        </SelectListType.Root>
+        <Line theme={theme} />
+
+        <SelectListType.Root theme={theme} selected={selected}>
+          <SelectListType.Radio theme={theme} checked={checked} />
+
+          <Flex>
+            <SelectListType.Title theme={theme}>TITLE</SelectListType.Title>
+            <SelectListType.SubTitle theme={theme}>
+              Sub Title
+            </SelectListType.SubTitle>
+            <SelectListType.Price theme={theme}>00,00 R$</SelectListType.Price>
+          </Flex>
+
+          <SelectListType.Action theme={theme} />
+        </SelectListType.Root>
+        <Line theme={theme} />
+      </>
+    )
+  },
 }

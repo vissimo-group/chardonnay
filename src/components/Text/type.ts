@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 type TypeAs = 'span' | 'div' | 'label' | 'p'
 
 interface TextProps {
@@ -8,6 +10,7 @@ interface TextProps {
   align?: 'left' | 'center' | 'right'
   color?: string
   highContrast?: boolean
+  children: ReactNode | string
 }
 
 export type { TextProps, TypeAs }

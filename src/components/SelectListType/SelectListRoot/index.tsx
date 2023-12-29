@@ -3,10 +3,15 @@ import { SelectListRootProp } from './type'
 import { Card } from '../../Card'
 
 const SelectListRoot: React.FC<SelectListRootProp> = ({
+  theme = 'light',
   children,
   ...props
 }) => {
-  return <Card {...props}>{children}</Card>
+  return (
+    <Card theme={theme} {...props}>
+      {children}
+    </Card>
+  )
 }
 
 export { SelectListRoot }

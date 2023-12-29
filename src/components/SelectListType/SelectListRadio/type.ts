@@ -1,6 +1,6 @@
 import { RadioContentProps } from '../../Radio/type'
 import { CommomProps } from '../../../types'
 
-type SelectListRadioProp = null & RadioContentProps & CommomProps
+type SelectListRadioProp = RadioContentProps & CommomProps
 
-export { SelectListRadioProp }
+export type { SelectListRadioProp }

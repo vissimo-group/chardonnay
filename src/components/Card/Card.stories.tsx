@@ -1,5 +1,5 @@
 import React from 'react'
-import { Meta, Story } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import { Card } from './index'
 import { Text } from '../Text'
 import { CardProps } from './type'
@@ -14,6 +14,7 @@ export default {
         type: 'select',
         options: ['light', 'dark'],
       },
+      defaultValue: 'light',
     },
     maxWidth: {
       control: 'text',
@@ -24,28 +25,42 @@ export default {
   },
 } as Meta<CardProps>
 
-const Template: Story<CardProps> = (args) => (
-  <Card {...args}>
-    <Text color="#212425">Lorem Ipsum</Text>
-  </Card>
-)
+type Story = StoryObj<CardProps>
 
-const theme = 'light'
-
-export const CardDefault = Template.bind({})
-CardDefault.args = {
-  theme,
+export const CardDefault: Story = {
+  args: {},
+  render: function Render(args: CardProps) {
+    return (
+      <Card {...args}>
+        <Text color="#212425">Lorem Ipsum</Text>
+      </Card>
+    )
+  },
 }
 
-export const CardMaxWidth = Template.bind({})
-CardMaxWidth.args = {
-  theme,
-  selected: true,
-  maxWidth: '50%',
+export const CardMaxWidth: Story = {
+  args: {
+    selected: true,
+    maxWidth: '50%',
+  },
+  render: function Render(args: CardProps) {
+    return (
+      <Card {...args}>
+        <Text color="#212425">Lorem Ipsum</Text>
+      </Card>
+    )
+  },
 }
 
-export const CardIsSelected = Template.bind({})
-CardIsSelected.args = {
-  theme,
-  selected: false,
+export const CardIsSelected: Story = {
+  args: {
+    selected: false,
+  },
+  render: function Render(args: CardProps) {
+    return (
+      <Card {...args}>
+        <Text color="#212425">Lorem Ipsum</Text>
+      </Card>
+    )
+  },
 }

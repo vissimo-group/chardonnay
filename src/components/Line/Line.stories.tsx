@@ -1,5 +1,5 @@
 import React from 'react'
-import { Meta, Story as StoryType } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import { Line } from './index'
 import { LineProps } from './type'
 
@@ -30,33 +30,58 @@ export default {
   ],
 } as Meta<LineProps>
 
-const Template: StoryType<LineProps> = (args) => <Line {...args} />
+type Story = StoryObj<LineProps>
 
-export const DefaultLine = Template.bind({})
+export const DefaultLine = {
+  args: {},
+  render: function Render(args: LineProps) {
+    return <Line {...args} />
+  },
+}
 DefaultLine.args = {}
 
-export const ColorLine = Template.bind({})
-ColorLine.args = {
-  color: 'red',
+export const ColorLine: Story = {
+  args: {
+    color: 'red',
+  },
+  render: function Render(args: LineProps) {
+    return <Line {...args} />
+  },
 }
 
-export const DashedLine = Template.bind({})
-DashedLine.args = {
-  dashed: true,
+export const DashedLine: Story = {
+  args: {
+    dashed: true,
+  },
+  render: function Render(args: LineProps) {
+    return <Line {...args} />
+  },
 }
 
-export const ThickLine = Template.bind({})
-ThickLine.args = {
-  thickness: '3',
+export const ThickLine: Story = {
+  args: {
+    thickness: '3',
+  },
+  render: function Render(args: LineProps) {
+    return <Line {...args} />
+  },
 }
 
-export const DashedThickLine = Template.bind({})
-DashedThickLine.args = {
-  dashed: true,
-  thickness: '3',
+export const DashedThickLine: Story = {
+  args: {
+    dashed: true,
+    thickness: '3',
+  },
+  render: function Render(args: LineProps) {
+    return <Line {...args} />
+  },
 }
 
-export const MaxWidthLine = Template.bind({})
-MaxWidthLine.args = {
-  maxWidth: '50%',
+export const MaxWidthLine: Story = {
+  args: {
+    maxWidth: '50%',
+  },
+  render: function Render(args: LineProps) {
+    return <Line {...args} />
+  },
 }
