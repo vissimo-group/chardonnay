@@ -13,6 +13,7 @@ export default {
         type: 'select',
         options: ['light', 'dark'],
       },
+      defaultValue: 'light',
     },
     checked: {
       control: 'boolean',
