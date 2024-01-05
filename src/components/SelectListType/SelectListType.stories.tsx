@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 import styled from 'styled-components'
+import { useState } from 'react'
 import { SelectListType } from './index'
 import { Line } from '../Line'
 import { ThemeType } from '../../types'
@@ -39,33 +40,49 @@ type Story = StoryObj<{
 }>
 
 export const SelectListTypeDefault: Story = {
-  render: function Render({ theme }) {
+  args: {
+    selected: false,
+    checked: false,
+  },
+  render: function Render({ selected, checked, theme }) {
+    const [Selected, setSelected] = useState(selected)
+    const [Checked, setChecked] = useState(checked)
+
+    const handleClick = () => {
+      setSelected(!Selected)
+      setChecked(!Checked)
+    }
+
     return (
       <>
-        <SelectListType.Root theme={theme}>
-          <SelectListType.Radio theme={theme} />
+        <SelectListType.Root
+          selected={Selected}
+          theme={theme}
+          onClick={handleClick}
+        >
+          <SelectListType.Radio checked={Checked} theme={theme} />
 
           <Flex>
             <SelectListType.Title theme={theme}>TITLE</SelectListType.Title>
             <SelectListType.SubTitle theme={theme}>
               Sub Title
             </SelectListType.SubTitle>
-            <SelectListType.Price theme={theme}>00,00 R$</SelectListType.Price>
+            <SelectListType.Price theme={theme}>R$ 00,00</SelectListType.Price>
           </Flex>
 
           <SelectListType.Action theme={theme} />
         </SelectListType.Root>
         <Line theme={theme} />
 
-        <SelectListType.Root theme={theme}>
-          <SelectListType.Radio theme={theme} />
+        <SelectListType.Root selected={selected} theme={theme}>
+          <SelectListType.Radio checked={checked} theme={theme} />
 
           <Flex>
             <SelectListType.Title theme={theme}>TITLE</SelectListType.Title>
             <SelectListType.SubTitle theme={theme}>
               Sub Title
             </SelectListType.SubTitle>
-            <SelectListType.Price theme={theme}>00,00 R$</SelectListType.Price>
+            <SelectListType.Price theme={theme}>R$ 00,00</SelectListType.Price>
           </Flex>
 
           <SelectListType.Action theme={theme} />
@@ -92,7 +109,7 @@ export const Select: Story & { checked?: boolean } = {
             <SelectListType.SubTitle theme={theme}>
               Sub Title
             </SelectListType.SubTitle>
-            <SelectListType.Price theme={theme}>00,00 R$</SelectListType.Price>
+            <SelectListType.Price theme={theme}>R$ 00,00</SelectListType.Price>
           </Flex>
 
           <SelectListType.Action theme={theme} />
@@ -107,7 +124,7 @@ export const Select: Story & { checked?: boolean } = {
             <SelectListType.SubTitle theme={theme}>
               Sub Title
             </SelectListType.SubTitle>
-            <SelectListType.Price theme={theme}>00,00 R$</SelectListType.Price>
+            <SelectListType.Price theme={theme}>R$ 00,00</SelectListType.Price>
           </Flex>
 
           <SelectListType.Action theme={theme} />
@@ -134,7 +151,7 @@ export const NoSelect: Story = {
             <SelectListType.SubTitle theme={theme}>
               Sub Title
             </SelectListType.SubTitle>
-            <SelectListType.Price theme={theme}>00,00 R$</SelectListType.Price>
+            <SelectListType.Price theme={theme}>R$ 00,00</SelectListType.Price>
           </Flex>
 
           <SelectListType.Action theme={theme} />
@@ -149,7 +166,7 @@ export const NoSelect: Story = {
             <SelectListType.SubTitle theme={theme}>
               Sub Title
             </SelectListType.SubTitle>
-            <SelectListType.Price theme={theme}>00,00 R$</SelectListType.Price>
+            <SelectListType.Price theme={theme}>R$ 00,00</SelectListType.Price>
           </Flex>
 
           <SelectListType.Action theme={theme} />
