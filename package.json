@@ -14,9 +14,7 @@
     "test": "vitest run --coverage",
     "build": "tsup src/index.ts --format esm,cjs --dts --external react --minify --sourcemap --clean",
     "test:dev": "vitest watch",
-    "test:ui": "vitest --ui",
-    "predeploy": "npm run build-storybook",
-    "deploy-storybook": "gh-pages -d storybook-static"
+    "test:ui": "vitest --ui"
   },
   "files": [
     "dist"
