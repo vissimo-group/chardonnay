@@ -1,5 +1,0 @@
-export { SidePanelContent as Content } from './SidePanelContent'
-export { SidePanelOverlay as Overlay } from './SidePanelOverlay'
-export { SidePanelRoot as Root } from './SidePanelRoot'
-export { SidePanelTrigger as Trigger } from './SidePanelTrigger'
-export { SidePanelClose as Close } from './SidePanelClose'

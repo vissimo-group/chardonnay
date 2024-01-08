@@ -1,0 +1,9 @@
+import{j as t}from"./jsx-runtime-vNq4Oc-g.js";import{M as a}from"./index-SViquzKV.js";import{r as p}from"./index-4g5l5LRQ.js";import{I as d,S as l}from"./index-0-wybW3p.js";import{u as x}from"./styled-components.browser.esm-97Fi_FB5.js";import{I as h}from"./index-_SNnpeX8.js";import"./index-D6Ew8ZG_.js";import"./index-NSA-2l6d.js";import{useMDXComponents as i}from"./index-_VGcpBFS.js";import"./iframe-eo3-EV-v.js";import"../sb-preview/runtime.js";import"./emotion-use-insertion-effect-with-fallbacks.browser.esm-zALrzNiZ.js";import"./_commonjsHelpers-4gQjN7DL.js";import"./index-jmm5gWkb.js";import"./index-ogXoivrg.js";import"./polished.esm-izdHNZsJ.js";import"./extends-dGVwEr9R.js";import"./index-MVbLLYTZ.js";import"./index-PPLHz8o0.js";import"./radius-ut5Qfu_P.js";import"./colors-2IJz2qa0.js";import"./spacing-JiOYZ-f-.js";import"./mediaQueries-Bu9ZkGF-.js";const j=x.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 16px;
+  grid-gap: 70px;
+`,u=()=>{const[o,s]=p.useState(""),c=e=>{s(e.target.value)},m=Object.entries(d).filter(([e])=>e.toLowerCase().includes(o==null?void 0:o.toLowerCase())).map(([e,r])=>({name:e,component:r}));return t.jsxs(t.Fragment,{children:[t.jsx(h,{icon:t.jsx(l,{size:26}),type:"text",value:o,placeholder:"Digite o nome do Icone",theme:"light",onChange:c}),t.jsx(j,{children:m.map(({name:e,component:r})=>t.jsxs("div",{children:[t.jsx("p",{children:e.replace(/([A-Z])/g," $1")}),r({size:35})]},e))})]})};function n(o){const s=Object.assign({h1:"h1",h2:"h2"},i(),o.components);return t.jsxs(t.Fragment,{children:[t.jsx(a,{title:"Icon/Icons"}),`
+`,t.jsx(s.h1,{id:"icons",children:"Icons"}),`
+`,t.jsx(s.h2,{id:"esses-são-nossos-icones",children:"Esses são nossos Icones"}),`
+`,t.jsx(u,{})]})}function k(o={}){const{wrapper:s}=Object.assign({},i(),o.components);return s?t.jsx(s,Object.assign({},o,{children:t.jsx(n,o)})):n(o)}export{k as default};

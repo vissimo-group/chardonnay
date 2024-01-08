@@ -1,0 +1,9 @@
+import{j as e}from"./jsx-runtime-vNq4Oc-g.js";import{W as c}from"./index-0-wybW3p.js";import{M as o}from"./index-_SNnpeX8.js";import"./index-D6Ew8ZG_.js";import"./index-NSA-2l6d.js";import"./index-4g5l5LRQ.js";import"./_commonjsHelpers-4gQjN7DL.js";import"./styled-components.browser.esm-97Fi_FB5.js";import"./polished.esm-izdHNZsJ.js";import"./extends-dGVwEr9R.js";import"./radius-ut5Qfu_P.js";import"./colors-2IJz2qa0.js";import"./spacing-JiOYZ-f-.js";import"./mediaQueries-Bu9ZkGF-.js";const w={title:"Components/Message",component:o,tags:["autodocs"],argTypes:{theme:{options:["light","dark"],control:{type:"radio"},defaultValue:"light"},message:{control:{type:"text"}},severity:{options:["info","warning","error"],control:{type:"select"},defaultValue:"error"}}},s=r=>e.jsxs(e.Fragment,{children:[e.jsx(o,{...r}),e.jsx("br",{}),e.jsx(o,{...r,severity:"warning"}),e.jsx("br",{}),e.jsx(o,{...r,severity:"info"})]});s.args={theme:"light",icon:e.jsx(c,{size:26}),message:"Hello World",severity:"error"};const t=r=>e.jsx(o,{...r});t.args={theme:"dark",icon:e.jsx(c,{size:26}),message:"Hello World",severity:"error"};var a,i,n;s.parameters={...s.parameters,docs:{...(a=s.parameters)==null?void 0:a.docs,source:{originalSource:`args => {
+  return <>
+      <Message {...args} />
+      <br />
+      <Message {...args} severity="warning" />
+      <br />
+      <Message {...args} severity="info" />
+    </>;
+}`,...(n=(i=s.parameters)==null?void 0:i.docs)==null?void 0:n.source}}};var m,g,p;t.parameters={...t.parameters,docs:{...(m=t.parameters)==null?void 0:m.docs,source:{originalSource:"args => <Message {...args} />",...(p=(g=t.parameters)==null?void 0:g.docs)==null?void 0:p.source}}};const E=["MessageLight","MessageDark"];export{t as MessageDark,s as MessageLight,E as __namedExportsOrder,w as default};

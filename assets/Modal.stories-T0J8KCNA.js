@@ -1,0 +1,7 @@
+import{j as u}from"./jsx-runtime-vNq4Oc-g.js";import{r as O}from"./index-4g5l5LRQ.js";import{a as d}from"./index-_SNnpeX8.js";import"./index-D6Ew8ZG_.js";import"./index-NSA-2l6d.js";import"./_commonjsHelpers-4gQjN7DL.js";import"./styled-components.browser.esm-97Fi_FB5.js";import"./index-0-wybW3p.js";import"./polished.esm-izdHNZsJ.js";import"./extends-dGVwEr9R.js";import"./radius-ut5Qfu_P.js";import"./colors-2IJz2qa0.js";import"./spacing-JiOYZ-f-.js";import"./mediaQueries-Bu9ZkGF-.js";const R={title:"Components/Modal",component:d,tags:["autodocs"]},l=i=>{const[r,c]=O.useState(!0);return u.jsx(d,{onClose:()=>c(!r),isOpen:r,...i})},o=l.bind({});o.args={theme:"light"};const e=l.bind({});e.args={theme:"dark"};var t,a,s;o.parameters={...o.parameters,docs:{...(t=o.parameters)==null?void 0:t.docs,source:{originalSource:`args => {
+  const [modalOpen, setModalOpen] = useState(true);
+  return <Modal onClose={() => setModalOpen(!modalOpen)} isOpen={modalOpen} {...args} />;
+}`,...(s=(a=o.parameters)==null?void 0:a.docs)==null?void 0:s.source}}};var n,p,m;e.parameters={...e.parameters,docs:{...(n=e.parameters)==null?void 0:n.docs,source:{originalSource:`args => {
+  const [modalOpen, setModalOpen] = useState(true);
+  return <Modal onClose={() => setModalOpen(!modalOpen)} isOpen={modalOpen} {...args} />;
+}`,...(m=(p=e.parameters)==null?void 0:p.docs)==null?void 0:m.source}}};const T=["ModalLight","ModalDark"];export{e as ModalDark,o as ModalLight,T as __namedExportsOrder,R as default};
