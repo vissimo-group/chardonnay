@@ -2,6 +2,7 @@
   "name": "chardonnay",
   "version": "1.0.10",
   "description": "A mobile first frontend framework made with wine",
+  "homepage": "https://vissimo-group.github.io/chardonnay/",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -13,7 +14,9 @@
     "test": "vitest run --coverage",
     "build": "tsup src/index.ts --format esm,cjs --dts --external react --minify --sourcemap --clean",
     "test:dev": "vitest watch",
-    "test:ui": "vitest --ui"
+    "test:ui": "vitest --ui",
+    "predeploy": "npm run build-storybook",
+    "deploy-storybook": "gh-pages -d storybook-static"
   },
   "files": [
     "dist"
@@ -71,6 +74,7 @@
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.6.13",
+    "gh-pages": "^6.1.1",
     "glob": "^10.3.10",
     "jsdom": "^22.1.0",
     "prettier": "^3.0.1",
