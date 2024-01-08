@@ -3,7 +3,7 @@ name: Publish Page
 on:
   push:
     branches:
-      - "main"
+      - main
 
 permissions:
   contents: read

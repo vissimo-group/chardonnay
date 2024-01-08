@@ -2,6 +2,7 @@ name: Test
 
 on:
   workflow_dispatch:
+  workflow_call:
   pull_request:
     types: [ready_for_review, synchronize, opened, reopened]
     branches:
@@ -11,10 +12,6 @@ on:
       - main
       - bugfix/**
       - featured/**
-
-  workflow_call:
-    branches:
-      - main
 
 jobs:
   test:
