@@ -6,7 +6,11 @@ on:
       - main
 
 jobs:
-  build:
+  test:
+    uses: ./.github/workflows/test.yml
+
+  publish-npm:
+    needs: test
     runs-on: ubuntu-latest
 
     steps:

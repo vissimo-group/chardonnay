@@ -11,7 +11,11 @@ permissions:
   id-token: write
 
 jobs:
-  deploy:
+  test:
+    uses: ./.github/workflows/test.yml
+
+  publish-page:
+    needs: test
     environment:
       name: github-pages
       url: ${{ steps.build-publish.outputs.page_url }}

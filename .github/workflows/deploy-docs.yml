@@ -13,6 +13,9 @@ on:
       - featured/**
 
 jobs:
+  test:
+    uses: ./.github/workflows/test.yml
+
   publish-docs:
     needs: test
     runs-on: ubuntu-latest
