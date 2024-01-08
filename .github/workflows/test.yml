@@ -12,6 +12,10 @@ on:
       - bugfix/**
       - featured/**
 
+  workflow_call:
+    branches:
+      - main
+
 jobs:
   test:
     runs-on: ubuntu-latest
