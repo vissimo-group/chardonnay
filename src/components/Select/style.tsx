@@ -1,10 +1,17 @@
 import styled from 'styled-components'
-import { BorderRadius, Colors } from '../../tokens'
+import { BorderRadius, Colors, mediaQueries } from '../../tokens'
 
-const SelectStyled = styled.select<{ $error?: boolean }>`
+const SelectStyled = styled.select<{
+  $error?: boolean
+  $fontSize: number
+  $expand: boolean
+  $responsible?: boolean
+}>`
+  font-size: ${({ $fontSize }) => $fontSize}rem;
+  width: ${({ $expand }) => ($expand ? '100%' : 'auto')};
   appearance: none;
   line-height: 1em;
-  padding: 1rem 2rem 1rem 1rem;
+  padding: 1em calc(24px + 0.2em) 1em 1em;
   border-radius: ${BorderRadius[2]};
   color: ${(props) =>
     props.$error
@@ -21,6 +28,11 @@ const SelectStyled = styled.select<{ $error?: boolean }>`
         ? Colors.light.feedback.feedbackError100
         : Colors.light.neutral.neutral300};
   transition: 0ms.2s ease-out;
+
+  @media (max-width: ${mediaQueries.screenSm}) {
+    width: ${({ $responsible, $expand }) =>
+      $responsible || $expand ? '100%' : 'auto'};
+  }
 
   &:hover:not(:disabled) {
     border-color: ${Colors.light.neutral.neutral500};
