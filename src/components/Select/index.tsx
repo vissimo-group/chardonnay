@@ -7,10 +7,12 @@ const Select = ({
   fontSize = 1,
   expand = false,
   responsible = false,
+  theme = 'light',
   ...props
 }: SelectProps) => {
   return (
     <SelectStyled
+      $theme={theme}
       $error={error}
       $fontSize={fontSize}
       $expand={expand}
