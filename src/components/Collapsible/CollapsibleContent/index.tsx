@@ -5,12 +5,13 @@ import { CollapsibleContentProps } from './types'
 
 const CollapsibleContent = ({
   children,
+  theme = 'light',
   ...props
 }: CollapsibleContentProps) => {
   const { isCollapsed } = useContext(CollapsibleContext)
 
   return (
-    <CollapsibleContentStyled $open={isCollapsed} {...props}>
+    <CollapsibleContentStyled $theme={theme} $open={isCollapsed} {...props}>
       {children}
     </CollapsibleContentStyled>
   )
