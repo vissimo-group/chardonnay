@@ -1,25 +1,20 @@
 name: Publish Package to npmjs
 
 on:
-  pull_request:
-    types: [closed]
-    branches:
-      - main
+  workflow_dispatch:
+  push:
+    tags:
+      - 'release-V_*'
 
 jobs:
   test:
     uses: ./.github/workflows/test.yml
 
-  deploy-docs:
-    uses: ./.github/workflows/deploy-docs.yml
-
   publish-npm:
-    needs:
-      - test
-      - deploy-docs
+    needs: test
 
     runs-on: ubuntu-latest
-
+    if: startsWith(github.ref, 'refs/tags/release-V_')
     steps:
       - uses: actions/checkout@v4
 

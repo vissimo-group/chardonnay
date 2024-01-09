@@ -1,12 +1,11 @@
-name: Publish Page
+name: Publish GitHub Pages
 
 on:
-  push:
-    branches:
-      - main
-      - '**/bugfix/**'
-      - '**/featured/**'
   workflow_dispatch:
+  workflow_run:
+    workflows: [ Publish Package to npmjs ]
+    types:
+      - completed
 
 permissions:
   contents: read

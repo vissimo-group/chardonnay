@@ -1,17 +1,16 @@
-name: Publish Docs
+name: Publish Docs to Chromatic
 
 on:
   workflow_dispatch:
-  workflow_call:
   pull_request:
-    types: [ready_for_review, synchronize, opened, reopened, closed]
+    types: [ ready_for_review, synchronize, opened, reopened ]
     branches:
       - main
   push:
     branches:
       - main
-      - '*bugfix*'
-      - '*featured*'
+      - '**/bugfix/**'
+      - '**/featured/**'
 
 jobs:
   test:
@@ -20,6 +19,8 @@ jobs:
   publish-docs:
     needs: test
     runs-on: ubuntu-latest
+
+    if: contains(github.event.pull_request.labels.*.name, 'publish_docs')
 
     steps:
       - name: Checkout Repository

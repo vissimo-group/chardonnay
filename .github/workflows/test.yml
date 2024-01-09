@@ -1,17 +1,17 @@
-name: Run Test
+name: Run Tests
 
 on:
   workflow_dispatch:
   workflow_call:
   pull_request:
-    types: [ready_for_review, synchronize, opened, reopened, closed]
+    types: [ready_for_review, synchronize, opened, reopened]
     branches:
       - main
   push:
     branches:
       - main
-      - '*bugfix*'
-      - '*featured*'
+      - '**/bugfix/**'
+      - '**/featured/**'
 
 jobs:
   test:
