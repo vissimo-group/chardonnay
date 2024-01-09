@@ -1,3 +1,4 @@
+import React from 'react'
 import { CollapsibleProvider } from '../../../contexts/CollapsibleContext'
 import { CollapsibleRootProps } from './types'
 

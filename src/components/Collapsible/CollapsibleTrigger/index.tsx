@@ -1,4 +1,4 @@
-import { useCallback, useContext } from 'react'
+import React, { useCallback, useContext } from 'react'
 import { CollapsibleContext } from '../../../contexts/CollapsibleContext'
 import { CollapsibleTriggerProps } from './types'
 import { CollapsibleTriggerStyled } from './styles'

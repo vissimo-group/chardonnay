@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import React, { useContext } from 'react'
 import { CollapsibleContentStyled } from './style'
 import { CollapsibleContext } from '../../../contexts/CollapsibleContext'
 import { CollapsibleContentProps } from './types'

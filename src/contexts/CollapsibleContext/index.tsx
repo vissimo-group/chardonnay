@@ -1,4 +1,4 @@
-import { createContext, useEffect, useMemo, useState } from 'react'
+import React, { createContext, useEffect, useMemo, useState } from 'react'
 import { CollapsibleContextProps, CollapsibleProviderProps } from './types'
 
 const CollapsibleContext = createContext<CollapsibleContextProps>({
