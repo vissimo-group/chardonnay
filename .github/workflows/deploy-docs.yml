@@ -2,15 +2,16 @@ name: Publish Docs
 
 on:
   workflow_dispatch:
+  workflow_call:
   pull_request:
-    types: [ready_for_review, synchronize, opened, reopened]
+    types: [ready_for_review, synchronize, opened, reopened, closed]
     branches:
       - main
   push:
     branches:
       - main
-      - bugfix/**
-      - featured/**
+      - '*bugfix*'
+      - '*featured*'
 
 jobs:
   test:

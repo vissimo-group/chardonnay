@@ -10,8 +10,8 @@ on:
   push:
     branches:
       - main
-      - bugfix/**
-      - featured/**
+      - '*bugfix*'
+      - '*featured*'
 
 jobs:
   test:
