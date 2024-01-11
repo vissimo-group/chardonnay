@@ -12,13 +12,15 @@ jobs:
 
   publish-npm:
     needs: test
-
+    if: "!startsWith(github.event.head_commit.message, '[RELEASE]')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 20
 
@@ -27,7 +29,8 @@ jobs:
       - run: npm ci
 
       - name: Increment Package Version
-        run: npx version -m "Bump version to %s [skip ci]"
+        run: npm version patch -m "[RELEASE] %s"
+      - run: git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
