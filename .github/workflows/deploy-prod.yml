@@ -24,7 +24,8 @@ jobs:
           node-version: 20
 
       - name: Install Dependencies
-        run: npm ci
+        run: npm install
+      - run: npm ci
 
       - name: Increment Package Version
         run: npx version -m "Bump version to %s [skip ci]"
