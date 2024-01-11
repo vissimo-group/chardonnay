@@ -16,12 +16,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: actions/labeler@v4
-        with:
-            repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - run: git config --global user.name "${GITHUB_ACTOR}"
+      - run: git config --global user.email "${GITHUB_ACTOR_EMAIL}"
+
+      - name: View the information of the pusher
+        run: |
+          echo "The name of the pusher: ${{ github.event.pusher.name }}"
+          echo "The email of the pusher: ${{ github.event.pusher.email }}"
+          echo "The name GITHUB_ACTOR: ${{ GITHUB_ACTOR}}"
+          echo "The email of the pusher: ${{ GITHUB_ACTOR_EMAIL }}"
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
