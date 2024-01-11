@@ -1,0 +1,45 @@
+name: Publish Docs to Chromatic
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [ ready_for_review, synchronize, opened, reopened ]
+    branches:
+      - main
+  push:
+    branches:
+      - main
+      - '**/bugfix/**'
+      - '**/featured/**'
+
+jobs:
+  test:
+    uses: ./.github/workflows/test.yml
+
+  publish-docs:
+    needs: test
+    runs-on: ubuntu-latest
+
+    if: contains(github.event.pull_request.labels.*.name, 'publish_docs')
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        run: npm ci
+      - run: npm install
+
+        name: Publish to Chromatic
+      - uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.PROJECT_CHROMATIC_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          onlyChanged: true # fast construction for the project
