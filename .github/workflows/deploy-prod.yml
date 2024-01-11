@@ -1,0 +1,37 @@
+name: Publish Package to npmjs
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'release-V_*'
+
+jobs:
+  test:
+    uses: ./.github/workflows/test.yml
+
+  publish-npm:
+    needs: test
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Authenticate with registry
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+
+      - name: Publish to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

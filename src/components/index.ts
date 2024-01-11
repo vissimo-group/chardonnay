@@ -14,6 +14,9 @@ import { Line } from './Line'
 import { Radio } from './Radio'
 import { Text } from './Text'
 import { SelectListType } from './SelectListType'
+import * as SidePanel from './SidePanel'
+import { Select } from './Select'
+import { Checkbox } from './Checkbox'
 
 export {
   Border,
@@ -32,4 +35,11 @@ export {
   Text,
   Tooltip,
   TopBar,
+  SidePanel,
+  Tag,
+  TagCep,
+  Tooltip,
+  TopBar,
+  Select,
+  Checkbox,
 }

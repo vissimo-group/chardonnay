@@ -15,6 +15,13 @@ import {
   Text,
   Tooltip,
   TopBar,
+  SidePanel,
+  Tag,
+  TagCep,
+  Tooltip,
+  TopBar,
+  Select,
+  Checkbox,
 } from './components'
 
 export {
@@ -34,4 +41,16 @@ export {
   Text,
   Tooltip,
   TopBar,
+  CardAddress,
+  InfoTopBar,
+  Input,
+  Message,
+  Modal,
+  SidePanel,
+  Tag,
+  TagCep,
+  Tooltip,
+  TopBar,
+  Select,
+  Checkbox,
 }
