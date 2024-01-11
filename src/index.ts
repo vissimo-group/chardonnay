@@ -10,6 +10,8 @@ import {
   TagCep,
   Tooltip,
   TopBar,
+  Select,
+  Checkbox,
 } from './components'
 
 export {
@@ -24,4 +26,6 @@ export {
   TagCep,
   Tooltip,
   TopBar,
+  Select,
+  Checkbox,
 }

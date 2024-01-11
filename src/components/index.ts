@@ -9,6 +9,8 @@ import TopBar from './TopBar'
 import TagCep from './TagCep'
 import InfoTopBar from './InfoTopBar'
 import * as SidePanel from './SidePanel'
+import { Select } from './Select'
+import { Checkbox } from './Checkbox'
 
 export {
   Button,
@@ -22,4 +24,6 @@ export {
   TagCep,
   Tooltip,
   TopBar,
+  Select,
+  Checkbox,
 }
