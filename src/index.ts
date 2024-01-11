@@ -1,10 +1,16 @@
 import {
+  Border,
   Button,
+  Card,
   CardAddress,
   InfoTopBar,
   Input,
+  Line,
   Message,
   Modal,
+  Radio,
+  SelectListType,
+  Text,
   SidePanel,
   Tag,
   TagCep,
@@ -15,7 +21,13 @@ import {
 } from './components'
 
 export {
+  Border,
   Button,
+  Card,
+  Line,
+  Radio,
+  SelectListType,
+  Text,
   CardAddress,
   InfoTopBar,
   Input,

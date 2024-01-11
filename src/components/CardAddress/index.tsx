@@ -1,7 +1,9 @@
 import React, { HTMLAttributes } from 'react'
 import styled from 'styled-components'
-import { Colors } from '../../tokens'
+import { Colors, Spacing } from '../../tokens'
 import { CommomProps, ThemeType } from '../../types'
+
+import { Radio } from '../Radio'
 
 interface CardAddressProps extends HTMLAttributes<HTMLInputElement> {
   checked?: boolean
@@ -12,45 +14,24 @@ interface CardAddressProps extends HTMLAttributes<HTMLInputElement> {
   complement?: string
 }
 
-const RadioButtonLabel = styled.label`
+const Flex = styled.div`
   display: flex;
   align-items: center;
+  gap: 16px;
 `
 
 interface Crosschecked extends CommomProps {
-  checked: boolean
+  checked?: boolean
 }
 
-const RadioButtonInput = styled.input<Crosschecked & { checked?: boolean }>`
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  margin-right: 10px;
-  background-color: ${(props: CommomProps) =>
-    Colors[props.theme].neutral.neutral100};
-  outline: none;
-  cursor: pointer;
-  border: 2px solid
-    ${(props: CommomProps) => Colors[props.theme].neutral.neutral400};
-
-  &:checked {
-    border: 4px solid
-      ${(props: Crosschecked) =>
-        props.checked
-          ? Colors[props.theme].action.action100
-          : Colors[props.theme].neutral.neutral100};
-    background-color: ${(props: Crosschecked) =>
-      props.checked ? Colors[props.theme].neutral.neutral100 : 'transparent'};
-  }
-`
-
-const RadioButtonText = styled.span`
-  font-size: 16px;
+const Label = styled.span`
+  font-size: ${Spacing[4]};
   font-weight: bold;
   line-height: 20px;
   letter-spacing: -0.0025em;
   text-align: center;
+
+  margin-top: 5px;
 `
 
 const CardAddressContainer = styled.div<Crosschecked>`
@@ -59,13 +40,14 @@ const CardAddressContainer = styled.div<Crosschecked>`
   border: 1px solid
     ${(props: Crosschecked) =>
       props.checked
-        ? Colors[props.theme].feedback.feedbackInfo100
-        : Colors[props.theme].neutral.neutral200};
+        ? Colors[props.theme as ThemeType].feedback.feedbackInfo100
+        : Colors[props.theme as ThemeType].neutral.neutral200};
   gap: 8px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  color: ${(props: CommomProps) => Colors[props.theme].neutral.neutral500};
+  color: ${(props: CommomProps) =>
+    Colors[props.theme as ThemeType].neutral.neutral500};
 
   font-size: 1rem;
   font-weight: 500;
@@ -90,7 +72,8 @@ const AddressLine = styled.span`
 
 const ComplementLine = styled.span<CommomProps>`
   margin-bottom: 8px;
-  color: ${(props: CommomProps) => Colors[props.theme].neutral.neutral300};
+  color: ${(props: CommomProps) =>
+    Colors[props.theme as ThemeType].neutral.neutral300};
   font-size: 12px;
   font-weight: 400;
   line-height: 15px;
@@ -105,29 +88,21 @@ const CardAddress: React.FC<CardAddressProps> = ({
   address,
   postcode,
   complement,
-  ...cardAddressProps
+  ...props
 }) => {
+  const Theme = theme as ThemeType
   return (
-    <CardAddressContainer
-      checked={checked as boolean}
-      theme={theme as ThemeType}
-    >
-      <RadioButtonLabel>
-        <RadioButtonInput
-          theme={theme as ThemeType}
-          type="radio"
-          checked={checked as boolean}
-          {...cardAddressProps}
-        />
-        <RadioButtonText>{typeAddress}</RadioButtonText>
-      </RadioButtonLabel>
+    <CardAddressContainer checked={checked as boolean} theme={Theme}>
+      <Flex>
+        <Radio theme={Theme} checked={checked} {...props} />
+
+        <Label>{typeAddress}</Label>
+      </Flex>
       <AddressDetails>
         <AddressLine>{address}</AddressLine>
         <AddressLine>CEP: {postcode}</AddressLine>
         {complement && (
-          <ComplementLine theme={theme as ThemeType}>
-            {complement}
-          </ComplementLine>
+          <ComplementLine theme={Theme}>{complement}</ComplementLine>
         )}
       </AddressDetails>
     </CardAddressContainer>
@@ -137,10 +112,10 @@ const CardAddress: React.FC<CardAddressProps> = ({
 CardAddress.defaultProps = {
   checked: false,
   theme: 'light',
-  typeAddress: 'Casa',
-  address: 'evino',
-  postcode: '29999999',
-  complement: 'evino',
+  typeAddress: ' ',
+  address: ' ',
+  postcode: ' ',
+  complement: ' ',
 }
 
 export default CardAddress
