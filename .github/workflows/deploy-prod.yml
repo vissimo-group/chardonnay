@@ -17,15 +17,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - run: git config --global user.name "${GITHUB_ACTOR}"
-      - run: git config --global user.email "${GITHUB_ACTOR_EMAIL}"
+      - name: Configure Git
+        run: |
+            git config --global user.name "$(git log -1 --pretty=format:'%an')"
+            git config --global user.email "$(git log -1 --pretty=format:'%ae')"
+      
 
       - name: View the information of the pusher
         run: |
           echo "The name of the pusher: ${{ github.event.pusher.name }}"
           echo "The email of the pusher: ${{ github.event.pusher.email }}"
-          echo "The name GITHUB_ACTOR: ${{ GITHUB_ACTOR}}"
-          echo "The email of the pusher: ${{ GITHUB_ACTOR_EMAIL }}"
+          echo " =>> : ${{ git log -1}}"
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
