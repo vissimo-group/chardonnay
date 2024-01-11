@@ -12,22 +12,10 @@ jobs:
 
   publish-npm:
     needs: test
-    if: "!startsWith(github.event.head_commit.message, '[RELEASE]')"
+
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Configure Git
-        run: |
-            git config --global user.name "$(git log -1 --pretty=format:'%an')"
-            git config --global user.email "$(git log -1 --pretty=format:'%ae')"
-      
-
-      - name: View the information of the pusher
-        run: |
-          echo "The name of the pusher: ${{ github.event.pusher.name }}"
-          echo "The email of the pusher: ${{ github.event.pusher.email }}"
-          echo " =>> : ${{ git log -1}}"
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -36,13 +24,12 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
-      - run: npm ci
 
-      - name: Increment Package Version
-        run: npm version patch -m "[RELEASE] %s"
-      - run: git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build
+        run: npm run build
+
+      - name: Authenticate with registry
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
 
       - name: Publish to npm
         run: npm publish
