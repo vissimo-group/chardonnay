@@ -9,6 +9,7 @@ import {
   TopBar,
   TagCep,
   InfoTopBar,
+  Collapsible,
 } from './components'
 
 export {
@@ -22,4 +23,5 @@ export {
   TopBar,
   InfoTopBar,
   TagCep,
+  Collapsible,
 }

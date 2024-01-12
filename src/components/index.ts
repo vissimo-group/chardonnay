@@ -8,6 +8,7 @@ import Tooltip from './Tooltip'
 import TopBar from './TopBar'
 import TagCep from './TagCep'
 import InfoTopBar from './InfoTopBar'
+import * as Collapsible from './Collapsible'
 
 export {
   Button,
@@ -20,4 +21,5 @@ export {
   TopBar,
   TagCep,
   InfoTopBar,
+  Collapsible,
 }
