@@ -8,6 +8,7 @@ import Tooltip from './Tooltip'
 import TopBar from './TopBar'
 import TagCep from './TagCep'
 import InfoTopBar from './InfoTopBar'
+import * as Collapsible from './Collapsible'
 import { Border } from './Border'
 import { Card } from './Card'
 import { Line } from './Line'
@@ -23,7 +24,6 @@ export {
   Button,
   Card,
   CardAddress,
-  InfoTopBar,
   Input,
   Line,
   Message,
@@ -33,9 +33,11 @@ export {
   Text,
   SidePanel,
   Tag,
-  TagCep,
   Tooltip,
   TopBar,
+  TagCep,
+  InfoTopBar,
+  Collapsible,
   Select,
   Checkbox,
 }
