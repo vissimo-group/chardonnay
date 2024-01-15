@@ -11,6 +11,7 @@ export interface ShippingAddressProps extends HeaderProps {
   theme?: ThemeType
   address?: string | undefined
   deadline?: string | undefined
+  deliveryDeadlineLabel?: string | undefined
   name?: string | undefined
   tel?: string | undefined
 }
@@ -86,7 +87,8 @@ const ShippingAddress: React.FC<ShippingAddressProps> = ({
   deadline,
   name,
   tel,
-  theme,
+  theme = 'light',
+  deliveryDeadlineLabel,
   ...propsButton
 }) => {
   const colorIcon = Colors[theme as ThemeType].neutral.neutral400
@@ -100,7 +102,7 @@ const ShippingAddress: React.FC<ShippingAddressProps> = ({
       <ContainerBody>
         <Text>{address}</Text>
         <ContainerDeadline>
-          Prazo de entrega: <Deadline>{deadline}</Deadline>
+          {deliveryDeadlineLabel} <Deadline>{deadline}</Deadline>
         </ContainerDeadline>
         <Line theme={theme} />
         <DataUser>

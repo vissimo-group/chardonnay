@@ -1,8 +1,10 @@
-import { Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
+
 import React from 'react'
 import ShippingAddress, {
   ShippingAddressProps,
 } from '../components/CardAddress/Shipping'
+import { ThemeType } from '../types'
 
 export default {
   title: 'Components/Card Address/Shipping',
@@ -22,10 +24,40 @@ export default {
   },
 } as Meta<ShippingAddressProps>
 
-export const ShippingAddressLight = (args: ShippingAddressProps) => (
-  <ShippingAddress {...args} />
-)
+type Story = StoryObj<ShippingAddressProps & { theme: ThemeType }>
 
-export const ShippingAddressDark = (args: ShippingAddressProps) => (
-  <ShippingAddress {...args} />
-)
+export const ShippingAddressDefault: Story = {
+  args: {
+    typeAddress: 'Casa',
+    address:
+      'Rua Bela Cintra, 986 - Escritório / Bairro Consolação - São Paulo, SP - CEP 01415-000',
+    deadline: 'Até 18 de Dezembro',
+    deliveryDeadlineLabel: 'Prazo de entrega: ',
+    name: 'Giovanni Antony',
+    tel: '(11) 99910 2030',
+  },
+  render: (args) => <ShippingAddress {...args} />,
+}
+
+export const ShippingAddressWithoutDeliveryDeadlineLabel: Story = {
+  args: {
+    typeAddress: 'Casa',
+    address:
+      'Rua Bela Cintra, 986 - Escritório / Bairro Consolação - São Paulo, SP - CEP 01415-000',
+    deadline: 'Até 18 de Dezembro',
+    name: 'Giovanni Antony',
+    tel: '(11) 99910 2030',
+  },
+  render: (args) => <ShippingAddress {...args} />,
+}
+
+export const ShippingAddressWithoutName: Story = {
+  args: {
+    typeAddress: 'Casa',
+    address:
+      'Rua Bela Cintra, 986 - Escritório / Bairro Consolação - São Paulo, SP - CEP 01415-000',
+    deadline: 'Até 18 de Dezembro',
+    tel: '(11) 99910 2030',
+  },
+  render: (args) => <ShippingAddress {...args} />,
+}
