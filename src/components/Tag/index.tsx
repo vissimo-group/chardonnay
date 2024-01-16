@@ -10,18 +10,12 @@ export interface TagProps extends React.ButtonHTMLAttributes<HTMLDivElement> {
   theme?: ThemeType
 }
 
-const severityColors = {
-  info: (props: CommomProps) => Colors[props.theme].background.backgroundInfo,
-  warning: (props: CommomProps) =>
-    Colors[props.theme].background.backgroundWarning,
-  error: (props: CommomProps) => Colors[props.theme].background.backgroundError,
-}
-
 const StyledTag = styled.div<PropsSeverity>`
   display: inline-flex;
   align-items: center;
   color: ${(props: CommomProps) => Colors[props.theme].neutral.neutral100};
-  background-color: ${(props) => severityColors[props.severity](props)};
+  background-color: ${(props: CommomProps) =>
+    Colors[props.theme].brand.brand400};
   width: fit-content;
   height: 24px;
   padding: 0 8px;
