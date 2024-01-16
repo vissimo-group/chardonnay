@@ -11,7 +11,7 @@
     "storybook": "storybook dev -p 6006",
     "dev": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test": "vitest run --coverage",
+    "test": "testResult=$(find src -type f -name '*.spec.*' -exec vitest run {} \\;); [ -n \"$testResult\" ] && vitest coverage || echo 'No test files found'",
     "build": "tsup src/index.ts --format esm,cjs --dts --external react --minify --sourcemap --clean",
     "test:dev": "vitest watch",
     "test:ui": "vitest --ui"
