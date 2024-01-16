@@ -13,6 +13,7 @@ const StyledBorder = styled.div<BorderProps>`
   ${(props) =>
     props.borderType &&
     props.borderType.map((type) => `border-${type}: 1px solid;`).join('')}
+  Overflow: hidden
 `
 
 export { StyledBorder }

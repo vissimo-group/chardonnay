@@ -1,5 +1,6 @@
 import Button from './Button'
-import CardAddress from './CardAddress'
+import SelectAddress from './CardAddress/Select'
+import ShippingAddress from './CardAddress/Shipping'
 import Input from './Input'
 import Message from './Message'
 import Modal from './Modal'
@@ -18,12 +19,13 @@ import { SelectListType } from './SelectListType'
 import * as SidePanel from './SidePanel'
 import { Select } from './Select'
 import { Checkbox } from './Checkbox'
+import * as Grid from './Grid'
 
 export {
   Border,
   Button,
   Card,
-  CardAddress,
+  SelectAddress,
   Input,
   Line,
   Message,
@@ -35,9 +37,11 @@ export {
   Tag,
   Tooltip,
   TopBar,
+  ShippingAddress,
   TagCep,
   InfoTopBar,
   Collapsible,
   Select,
   Checkbox,
+  Grid,
 }

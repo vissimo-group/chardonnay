@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/react'
 import React, { useState } from 'react'
-import { CardAddress } from '../components'
+import SelectAddressComponent from '../components/CardAddress/Select'
 
 interface CardAddressProps {
   theme?: 'light' | 'dark'
@@ -12,8 +12,8 @@ interface CardAddressProps {
 }
 
 export default {
-  title: 'Components/Card Address',
-  component: CardAddress,
+  title: 'Components/Card Address/Select',
+  component: SelectAddressComponent,
   tags: ['autodocs'],
   argTypes: {
     theme: {
@@ -29,7 +29,7 @@ export default {
   },
 } as Meta<CardAddressProps>
 
-const Template = ({
+const SelectAddress = ({
   typeAddress,
   address,
   postcode,
@@ -43,7 +43,7 @@ const Template = ({
   }
 
   return (
-    <CardAddress
+    <SelectAddressComponent
       checked={isChecked}
       typeAddress={typeAddress}
       address={address}
@@ -55,10 +55,11 @@ const Template = ({
   )
 }
 
-export const CardAddressLight = (args: CardAddressProps) => (
-  <Template {...args} />
+export const SelectAddressLight = (args: CardAddressProps) => (
+  <SelectAddress {...args} />
 )
-CardAddressLight.args = {
+
+SelectAddressLight.args = {
   theme: 'light',
   typeAddress: 'Casa',
   address: 'Rua Pires da Mota, 974 - Aclimação, São Paulo - SP',
@@ -66,10 +67,11 @@ CardAddressLight.args = {
   complement: '15º andar - Escritório Evino',
 }
 
-export const CardAddressDark = (args: CardAddressProps) => (
-  <Template {...args} />
+export const SelectAddressDark = (args: CardAddressProps) => (
+  <SelectAddress {...args} />
 )
-CardAddressDark.args = {
+
+SelectAddressDark.args = {
   theme: 'dark',
   checked: true,
   typeAddress: 'Casa',
