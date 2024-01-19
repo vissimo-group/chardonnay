@@ -4,7 +4,7 @@ import { readableColor } from 'polished'
 import { TextProps } from './type'
 
 const Text: React.FC<TextProps> = ({ as = 'div', children, ...props }) => {
-  const StyledText = styled[as]<TextProps>`
+  const StyledText = styled[as]`
     font-family: Colfax, sans-serif;
 
     ${({ size, autosize }: TextProps) =>

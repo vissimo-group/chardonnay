@@ -1,6 +1,6 @@
 {
   "name": "chardonnay",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "A mobile first frontend framework made with wine",
   "homepage": "https://vissimo-group.github.io/chardonnay/",
   "main": "./dist/index.js",
@@ -97,7 +97,7 @@
     "eslint-plugin-react": "^7.33.1",
     "polished": "^4.2.2",
     "semillon": "^1.0.0",
-    "styled-components": "^6.0.6"
+    "styled-components": "^5.0.0"
   },
   "eslintConfig": {
     "extends": [

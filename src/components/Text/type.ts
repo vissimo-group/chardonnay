@@ -10,7 +10,7 @@ interface TextProps {
   align?: 'left' | 'center' | 'right'
   color?: string
   highContrast?: boolean
-  children: ReactNode | string
+  children?: ReactNode | string
 }
 
 export type { TextProps, TypeAs }
