@@ -23,7 +23,7 @@ interface InputProps {
 const Template: Story<InputProps> = ({ theme, placeholder, type }) => {
   return (
     <Input
-      icon={<Search size={26} />}
+      iconRight={<Search size={26} color="black" />}
       type={type}
       placeholder={placeholder}
       theme={theme}

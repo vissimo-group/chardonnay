@@ -1,20 +1,18 @@
 import React, { HTMLAttributes } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { BorderRadius, Colors } from '../../tokens'
 import { CommomProps, ThemeType } from '../../types'
 
 interface InputProps extends HTMLAttributes<HTMLInputElement> {
-  label?: string
-  value?: string
-  icon?: React.ReactNode
-  theme?: ThemeType
-  type?: string
   placeholder?: string
+  theme?: ThemeType
+  iconLeft?: React.ReactNode
+  iconRight?: React.ReactNode
 }
 
 const InputContainer = styled.div<CommomProps>`
   position: relative;
-  min-width: 20rem;
+  min-width: 1rem;
   height: 3.438rem;
   margin-bottom: 20px;
   display: flex;
@@ -33,16 +31,15 @@ const InputContainer = styled.div<CommomProps>`
 const Label = styled.label<CommomProps>`
   position: absolute;
   left: 1rem;
-  top: 0.8rem;
   font-size: 1rem;
   padding: 0 0.5rem;
   color: ${(props: CommomProps) => Colors[props.theme].neutral.neutral400};
   cursor: text;
   transition:
-    top 150ms ease-in,
-    left 150ms ease-in,
-    font-size 150ms ease-in;
+    top 300ms ease-in,
+    font-size 300ms ease-in;
   background-color: transparent;
+  pointer-events: none;
 `
 
 const InputCustom = styled.input`
@@ -56,20 +53,39 @@ const InputCustom = styled.input`
   outline: none;
   background-color: transparent;
 
-  &:focus ~ ${Label} {
+  &:focus ~ ${Label}, &:not(:focus):not(:placeholder-shown) ~ ${Label} {
     top: -0.02rem;
     font-size: 0.8rem;
     left: 0.8rem;
   }
 
-  &:not(:focus):not(:placeholder-shown) ~ ${Label} {
-    top: -0.02rem;
-    font-size: 0.8rem;
-    left: 0.8rem;
-  }
+  ${(props) =>
+    props.iconLeft &&
+    css`
+      padding-bottom: 1.25rem;
+      padding-left: 0rem;
+      padding-right: 1.25rem;
+      padding-top: 1.25rem;
+
+      &:focus ~ ${Label}, &:not(:focus):not(:placeholder-shown) ~ ${Label} {
+        left: 2.36rem;
+      }
+
+      ~ ${Label} {
+        left: 2.3rem;
+      }
+    `}
 `
 
-const Icon = styled.div`
+const IconLeft = styled.div`
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  cursor: pointer;
+`
+
+const IconRight = styled.div`
   display: flex;
   align-items: center;
   padding-right: 10px;
@@ -77,22 +93,18 @@ const Icon = styled.div`
 `
 
 const Input: React.FC<InputProps> = ({
-  type,
   placeholder,
-  icon,
   theme,
+  iconLeft,
+  iconRight,
   ...inputProps
 }) => {
   return (
     <InputContainer theme={theme as ThemeType}>
-      <InputCustom
-        type={type}
-        placeholder=""
-        autoComplete="off"
-        {...inputProps}
-      />
+      {iconLeft && <IconLeft>{iconLeft}</IconLeft>}
+      <InputCustom iconLeft={iconLeft} placeholder="" {...inputProps} />
       <Label theme={theme as ThemeType}>{placeholder}</Label>
-      <Icon>{icon}</Icon>
+      <IconRight>{iconRight}</IconRight>
     </InputContainer>
   )
 }

@@ -2,8 +2,11 @@ import type { Meta, StoryObj } from '@storybook/react'
 import styled from 'styled-components'
 import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport'
 
+import React, { useState } from 'react'
+import { ChevronDown } from 'semillon'
 import { Select } from '.'
 import { Colors } from '../../tokens'
+import { SelectBox } from './SelectBox'
 
 //* DECORATORS */
 
@@ -190,4 +193,34 @@ export const Responsible: Story = {
       <option value="business">Business address</option>
     </Select>
   ),
+}
+
+const TemplateSelect = () => {
+  const [selectedValue, setSelectedValue] = useState('')
+
+  const handleSelectChange = (event) => {
+    setSelectedValue(event.target.value)
+  }
+
+  return (
+    <SelectBox
+      label="Escolha uma opção"
+      iconRight={<ChevronDown size={26} color="black" />}
+      theme="light"
+      onChange={handleSelectChange}
+      value={selectedValue}
+    >
+      {['casa', 'predio', 'empresa', 'evino'].map((option) => (
+        <option key={option} value={option}>
+          {option}
+        </option>
+      ))}
+    </SelectBox>
+  )
+}
+
+export const BoxSelect = {
+  name: 'select with what the input looks like ',
+  args: {},
+  render: () => <TemplateSelect />,
 }
