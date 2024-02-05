@@ -54,7 +54,7 @@ const Label = styled.label<CommomProps>`
   background-color: transparent;
 `
 
-const SelectCustom = styled.select`
+const SelectCustom = styled.select<SelectProps>`
   flex: 1;
   border: none;
   font-family: inherit;

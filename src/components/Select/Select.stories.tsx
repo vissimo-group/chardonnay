@@ -198,7 +198,7 @@ export const Responsible: Story = {
 const TemplateSelect = () => {
   const [selectedValue, setSelectedValue] = useState('')
 
-  const handleSelectChange = (event) => {
+  const handleSelectChange = (event: React.ChangeEvent<{ value: string }>) => {
     setSelectedValue(event.target.value)
   }
 

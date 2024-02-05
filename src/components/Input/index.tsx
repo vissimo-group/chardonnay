@@ -42,7 +42,7 @@ const Label = styled.label<CommomProps>`
   pointer-events: none;
 `
 
-const InputCustom = styled.input`
+const InputCustom = styled.input<InputProps>`
   flex: 1;
   border: none;
   font-family: inherit;
@@ -110,7 +110,6 @@ const Input: React.FC<InputProps> = ({
 }
 
 Input.defaultProps = {
-  type: 'text',
   theme: 'light',
   placeholder: '',
 }

@@ -9,7 +9,6 @@ export default {
   tags: ['autodocs'],
   argTypes: {
     theme: { control: 'inline-radio', options: ['light', 'dark'] },
-    type: { control: 'text' },
     placeholder: { control: 'text' },
   },
 } as Meta<InputProps>
@@ -20,11 +19,10 @@ interface InputProps {
   placeholder: string
 }
 
-const Template: Story<InputProps> = ({ theme, placeholder, type }) => {
+const Template: Story<InputProps> = ({ theme, placeholder }) => {
   return (
     <Input
       iconRight={<Search size={26} color="black" />}
-      type={type}
       placeholder={placeholder}
       theme={theme}
     />
