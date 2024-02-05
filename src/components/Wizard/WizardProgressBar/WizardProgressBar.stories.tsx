@@ -21,7 +21,7 @@ const wizardPointsWithLabels = (
 
     <WizardItemRoot>
       <WizardItemPoint variant="ACTIVE">2</WizardItemPoint>
-      <WizardItemLabel content="Delivery" />
+      <WizardItemLabel content="Delivery" bold />
     </WizardItemRoot>
 
     <WizardItemRoot>
