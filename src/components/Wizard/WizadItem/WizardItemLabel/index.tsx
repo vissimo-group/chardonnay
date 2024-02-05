@@ -4,9 +4,10 @@ import { WizardItemLabelProps } from './type'
 const WizardItemLabel = ({
   content,
   inactive = false,
+  bold = false,
 }: WizardItemLabelProps) => {
   return (
-    <WizardItemLabelStyled $inactive={inactive}>
+    <WizardItemLabelStyled $inactive={inactive} $bold={bold}>
       {content}
     </WizardItemLabelStyled>
   )
