@@ -7,15 +7,16 @@ const meta: Meta<typeof WizardItemLabel> = {
   argTypes: {
     content: {
       control: { type: 'text' },
-      description: 'Label content',
+      description: 'Label text content.',
     },
     inactive: {
       control: { type: 'boolean' },
-      description: 'Inactive label',
+      description:
+        'Inactive state. Equivalent to "INACTIVE" state of WizardItemPoint component.',
     },
     bold: {
       control: { type: 'boolean' },
-      description: 'Bold label',
+      description: 'If true, add font-weight bold to the label.',
     },
   },
 }
