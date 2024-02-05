@@ -6,7 +6,7 @@ const WizardProgressBarContainerStyled = styled.div`
   height: 2px;
   width: calc(100% - 44px);
   margin-bottom: 16.5px;
-  background-color: ${Colors.light.neutral.neutral100};
+  background-color: ${Colors.light.neutral.neutral200};
 `
 
 const WizardProgressBarChildrenContainerStyled = styled.div`
