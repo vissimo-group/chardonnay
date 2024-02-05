@@ -2,14 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import * as WizardItem from '../index'
 
-const meta: Meta<typeof WizardItem.Root> = {
-  component: WizardItem.Root,
-  tags: ['autodocs'],
-}
-
-export default meta
-type Story = StoryObj<typeof WizardItem.Root & typeof WizardItem.Point>
-
 const checkIcon = (color = 'white') => (
   <svg
     width="13"
@@ -27,21 +19,46 @@ const checkIcon = (color = 'white') => (
   </svg>
 )
 
+const withLabel = (
+  <>
+    <WizardItem.Point variant="ACTIVE">1</WizardItem.Point>
+    <WizardItem.Label content="Products" />
+  </>
+)
+
+const withLabelAndIcon = (
+  <>
+    <WizardItem.Point variant="ACTIVE">{checkIcon()}</WizardItem.Point>
+    <WizardItem.Label content="Products" />
+  </>
+)
+
+const meta: Meta<typeof WizardItem.Root> = {
+  component: WizardItem.Root,
+  tags: ['autodocs'],
+  argTypes: {
+    children: {
+      control: { type: 'select' },
+      options: ['WithLabel', 'WithLabelAndIcon'],
+      mapping: {
+        WithLabel: withLabel,
+        WithLabelAndIcon: withLabelAndIcon,
+      },
+      description:
+        'You can add "WizardItemPoint" with or without "WizardItemLabel". The "WizardItemRoot" component will ensure that the combination of WizardProgressBar and Items render correctly. To function as a link, just wrap the Root with an anchor tag.',
+    },
+  },
+}
+
+export default meta
+type Story = StoryObj<typeof WizardItem.Root>
+
 export const WithLabel: Story = {
-  render: () => (
-    <WizardItem.Root>
-      <WizardItem.Point variant="ACTIVE">1</WizardItem.Point>
-      <WizardItem.Label content="Products" />
-    </WizardItem.Root>
-  ),
+  args: { children: withLabel },
+  render: (args) => <WizardItem.Root>{args.children}</WizardItem.Root>,
 }
 
 export const WithLabelAndIcon: Story = {
-  render: () => (
-    <WizardItem.Root>
-      <WizardItem.Point variant="ACTIVE">{checkIcon()}</WizardItem.Point>
-
-      <WizardItem.Label content="Products" />
-    </WizardItem.Root>
-  ),
+  args: { children: withLabelAndIcon },
+  render: (args) => <WizardItem.Root>{args.children}</WizardItem.Root>,
 }
