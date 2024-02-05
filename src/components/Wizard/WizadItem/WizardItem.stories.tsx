@@ -18,7 +18,7 @@ const meta: Meta<typeof WizardItem.Root & typeof WizardItem.Point> = {
 export default meta
 type Story = StoryObj<typeof WizardItem.Root & typeof WizardItem.Point>
 
-const checkIcon = (
+const checkIcon = (color = 'white') => (
   <svg
     width="13"
     height="9"
@@ -30,7 +30,7 @@ const checkIcon = (
       fillRule="evenodd"
       clipRule="evenodd"
       d="M3.92598 8.49432C3.92006 8.48877 3.91422 8.48311 3.90844 8.47734L1.0683 5.6372C0.77541 5.34431 0.77541 4.86943 1.0683 4.57654C1.3612 4.28364 1.83607 4.28364 2.12896 4.57654L4.47358 6.92116L10.9319 0.462834C11.2248 0.169941 11.6997 0.169941 11.9926 0.462834C12.2854 0.755727 12.2854 1.2306 11.9926 1.52349L5.0039 8.51216C4.71101 8.80505 4.23613 8.80505 3.94324 8.51216C3.93737 8.50628 3.93161 8.50034 3.92598 8.49432Z"
-      fill="white"
+      fill={color}
     />
   </svg>
 )
@@ -49,9 +49,30 @@ export const ActiveWithIcon: Story = {
   args: { variant: 'ACTIVE' },
   render: (args) => (
     <WizardItem.Root>
-      <WizardItem.Point variant={args.variant}>{checkIcon}</WizardItem.Point>
+      <WizardItem.Point variant={args.variant}>{checkIcon()}</WizardItem.Point>
 
       <WizardItem.Label content="Products" />
+    </WizardItem.Root>
+  ),
+}
+
+export const ActiveBold: Story = {
+  args: { variant: 'ACTIVE' },
+  render: (args) => (
+    <WizardItem.Root>
+      <WizardItem.Point variant={args.variant}>1</WizardItem.Point>
+      <WizardItem.Label content="Products" bold />
+    </WizardItem.Root>
+  ),
+}
+
+export const ActiveWithIconBold: Story = {
+  args: { variant: 'ACTIVE' },
+  render: (args) => (
+    <WizardItem.Root>
+      <WizardItem.Point variant={args.variant}>{checkIcon()}</WizardItem.Point>
+
+      <WizardItem.Label content="Products" bold />
     </WizardItem.Root>
   ),
 }
@@ -71,7 +92,7 @@ export const ErrorWithIcon: Story = {
 
   render: (args) => (
     <WizardItem.Root>
-      <WizardItem.Point variant={args.variant}>{checkIcon}</WizardItem.Point>
+      <WizardItem.Point variant={args.variant}>{checkIcon()}</WizardItem.Point>
 
       <WizardItem.Label content="Products" />
     </WizardItem.Root>
@@ -90,7 +111,9 @@ export const Inactive: Story = {
 export const InactiveWithIcon: Story = {
   render: () => (
     <WizardItem.Root>
-      <WizardItem.Point variant="INACTIVE">{checkIcon}</WizardItem.Point>
+      <WizardItem.Point variant="INACTIVE">
+        {checkIcon('gray')}
+      </WizardItem.Point>
 
       <WizardItem.Label content="Products" inactive />
     </WizardItem.Root>
