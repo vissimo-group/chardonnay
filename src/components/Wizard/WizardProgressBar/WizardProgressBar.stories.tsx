@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { WizardProgressBar } from '.'
-import { WizardItemPoint } from '../WizadItem/WizardItemPoint'
-import { WizardItemLabel } from '../WizadItem/WizardItemLabel'
-import { WizardItemRoot } from '../WizadItem/WizardItemRoot'
+import { WizardItemPoint } from '../WizardItem/WizardItemPoint'
+import { WizardItemLabel } from '../WizardItem/WizardItemLabel'
+import { WizardItemRoot } from '../WizardItem/WizardItemRoot'
 
 const wizardPoints = (
   <>
