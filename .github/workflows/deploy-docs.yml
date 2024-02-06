@@ -46,5 +46,4 @@ jobs:
         with:
           projectToken: ${{ secrets.PROJECT_CHROMATIC_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
-          onlyChanged: true # fast construction for the project
           autoAcceptChanges: true
