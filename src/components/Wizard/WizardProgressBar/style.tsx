@@ -28,8 +28,16 @@ const WizardProgressBarProgressStyled = styled.div<{
       ? Colors.light.feedback.feedbackError100
       : Colors.light.action.action100};
 `
+
+const WizardProgressBarOutsideContainerStyled = styled.div`
+  display: flex;
+  justify-content: center;
+  position: relative;
+`
+
 export {
   WizardProgressBarContainerStyled,
   WizardProgressBarChildrenContainerStyled,
   WizardProgressBarProgressStyled,
+  WizardProgressBarOutsideContainerStyled,
 }

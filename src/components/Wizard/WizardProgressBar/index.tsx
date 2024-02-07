@@ -2,6 +2,7 @@ import {
   WizardProgressBarContainerStyled,
   WizardProgressBarChildrenContainerStyled,
   WizardProgressBarProgressStyled,
+  WizardProgressBarOutsideContainerStyled,
 } from './style'
 import { WizardProgressBarProps } from './type'
 
@@ -11,13 +12,7 @@ const WizardProgressBar = ({
   error = false,
 }: WizardProgressBarProps) => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        position: 'relative',
-      }}
-    >
+    <WizardProgressBarOutsideContainerStyled>
       <WizardProgressBarContainerStyled>
         <WizardProgressBarProgressStyled $progress={progress} $error={error} />
       </WizardProgressBarContainerStyled>
@@ -27,7 +22,7 @@ const WizardProgressBar = ({
           {children}
         </WizardProgressBarChildrenContainerStyled>
       )}
-    </div>
+    </WizardProgressBarOutsideContainerStyled>
   )
 }
 
