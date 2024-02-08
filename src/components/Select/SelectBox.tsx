@@ -1,17 +1,17 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import styled, { css } from 'styled-components'
+import { Colors } from '../../tokens'
+import { CommomProps } from '../../types'
+
+/* eslint-disable */
 
 interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
-  label?: string
-  theme?: string
-  isClosed?: boolean
-  iconLeft?: React.ReactNode
-  iconRight?: React.ReactNode
-}
-
-interface CommomProps {
-  theme?: string
-  hasValue: boolean
+    label?: string
+    theme?: string
+    error?: boolean | undefined
+    hasValue?: string | undefined | boolean
+    iconLeft?: React.ReactNode
+    iconRight?: React.ReactNode
 }
 
 const IconRight = styled.div`
@@ -23,30 +23,35 @@ const IconRight = styled.div`
   transition: transform 0.5s ease;
 `
 
-const SelectContainer = styled.div<CommomProps>`
+const SelectContainer = styled.div<SelectProps>`
   position: relative;
   min-width: 1rem;
   height: 3.438rem;
   margin-bottom: 20px;
   display: flex;
   align-items: center;
-  border-radius: 3px;
+  border-radius: 8px;
   border: 1px solid
-    ${(props: CommomProps) => (props.theme === 'dark' ? '#333' : '#ddd')};
+  ${(props: CommomProps) => Colors[props.theme].neutral.neutral400};
+
+  border-color: ${({ error, theme }:SelectProps & CommomProps) =>
+    error && Colors[theme].feedback.feedbackError100};
+
   font-size: 1rem;
   font-weight: 400;
   line-height: 20px;
   letter-spacing: -0.0025em;
   text-align: left;
+
 `
 
-const Label = styled.label<CommomProps>`
+const Label = styled.label<SelectProps>`
   position: absolute;
   left: 0.7rem;
-  top: ${(props: CommomProps) => (props.hasValue ? '-0.02rem' : '0.rem')};
-  font-size: ${(props: CommomProps) => (props.hasValue ? '0.8rem' : '1rem')};
+  top: ${({hasValue}) => (hasValue ? '-0.02rem' : '0.rem')};
+  font-size: ${({hasValue}) => (hasValue ? '0.8rem' : '1rem')};
   padding: 0 0.5rem;
-  color: ${(props: CommomProps) => (props.theme === 'dark' ? '#fff' : '#666')};
+  color: ${(props: CommomProps) => Colors[props.theme].neutral.neutral300};
   cursor: text;
   transition:
     top 300ms ease-in,
@@ -68,6 +73,7 @@ const SelectCustom = styled.select<SelectProps>`
   z-index: 1;
   appearance: none;
   -webkit-appearance: none;
+  top: 0.19rem;
 
   ${({ iconLeft }) =>
     iconLeft &&
@@ -95,31 +101,36 @@ const IconLeft = styled.div`
   pointer-events: none;
 `
 
-const SelectBox: React.FC<SelectProps> = ({
-  theme = 'light',
-  label,
-  iconLeft,
-  iconRight,
-  children,
-  isClosed,
-  ...selectProps
-}) => {
-  const hasValue = Boolean(selectProps.value)
+const SelectBox: React.ForwardRefRenderFunction<
+    HTMLSelectElement,
+    SelectProps
+    > = (
+    {
+        theme = 'light',
+        label,
+        error= false,
+        iconLeft,
+        iconRight,
+        children,
+        ...selectProps
+    },
+    ref,
+) => {
+    const hasValue = Boolean(selectProps.value)
 
-  return (
-    <SelectContainer theme={theme} hasValue={hasValue}>
-      {iconLeft && <IconLeft>{iconLeft}</IconLeft>}
-      <SelectCustom iconLeft={iconLeft} {...selectProps}>
-        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-        <option value="" />
-        {children}
-      </SelectCustom>
-      <Label theme={theme} hasValue={hasValue}>
-        {label}
-      </Label>
-      <IconRight>{iconRight}</IconRight>
-    </SelectContainer>
-  )
+    return (
+        <SelectContainer theme={theme} error={error} hasValue={hasValue}>
+            {!!iconLeft && <IconLeft>{iconLeft}</IconLeft>}
+            <SelectCustom ref={ref} iconLeft={iconLeft} {...selectProps}>
+                <option value="" />
+                {children}
+            </SelectCustom>
+            <Label theme={theme} hasValue={hasValue}>
+                {label}
+            </Label>
+            <IconRight>{iconRight}</IconRight>
+        </SelectContainer>
+    )
 }
 
-export { SelectBox }
+export default forwardRef(SelectBox)

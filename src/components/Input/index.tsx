@@ -1,16 +1,17 @@
-import React, { HTMLAttributes } from 'react'
+import React, { forwardRef, HTMLAttributes } from 'react'
 import styled, { css } from 'styled-components'
 import { BorderRadius, Colors } from '../../tokens'
 import { CommomProps, ThemeType } from '../../types'
 
-interface InputProps extends HTMLAttributes<HTMLInputElement> {
-  placeholder?: string
+export interface InputProps extends HTMLAttributes<HTMLInputElement> {
+  label?: string
+  error?: boolean
   theme?: ThemeType
   iconLeft?: React.ReactNode
   iconRight?: React.ReactNode
 }
 
-const InputContainer = styled.div<CommomProps>`
+const InputContainer = styled.div<InputProps>`
   position: relative;
   min-width: 1rem;
   height: 3.438rem;
@@ -19,7 +20,10 @@ const InputContainer = styled.div<CommomProps>`
   align-items: center;
   border-radius: ${BorderRadius['3']};
   border: 1px solid
-    ${(props: CommomProps) => Colors[props.theme].neutral.neutral300};
+    ${(props: CommomProps) => Colors[props.theme].neutral.neutral400};
+
+  border-color: ${({ error, theme }: InputProps & CommomProps) =>
+    error && Colors[theme].feedback.feedbackError100};
 
   font-size: 1rem;
   font-weight: 400;
@@ -33,7 +37,7 @@ const Label = styled.label<CommomProps>`
   left: 1rem;
   font-size: 1rem;
   padding: 0 0.5rem;
-  color: ${(props: CommomProps) => Colors[props.theme].neutral.neutral400};
+  color: ${(props: CommomProps) => Colors[props.theme].neutral.neutral300};
   cursor: text;
   transition:
     top 300ms ease-in,
@@ -57,6 +61,7 @@ const InputCustom = styled.input<InputProps>`
     top: -0.02rem;
     font-size: 0.8rem;
     left: 0.8rem;
+    width: 100%;
   }
 
   ${(props) =>
@@ -73,6 +78,7 @@ const InputCustom = styled.input<InputProps>`
 
       ~ ${Label} {
         left: 2.3rem;
+        top: 1rem;
       }
     `}
 `
@@ -92,26 +98,18 @@ const IconRight = styled.div`
   cursor: pointer;
 `
 
-const Input: React.FC<InputProps> = ({
-  placeholder,
-  theme,
-  iconLeft,
-  iconRight,
-  ...inputProps
-}) => {
+const Input: React.ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
+  { error = false, label, theme = 'light', iconLeft, iconRight, ...res },
+  ref,
+) => {
   return (
-    <InputContainer theme={theme as ThemeType}>
-      {iconLeft && <IconLeft>{iconLeft}</IconLeft>}
-      <InputCustom iconLeft={iconLeft} placeholder="" {...inputProps} />
-      <Label theme={theme as ThemeType}>{placeholder}</Label>
+    <InputContainer error={error} theme={theme as ThemeType}>
+      {!!iconLeft && <IconLeft>{iconLeft}</IconLeft>}
+      <InputCustom ref={ref} placeholder="" iconLeft={iconLeft} {...res} />
+      <Label theme={theme as ThemeType}>{label}</Label>
       <IconRight>{iconRight}</IconRight>
     </InputContainer>
   )
 }
 
-Input.defaultProps = {
-  theme: 'light',
-  placeholder: '',
-}
-
-export default Input
+export default forwardRef(Input)

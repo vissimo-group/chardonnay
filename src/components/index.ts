@@ -18,6 +18,7 @@ import { Text } from './Text'
 import { SelectListType } from './SelectListType'
 import * as SidePanel from './SidePanel'
 import { Select } from './Select'
+import SelectBox from './Select/SelectBox'
 import { Checkbox } from './Checkbox'
 import * as Grid from './Grid'
 
@@ -44,4 +45,5 @@ export {
   Select,
   Checkbox,
   Grid,
+  SelectBox,
 }

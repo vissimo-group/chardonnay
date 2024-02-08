@@ -6,7 +6,7 @@ import React, { useState } from 'react'
 import { ChevronDown } from 'semillon'
 import { Select } from '.'
 import { Colors } from '../../tokens'
-import { SelectBox } from './SelectBox'
+import SelectBox from './SelectBox'
 
 //* DECORATORS */
 
