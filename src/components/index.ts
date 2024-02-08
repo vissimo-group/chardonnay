@@ -1,4 +1,4 @@
-import Button from './Button'
+import { Button } from './Button'
 import SelectAddress from './CardAddress/Select'
 import ShippingAddress from './CardAddress/Shipping'
 import Input from './Input'
