@@ -1,3 +1,4 @@
+import { transparentize } from 'polished'
 import styled from 'styled-components'
 import { ButtonType } from './type'
 import { BorderRadius, Colors } from '../../tokens'
@@ -60,10 +61,14 @@ const ButtonNotFilledStyled = styled(ButtonBaseStyled)`
 
   &:hover:not(:disabled) {
     color: ${(props) => typeColors[props.$type].HOVER};
+    background-color: ${(props) =>
+      transparentize(0.9, typeColors[props.$type].HOVER)};
   }
 
   &:active:not(:disabled) {
     color: ${(props) => typeColors[props.$type].ACTIVE};
+    background-color: ${(props) =>
+      transparentize(0.85, typeColors[props.$type].HOVER)};
   }
 `
 
