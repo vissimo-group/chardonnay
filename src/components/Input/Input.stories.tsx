@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import { Search, Close } from 'semillon'
 import React from 'react'
 import { Input } from '../index'
-import { InputProps } from './index'
+import { InputProps } from './types'
 
 export default {
   title: 'Components/Input',
@@ -71,4 +71,11 @@ export const InputError: StoryObj<InputProps> = {
   render: (args) => (
     <Input {...args} error iconLeft={<Close size={26} color="red" />} />
   ),
+}
+
+export const InputDisabled: StoryObj<InputProps> = {
+  name: 'Disabled',
+  args: { theme: 'light', label: 'Informe seu CEP' },
+
+  render: (args) => <Input {...args} disabled />,
 }

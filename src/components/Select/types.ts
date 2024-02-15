@@ -1,13 +1,15 @@
-import { SelectHTMLAttributes } from 'react'
-import { ThemeType } from '../../types/index'
+import React, { SelectHTMLAttributes } from 'react'
 
-type SelectProps = {
-  children: React.ReactNode
-  error?: boolean
-  fontSize?: number
-  expand?: boolean
-  responsible?: boolean
-  theme: ThemeType
-} & SelectHTMLAttributes<HTMLSelectElement>
+export interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
+  label?: string
+  theme?: string
+  error?: boolean | undefined
+  hasValue?: string | undefined | boolean
+  disabled?: boolean | undefined
+  iconLeft?: React.ReactNode
+  iconRight?: React.ReactNode
+}
 
-export type { SelectProps }
+export interface SelectRef {
+  value?: string | undefined
+}

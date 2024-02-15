@@ -21,7 +21,6 @@ import {
   Select,
   Checkbox,
   Grid,
-  SelectBox,
 } from './components'
 
 export {
@@ -47,5 +46,4 @@ export {
   Select,
   Checkbox,
   Grid,
-  SelectBox,
 }

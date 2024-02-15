@@ -1,115 +1,74 @@
-import React, { forwardRef, HTMLAttributes } from 'react'
-import styled, { css } from 'styled-components'
-import { BorderRadius, Colors } from '../../tokens'
-import { CommomProps, ThemeType } from '../../types'
+import React, {
+  forwardRef,
+  useRef,
+  useEffect,
+  useImperativeHandle,
+  useState,
+} from 'react'
 
-export interface InputProps extends HTMLAttributes<HTMLInputElement> {
-  label?: string
-  error?: boolean
-  theme?: ThemeType
-  iconLeft?: React.ReactNode
-  iconRight?: React.ReactNode
-}
+import { maskInput, unMask } from './mask'
+import {
+  IconLeft,
+  IconRight,
+  InputContainer,
+  InputCustom,
+  Label,
+} from './style'
+import { InputProps, InputRef } from './types'
 
-const InputContainer = styled.div<InputProps>`
-  position: relative;
-  min-width: 1rem;
-  height: 3.438rem;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  border-radius: ${BorderRadius['3']};
-  border: 1px solid
-    ${(props: CommomProps) => Colors[props.theme].neutral.neutral400};
+const Input = forwardRef<InputRef, InputProps>((props, ref) => {
+  const {
+    error,
+    label,
+    theme = 'light',
+    iconLeft,
+    iconRight,
+    mask,
+    ...restProps
+  } = props
 
-  border-color: ${({ error, theme }: InputProps & CommomProps) =>
-    error && Colors[theme].feedback.feedbackError100};
+  const [inputValue, setInputValue] = useState<string | undefined>(props.value)
+  const inputRef = useRef<HTMLInputElement | null>(null)
 
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 20px;
-  letter-spacing: -0.0025em;
-  text-align: left;
-`
+  useEffect(() => {
+    if (props.value) {
+      setInputValue(props.value)
+    }
 
-const Label = styled.label<CommomProps>`
-  position: absolute;
-  left: 1rem;
-  font-size: 1rem;
-  padding: 0 0.5rem;
-  color: ${(props: CommomProps) => Colors[props.theme].neutral.neutral300};
-  cursor: text;
-  transition:
-    top 300ms ease-in,
-    font-size 300ms ease-in;
-  background-color: transparent;
-  pointer-events: none;
-`
+    if (mask && inputValue) {
+      const originalValue = unMask(inputValue)
+      const makedValue = maskInput(originalValue, mask)
+      setInputValue(makedValue)
+    }
+  }, [inputValue])
 
-const InputCustom = styled.input<InputProps>`
-  flex: 1;
-  border: none;
-  font-family: inherit;
-  font-size: 1rem;
-  color: #333;
-  padding: 1.25rem;
-  background: none;
-  outline: none;
-  background-color: transparent;
+  useImperativeHandle(ref, () => inputRef.current!, [])
 
-  &:focus ~ ${Label}, &:not(:focus):not(:placeholder-shown) ~ ${Label} {
-    top: -0.02rem;
-    font-size: 0.8rem;
-    left: 0.8rem;
-    width: 100%;
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = event.target.value
+    setInputValue(newValue)
+    if (props.onChange) {
+      props.onChange(event)
+    }
   }
 
-  ${(props) =>
-    props.iconLeft &&
-    css`
-      padding-bottom: 1.25rem;
-      padding-left: 0rem;
-      padding-right: 1.25rem;
-      padding-top: 1.25rem;
-
-      &:focus ~ ${Label}, &:not(:focus):not(:placeholder-shown) ~ ${Label} {
-        left: 2.36rem;
-      }
-
-      ~ ${Label} {
-        left: 2.3rem;
-        top: 1rem;
-      }
-    `}
-`
-
-const IconLeft = styled.div`
-  display: flex;
-  align-items: center;
-  padding-left: 10px;
-  padding-right: 10px;
-  cursor: pointer;
-`
-
-const IconRight = styled.div`
-  display: flex;
-  align-items: center;
-  padding-right: 10px;
-  cursor: pointer;
-`
-
-const Input: React.ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
-  { error = false, label, theme = 'light', iconLeft, iconRight, ...res },
-  ref,
-) => {
   return (
-    <InputContainer error={error} theme={theme as ThemeType}>
+    <InputContainer theme={theme} {...props}>
       {!!iconLeft && <IconLeft>{iconLeft}</IconLeft>}
-      <InputCustom ref={ref} placeholder="" iconLeft={iconLeft} {...res} />
-      <Label theme={theme as ThemeType}>{label}</Label>
+      <InputCustom
+        ref={inputRef}
+        placeholder=""
+        iconLeft={iconLeft}
+        {...restProps}
+        value={inputValue}
+        onChange={handleChange}
+      />
+      <Label theme={theme}>{label}</Label>
       <IconRight>{iconRight}</IconRight>
     </InputContainer>
   )
-}
+})
 
-export default forwardRef(Input)
+Input.displayName = 'Input'
+
+export default Input

@@ -111,6 +111,7 @@ const Button: React.FC<ButtonProps> = ({
 }
 
 Button.defaultProps = {
+  label: 'Buscar',
   disabled: false,
   loading: false,
   theme: 'light',
