@@ -1,36 +1,31 @@
-import { css, Global, ThemeProvider, useTheme } from "@emotion/react";
+import React from "react";
+import { createGlobalStyle, ThemeProvider, useTheme } from "styled-components";
 import { lightTheme, darkTheme } from "../src/theme";
 
 const THEMES = {
-    light: lightTheme,
-    dark: darkTheme,
+  light: lightTheme,
+  dark: darkTheme,
 };
 
-const GlobalStyles = () => {
-    const theme = useTheme();
+const GlobalStyle = () => {
+  const theme = useTheme();
 
-    return (
-        <Global
-            styles={
-                css`
-                    html,
-                    body {
-                      background-color: ${theme.colors.background};
-                      color: ${theme.colors.text};
-                    }
-                `
-            }
-        />
-    );
+  const Style = createGlobalStyle`
+      html, body {
+      background-color: ${theme.colors.background};
+      color: ${theme.colors.text};
+      }
+    `;
+  return <Style />;
 };
 
 export const withTheme = (Story, context) => {
-    const { theme } = context.globals;
+  const { theme } = context.globals;
 
-    return (
-        <ThemeProvider theme={THEMES[theme] || THEMES["light"]}>
-            <GlobalStyles />
-            <Story />
-        </ThemeProvider>
-    );
+  return (
+    <ThemeProvider theme={THEMES[theme] || THEMES.light}>
+      <GlobalStyle />
+      <Story />
+    </ThemeProvider>
+  );
 };
