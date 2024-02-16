@@ -84,7 +84,6 @@ const SelectCustom = styled.select<SelectProps>`
   font-family: inherit;
   font-size: 1rem;
   color: #333;
-  padding: 1.25rem;
   background: none;
   outline: none;
   background-color: transparent;
