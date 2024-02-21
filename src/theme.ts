@@ -8,6 +8,8 @@ export const lightTheme = {
   },
 }
 
+export type ThemeType = typeof lightTheme
+
 export const darkTheme = {
   colors: {
     ...colors.dark,

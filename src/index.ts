@@ -1,3 +1,5 @@
+import { lightTheme, darkTheme } from './theme'
+
 import {
   Border,
   Button,
@@ -26,6 +28,8 @@ import {
 } from './components'
 
 export {
+  lightTheme,
+  darkTheme,
   Border,
   Button,
   Card,
