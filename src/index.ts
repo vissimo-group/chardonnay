@@ -23,6 +23,8 @@ import {
   Select,
   Checkbox,
   Grid,
+  WizardItem,
+  WizardProgressBar,
 } from './components'
 
 export {
@@ -50,4 +52,6 @@ export {
   Select,
   Checkbox,
   Grid,
+  WizardItem,
+  WizardProgressBar,
 }

@@ -1,4 +1,4 @@
-import Button from './Button'
+import { Button } from './Button'
 import SelectAddress from './CardAddress/Select'
 import ShippingAddress from './CardAddress/Shipping'
 import Input from './Input'
@@ -20,6 +20,8 @@ import * as SidePanel from './SidePanel'
 import { Select } from './Select'
 import { Checkbox } from './Checkbox'
 import * as Grid from './Grid'
+import * as WizardItem from './Wizard/WizardItem'
+import { WizardProgressBar } from './Wizard/WizardProgressBar'
 
 export {
   Border,
@@ -44,4 +46,6 @@ export {
   Select,
   Checkbox,
   Grid,
+  WizardItem,
+  WizardProgressBar,
 }
