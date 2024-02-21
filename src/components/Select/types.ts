@@ -3,7 +3,7 @@ import React, { SelectHTMLAttributes } from 'react'
 export interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   label?: string
   theme?: string
-  error?: boolean | undefined
+  error?: boolean
   hasValue?: string | undefined | boolean
   disabled?: boolean | undefined
   iconLeft?: React.ReactNode

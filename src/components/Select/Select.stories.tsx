@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import React, { useState } from 'react'
-import { ChevronDown, Close, Search } from 'semillon'
+import { ChevronDown, Close } from 'semillon'
 
 import Select from './index'
 import { SelectProps } from './types'
@@ -31,7 +31,7 @@ export default {
 
 type Story = StoryObj<SelectProps>
 
-const TemplateSelect = (props) => {
+const TemplateSelect = (props: SelectProps) => {
   const [selectedValue, setSelectedValue] = useState('')
 
   const handleSelectChange = (event: React.ChangeEvent<{ value: string }>) => {

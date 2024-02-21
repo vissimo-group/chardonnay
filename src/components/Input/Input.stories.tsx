@@ -9,31 +9,31 @@ export default {
   component: Input,
   tags: ['autodocs'],
   argTypes: {
-    label: 'Informe seu CEP',
+    disabled: {
+      control: {
+        type: 'boolean',
+      },
+      description: 'Standard input tag attribute.',
+    },
     error: {
       control: {
         type: 'boolean',
       },
-      defaultValue: false,
-    },
-    theme: {
-      control: {
-        type: 'select',
-        options: ['light', 'dark'],
-      },
-      defaultValue: 'light',
+      description: 'Error variant, default value false.',
     },
   },
-} as Meta<InputProps>
+} as Meta
 
-export const Enabled: StoryObj<InputProps> = {
+type Story = StoryObj<InputProps & { disabled?: boolean }>
+
+export const Enabled: Story = {
   name: 'Enabled state',
   args: { theme: 'light', label: 'Informe seu CEP' },
 
   render: (args) => <Input {...args} />,
 }
 
-export const InputIconRight: StoryObj<InputProps> = {
+export const InputIconRight: Story = {
   name: 'Icon Right',
   args: { theme: 'light', label: 'Informe seu CEP' },
 
@@ -42,7 +42,7 @@ export const InputIconRight: StoryObj<InputProps> = {
   ),
 }
 
-export const InputIconLeft: StoryObj<InputProps> = {
+export const InputIconLeft: Story = {
   name: 'icon Left',
   args: { theme: 'light', label: 'Informe seu CEP' },
 
@@ -51,7 +51,7 @@ export const InputIconLeft: StoryObj<InputProps> = {
   ),
 }
 
-export const InputIcon: StoryObj<InputProps> = {
+export const InputIcon: Story = {
   name: 'icon',
   args: { theme: 'light', label: 'Informe seu CEP' },
 
@@ -64,7 +64,7 @@ export const InputIcon: StoryObj<InputProps> = {
   ),
 }
 
-export const InputError: StoryObj<InputProps> = {
+export const InputError: Story = {
   name: 'Error',
   args: { theme: 'light', label: 'Informe seu CEP' },
 
@@ -73,9 +73,9 @@ export const InputError: StoryObj<InputProps> = {
   ),
 }
 
-export const InputDisabled: StoryObj<InputProps> = {
+export const InputDisabled: Story = {
   name: 'Disabled',
-  args: { theme: 'light', label: 'Informe seu CEP' },
+  args: { theme: 'light', label: 'Informe seu CEP', disabled: true },
 
-  render: (args) => <Input {...args} disabled />,
+  render: (args) => <Input {...args} />,
 }

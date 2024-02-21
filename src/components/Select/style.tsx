@@ -62,7 +62,7 @@ const SelectContainer = styled.div<SelectProps>`
       }
     `}
 
-  ${({ disabled, theme }) =>
+  ${({ disabled, theme }: SelectProps & CommomProps) =>
     disabled &&
     css`
       border-color: ${Colors[theme].neutral.neutral200} !important;
