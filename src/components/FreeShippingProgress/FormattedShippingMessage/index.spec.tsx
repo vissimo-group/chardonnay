@@ -5,19 +5,6 @@ import { FormattedShippingMessage } from '.'
 import { lightTheme } from '../../../theme'
 
 describe('FormattedShippingMessage', () => {
-  describe('FAIL :):', () => {
-    const freeShippingMessage = 'Você alcançou frete grátis!'
-
-    test('FAIL', () => {
-      const { container } = render(
-        <FormattedShippingMessage message={freeShippingMessage} />,
-      )
-
-      const span = container.querySelector('span')
-      expect(span).toBeUndefined()
-    })
-  })
-
   describe('With "Faltam R$17,90 para frete grátis." as message prop:', () => {
     const freeShippingMessage = 'Faltam R$17,90 para frete grátis.'
 
