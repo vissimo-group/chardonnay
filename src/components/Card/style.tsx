@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { darken } from 'polished'
 import { Colors } from '../../tokens'
 import { CardProps } from './type'
 import { ThemeType } from '../../types'
@@ -13,8 +14,8 @@ const StyledCard = styled.div<CardProps>`
 
   background: ${(props: CardProps) =>
     props.selected
-      ? Colors[props.theme as ThemeType].background.background200
-      : 'inherit'};
+      ? darken(0.2, Colors[props.theme as ThemeType].background.background200)
+      : Colors[props.theme as ThemeType].background.background100};
 `
 
 export { StyledCard }

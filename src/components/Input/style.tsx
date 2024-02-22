@@ -1,22 +1,13 @@
 import styled, { css } from 'styled-components'
-import { SelectProps } from './types'
 import { CommomProps } from '../../types'
-import { Colors } from '../../tokens'
+import { BorderRadius, Colors } from '../../tokens'
+import { InputProps } from './types'
 
-const IconRight = styled.div`
-  display: flex;
-  align-items: center;
-  padding-right: 10px;
-  pointer-events: none;
-
-  transition: transform 0.5s ease;
-`
-
-const Label = styled.label<SelectProps>`
+const Label = styled.label<CommomProps>`
   position: absolute;
+  top: 0.88rem;
   left: 0.7rem;
-  top: ${({ hasValue }) => (hasValue ? '-0.02rem' : '0.rem')};
-  font-size: ${({ hasValue }) => (hasValue ? '0.8rem' : '1rem')};
+  font-size: 1rem;
   padding: 0 0.5rem;
   color: ${(props: CommomProps) => Colors[props.theme].neutral.neutral300};
   cursor: text;
@@ -24,18 +15,19 @@ const Label = styled.label<SelectProps>`
     top 300ms ease-in,
     font-size 300ms ease-in;
   background-color: transparent;
+  pointer-events: none;
 `
 
-const SelectContainer = styled.div<SelectProps>`
+const InputContainer = styled.div<InputProps>`
   position: relative;
   min-width: 1rem;
   height: 3.438rem;
   margin-bottom: 20px;
   display: flex;
   align-items: center;
-  border-radius: 8px;
+  border-radius: ${BorderRadius['3']};
   border: 1px solid
-    ${(props: CommomProps) => Colors[props.theme].neutral.neutral400};
+    ${({ theme }: CommomProps) => Colors[theme].neutral.neutral400};
 
   overflow: hidden;
   text-overflow: ellipsis;
@@ -52,7 +44,7 @@ const SelectContainer = styled.div<SelectProps>`
       Colors[theme].neutral.neutral500};
   }
 
-  ${({ error, theme }: SelectProps & CommomProps) =>
+  ${({ error, theme }: InputProps & CommomProps) =>
     error &&
     css`
       border-color: ${Colors[theme].feedback.feedbackError100} !important;
@@ -62,7 +54,7 @@ const SelectContainer = styled.div<SelectProps>`
       }
     `}
 
-  ${({ disabled, theme }: SelectProps & CommomProps) =>
+  ${({ disabled, theme }) =>
     disabled &&
     css`
       border-color: ${Colors[theme].neutral.neutral200} !important;
@@ -78,36 +70,49 @@ const SelectContainer = styled.div<SelectProps>`
   }
 `
 
-const SelectCustom = styled.select<SelectProps>`
+const InputCustom = styled.input<InputProps>`
   flex: 1;
   border: none;
   font-family: inherit;
   font-size: 1rem;
   color: #333;
+  padding: 1.25rem 1.25rem 1rem 1.25rem;
   background: none;
   outline: none;
   background-color: transparent;
-  position: relative;
-  z-index: 1;
-  appearance: none;
-  -webkit-appearance: none;
-  top: 0.19rem;
 
-  ${({ iconLeft }) =>
-    iconLeft &&
+  &:focus ~ ${Label}, &:not(:focus):not(:placeholder-shown) ~ ${Label} {
+    top: -0.02rem;
+    font-size: 0.8rem;
+    left: 0.7rem;
+    width: 100%;
+  }
+
+  ${(props) =>
+    props.iconLeft &&
     css`
       padding-bottom: 1.25rem;
       padding-left: 0rem;
       padding-right: 1.25rem;
       padding-top: 1.25rem;
 
+      &:focus ~ ${Label}, &:not(:focus):not(:placeholder-shown) ~ ${Label} {
+        left: 2.3rem;
+      }
+
       ~ ${Label} {
         left: 2.3rem;
+        top: 0.88rem;
       }
     `}
 
-  &:focus ~ ${IconRight} {
-    transform: rotateX(180deg);
+  &:-webkit-autofill,
+  &:-webkit-autofill:focus {
+    transition: background-color 600000s 0s;
+    background-color: transparent !important;
+  }
+  &[data-autocompleted] {
+    background-color: transparent !important;
   }
 `
 
@@ -116,7 +121,14 @@ const IconLeft = styled.div`
   align-items: center;
   padding-left: 10px;
   padding-right: 10px;
-  pointer-events: none;
+  cursor: pointer;
 `
 
-export { SelectContainer, Label, SelectCustom, IconLeft, IconRight }
+const IconRight = styled.div`
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
+  cursor: pointer;
+`
+
+export { InputContainer, Label, InputCustom, IconLeft, IconRight }

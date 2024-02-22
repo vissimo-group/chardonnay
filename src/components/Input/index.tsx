@@ -1,106 +1,74 @@
-import React, { HTMLAttributes } from 'react'
-import styled from 'styled-components'
-import { BorderRadius, Colors } from '../../tokens'
-import { CommomProps, ThemeType } from '../../types'
+import React, {
+  forwardRef,
+  useRef,
+  useEffect,
+  useImperativeHandle,
+  useState,
+} from 'react'
 
-interface InputProps extends HTMLAttributes<HTMLInputElement> {
-  label?: string
-  value?: string
-  icon?: React.ReactNode
-  theme?: ThemeType
-  type?: string
-  placeholder?: string
-}
+import { maskInput, unMask } from './mask'
+import {
+  IconLeft,
+  IconRight,
+  InputContainer,
+  InputCustom,
+  Label,
+} from './style'
+import { InputProps, InputRef } from './types'
 
-const InputContainer = styled.div<CommomProps>`
-  position: relative;
-  min-width: 20rem;
-  height: 3.438rem;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  border-radius: ${BorderRadius['3']};
-  border: 1px solid
-    ${(props: CommomProps) => Colors[props.theme].neutral.neutral300};
+const Input = forwardRef<InputRef, InputProps>((props, ref) => {
+  const {
+    error,
+    label,
+    theme = 'light',
+    iconLeft,
+    iconRight,
+    mask,
+    ...restProps
+  } = props
 
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 20px;
-  letter-spacing: -0.0025em;
-  text-align: left;
-`
+  const [inputValue, setInputValue] = useState<string | undefined>(props.value)
+  const inputRef = useRef<HTMLInputElement | null>(null)
 
-const Label = styled.label<CommomProps>`
-  position: absolute;
-  left: 1rem;
-  top: 0.8rem;
-  font-size: 1rem;
-  padding: 0 0.5rem;
-  color: ${(props: CommomProps) => Colors[props.theme].neutral.neutral400};
-  cursor: text;
-  transition:
-    top 150ms ease-in,
-    left 150ms ease-in,
-    font-size 150ms ease-in;
-  background-color: transparent;
-`
+  useEffect(() => {
+    if (props.value) {
+      setInputValue(props.value)
+    }
 
-const InputCustom = styled.input`
-  flex: 1;
-  border: none;
-  font-family: inherit;
-  font-size: 1rem;
-  color: #333;
-  padding: 1.25rem;
-  background: none;
-  outline: none;
-  background-color: transparent;
+    if (mask && inputValue) {
+      const originalValue = unMask(inputValue)
+      const makedValue = maskInput(originalValue, mask)
+      setInputValue(makedValue)
+    }
+  }, [inputValue])
 
-  &:focus ~ ${Label} {
-    top: -0.02rem;
-    font-size: 0.8rem;
-    left: 0.8rem;
+  useImperativeHandle(ref, () => inputRef.current!, [])
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = event.target.value
+    setInputValue(newValue)
+    if (props.onChange) {
+      props.onChange(event)
+    }
   }
 
-  &:not(:focus):not(:placeholder-shown) ~ ${Label} {
-    top: -0.02rem;
-    font-size: 0.8rem;
-    left: 0.8rem;
-  }
-`
-
-const Icon = styled.div`
-  display: flex;
-  align-items: center;
-  padding-right: 10px;
-  cursor: pointer;
-`
-
-const Input: React.FC<InputProps> = ({
-  type,
-  placeholder,
-  icon,
-  theme,
-  ...inputProps
-}) => {
   return (
-    <InputContainer theme={theme as ThemeType}>
+    <InputContainer theme={theme} {...props}>
+      {!!iconLeft && <IconLeft>{iconLeft}</IconLeft>}
       <InputCustom
-        type={type}
+        ref={inputRef}
         placeholder=""
-        autoComplete="off"
-        {...inputProps}
+        iconLeft={iconLeft}
+        {...restProps}
+        value={inputValue}
+        onChange={handleChange}
       />
-      <Label theme={theme as ThemeType}>{placeholder}</Label>
-      <Icon>{icon}</Icon>
+      <Label theme={theme}>{label}</Label>
+      <IconRight>{iconRight}</IconRight>
     </InputContainer>
   )
-}
+})
 
-Input.defaultProps = {
-  type: 'text',
-  theme: 'light',
-  placeholder: '',
-}
+Input.displayName = 'Input'
 
 export default Input

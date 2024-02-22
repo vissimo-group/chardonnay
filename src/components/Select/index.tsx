@@ -1,27 +1,53 @@
-import { SelectStyled } from './style'
-import { SelectProps } from './types'
+import React, { forwardRef, useImperativeHandle, useRef } from 'react'
 
-const Select = ({
-  children,
-  error = false,
-  fontSize = 1,
-  expand = false,
-  responsible = false,
-  theme = 'light',
-  ...props
-}: SelectProps) => {
+import {
+  SelectContainer,
+  SelectCustom,
+  Label,
+  IconLeft,
+  IconRight,
+} from './style'
+import { SelectProps, SelectRef } from './types'
+
+/* eslint-disable */
+const Select = forwardRef<SelectRef, SelectProps>((props, ref) => {
+  const {
+    theme = 'light',
+    label,
+    error,
+    disabled,
+    iconLeft,
+    iconRight,
+    children,
+    ...selectProps
+  } = props
+
+  const selectRef = useRef<HTMLSelectElement | null>(null)
+
+  const hasValue = Boolean(selectProps.value)
+
+  useImperativeHandle(ref, () => selectRef.current!, [])
+
   return (
-    <SelectStyled
-      $theme={theme}
-      $error={error}
-      $fontSize={fontSize}
-      $expand={expand}
-      $responsible={responsible}
-      {...props}
+    <SelectContainer
+      hasValue={hasValue}
+      error={error}
+      theme={theme}
+      disabled={disabled}
     >
-      {children}
-    </SelectStyled>
+      <IconLeft>{iconLeft}</IconLeft>
+      <SelectCustom disabled={disabled} ref={selectRef} iconLeft={iconLeft} {...selectProps}>
+        <option value="" />
+        {children}
+      </SelectCustom>
+      <Label theme={theme} hasValue={hasValue}>
+        {label}
+      </Label>
+      <IconRight>{iconRight}</IconRight>
+    </SelectContainer>
   )
-}
+})
 
-export { Select }
+Select.displayName = 'Select'
+
+export default Select

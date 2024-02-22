@@ -40,7 +40,7 @@ export const CardDefault: Story = {
 
 export const CardMaxWidth: Story = {
   args: {
-    selected: true,
+    selected: false,
     maxWidth: '50%',
   },
   render: function Render(args: CardProps) {
@@ -54,7 +54,7 @@ export const CardMaxWidth: Story = {
 
 export const CardIsSelected: Story = {
   args: {
-    selected: false,
+    selected: true,
   },
   render: function Render(args: CardProps) {
     return (
