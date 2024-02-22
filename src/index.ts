@@ -25,6 +25,7 @@ import {
   Grid,
   WizardItem,
   WizardProgressBar,
+  FreeShippingProgress,
 } from './components'
 
 export {
@@ -54,4 +55,5 @@ export {
   Grid,
   WizardItem,
   WizardProgressBar,
+  FreeShippingProgress,
 }
