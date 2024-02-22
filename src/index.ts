@@ -1,3 +1,5 @@
+import { lightTheme, darkTheme } from './theme'
+
 import {
   Border,
   Button,
@@ -21,9 +23,13 @@ import {
   Select,
   Checkbox,
   Grid,
+  WizardItem,
+  WizardProgressBar,
 } from './components'
 
 export {
+  lightTheme,
+  darkTheme,
   Border,
   Button,
   Card,
@@ -46,4 +52,6 @@ export {
   Select,
   Checkbox,
   Grid,
+  WizardItem,
+  WizardProgressBar,
 }
