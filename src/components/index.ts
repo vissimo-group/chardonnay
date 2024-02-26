@@ -22,6 +22,7 @@ import { Checkbox } from './Checkbox'
 import * as Grid from './Grid'
 import * as WizardItem from './Wizard/WizardItem'
 import { WizardProgressBar } from './Wizard/WizardProgressBar'
+import * as ModalAddressCard from './CardAddress/ModalAddressCard'
 
 export {
   Border,
@@ -48,4 +49,5 @@ export {
   Grid,
   WizardItem,
   WizardProgressBar,
+  ModalAddressCard,
 }

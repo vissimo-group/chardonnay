@@ -25,6 +25,7 @@ import {
   Grid,
   WizardItem,
   WizardProgressBar,
+  ModalAddressCard,
 } from './components'
 
 export {
@@ -54,4 +55,5 @@ export {
   Grid,
   WizardItem,
   WizardProgressBar,
+  ModalAddressCard,
 }

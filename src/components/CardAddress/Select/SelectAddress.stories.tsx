@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/react'
 import React, { useState } from 'react'
-import SelectAddressComponent from '../components/CardAddress/Select'
+import SelectAddressComponent from '.'
 
 interface CardAddressProps {
   theme?: 'light' | 'dark'
