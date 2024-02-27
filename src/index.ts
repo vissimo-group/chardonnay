@@ -27,6 +27,8 @@ import {
   WizardProgressBar,
 } from './components'
 
+import { unMask } from './components/Input/mask'
+
 export {
   lightTheme,
   darkTheme,
@@ -54,4 +56,5 @@ export {
   Grid,
   WizardItem,
   WizardProgressBar,
+  unMask,
 }
