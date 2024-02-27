@@ -83,7 +83,7 @@ const multimasker = (
 
 export const maskInput = (
     value: string,
-    pattern: string | [] | undefined,
+    pattern: string | [] | string[] ,
     options?: PatternOptions,
 ): string =>
   typeof pattern === 'string'

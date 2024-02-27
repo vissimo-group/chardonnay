@@ -1,9 +1,10 @@
 import React, {
   forwardRef,
   useRef,
-  useEffect,
   useImperativeHandle,
   useState,
+  useCallback,
+  useEffect,
 } from 'react'
 
 import { maskInput, unMask } from './mask'
@@ -27,30 +28,30 @@ const Input = forwardRef<InputRef, InputProps>((props, ref) => {
     ...restProps
   } = props
 
-  const [inputValue, setInputValue] = useState<string | undefined>(props.value)
+  const [inputValue, setInputValue] = useState<string | undefined>()
   const inputRef = useRef<HTMLInputElement | null>(null)
 
   useEffect(() => {
     if (props.value) {
       setInputValue(props.value)
     }
+  }, [])
 
-    if (mask && inputValue) {
-      const originalValue = unMask(inputValue)
-      const makedValue = maskInput(originalValue, mask)
-      setInputValue(makedValue)
-    }
-  }, [inputValue])
+  useImperativeHandle(ref, () => inputRef.current!, [inputRef.current])
 
-  useImperativeHandle(ref, () => inputRef.current!, [])
+  const handleChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const newValue = event.target.value
+      const valueUnMask = unMask(newValue)
+      const valueMask = mask ? maskInput(valueUnMask, mask) : newValue
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = event.target.value
-    setInputValue(newValue)
-    if (props.onChange) {
-      props.onChange(event)
-    }
-  }
+      setInputValue(valueMask)
+      if (props.onChange) {
+        props.onChange(event)
+      }
+    },
+    [mask, props.onChange],
+  )
 
   return (
     <InputContainer theme={theme} {...props}>
