@@ -36,14 +36,20 @@ const Select = forwardRef<SelectRef, SelectProps>((props, ref) => {
       disabled={disabled}
     >
       <IconLeft>{iconLeft}</IconLeft>
-      <SelectCustom disabled={disabled} ref={selectRef} iconLeft={iconLeft} {...selectProps}>
+      <SelectCustom
+          disabled={disabled}
+          ref={selectRef}
+          iconRight={iconRight}
+          iconLeft={iconLeft}
+          {...selectProps}
+      >
         <option value="" />
         {children}
       </SelectCustom>
       <Label theme={theme} hasValue={hasValue}>
         {label}
       </Label>
-      <IconRight>{iconRight}</IconRight>
+      <IconRight  >{iconRight}</IconRight>
     </SelectContainer>
   )
 })

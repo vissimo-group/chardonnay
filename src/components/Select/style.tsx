@@ -10,6 +10,7 @@ const IconRight = styled.div`
   pointer-events: none;
 
   transition: transform 0.5s ease;
+  cursor: pointer;
 `
 
 const Label = styled.label<SelectProps>`
@@ -19,7 +20,6 @@ const Label = styled.label<SelectProps>`
   font-size: ${({ hasValue }) => (hasValue ? '0.8rem' : '1rem')};
   padding: 0 0.5rem;
   color: ${(props: CommomProps) => Colors[props.theme].neutral.neutral300};
-  cursor: text;
   transition:
     top 300ms ease-in,
     font-size 300ms ease-in;
@@ -91,15 +91,19 @@ const SelectCustom = styled.select<SelectProps>`
   z-index: 1;
   appearance: none;
   -webkit-appearance: none;
-  top: 0.19rem;
+  height: 100%;
+
+  ${({ iconRight }) =>
+    iconRight &&
+    css`
+      margin-right: -2rem;
+    `}
 
   ${({ iconLeft }) =>
     iconLeft &&
     css`
-      padding-bottom: 1.25rem;
-      padding-left: 0rem;
-      padding-right: 1.25rem;
-      padding-top: 1.25rem;
+      padding-left: 2rem;
+      margin-left: -2rem;
 
       ~ ${Label} {
         left: 2.3rem;

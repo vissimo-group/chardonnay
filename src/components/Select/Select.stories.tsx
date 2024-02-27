@@ -41,7 +41,6 @@ const TemplateSelect = (props: SelectProps) => {
   return (
     <Select
       label="Escolha uma opção"
-      iconRight={<ChevronDown size={26} color="black" />}
       theme="light"
       onChange={handleSelectChange}
       value={selectedValue}
@@ -61,7 +60,10 @@ export const Enabled: Story = {
   args: { disabled: false, error: false },
 
   render: (args) => (
-    <TemplateSelect {...args}>
+    <TemplateSelect
+      {...args}
+      iconRight={<ChevronDown size={26} color="black" />}
+    >
       <option value="home">Home address</option>
       <option value="business">Business address</option>
     </TemplateSelect>
@@ -73,7 +75,10 @@ export const Disabled: Story = {
   args: { disabled: true, error: false },
 
   render: (args) => (
-    <TemplateSelect {...args}>
+    <TemplateSelect
+      {...args}
+      iconRight={<ChevronDown size={26} color="black" />}
+    >
       <option value="home">Home address</option>
       <option value="business">Business address</option>
     </TemplateSelect>
@@ -85,7 +90,36 @@ export const Error: Story = {
   args: { disabled: false, error: true },
 
   render: (args) => (
-    <TemplateSelect {...args}>
+    <TemplateSelect {...args} iconLeft={<Close size={26} color="red" />}>
+      <option value="home">Some error</option>
+      <option value="home">Home address</option>
+      <option value="business">Business address</option>
+    </TemplateSelect>
+  ),
+}
+
+export const iconsLeft: Story = {
+  name: 'icon Left',
+  args: {},
+
+  render: (args) => (
+    <TemplateSelect iconLeft={<Close size={26} color="black" />} {...args}>
+      <option value="home">Some error</option>
+      <option value="home">Home address</option>
+      <option value="business">Business address</option>
+    </TemplateSelect>
+  ),
+}
+
+export const iconsRight: Story = {
+  name: 'icon Right',
+  args: {},
+
+  render: (args) => (
+    <TemplateSelect
+      iconRight={<ChevronDown size={26} color="black" />}
+      {...args}
+    >
       <option value="home">Some error</option>
       <option value="home">Home address</option>
       <option value="business">Business address</option>
@@ -94,11 +128,15 @@ export const Error: Story = {
 }
 
 export const icons: Story = {
-  name: 'icons',
+  name: 'icon Left and Right',
   args: {},
 
   render: (args) => (
-    <TemplateSelect iconLeft={<Close size={26} color="black" />} {...args}>
+    <TemplateSelect
+      iconRight={<Close size={26} color="black" />}
+      iconLeft={<ChevronDown size={26} color="black" />}
+      {...args}
+    >
       <option value="home">Some error</option>
       <option value="home">Home address</option>
       <option value="business">Business address</option>
