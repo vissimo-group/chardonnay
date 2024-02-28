@@ -1,10 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import React from 'react'
-import ShippingAddress, {
-  ShippingAddressProps,
-} from '../components/CardAddress/Shipping'
-import { ThemeType } from '../types'
+import ShippingAddress, { ShippingAddressProps } from './index'
+import { ThemeType } from '../../../theme'
 
 export default {
   title: 'Components/Card Address/Shipping',
