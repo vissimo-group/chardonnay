@@ -20,6 +20,7 @@ const WizardProgressBarChildrenContainerStyled = styled.div`
 const WizardProgressBarProgressStyled = styled.div<{
   $progress: number
   $error?: boolean
+  $customColor?: string
 }>`
   height: 100%;
   width: ${(props) => `${props.$progress}%`};
@@ -27,6 +28,9 @@ const WizardProgressBarProgressStyled = styled.div<{
     props.$error
       ? Colors.light.feedback.feedbackError100
       : Colors.light.action.action100};
+
+  ${(props) =>
+    props.$customColor && `background-color: ${props.$customColor} !important;`}
 `
 
 const WizardProgressBarOutsideContainerStyled = styled.div`
