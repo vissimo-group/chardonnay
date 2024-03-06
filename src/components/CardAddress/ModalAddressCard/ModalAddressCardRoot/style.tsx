@@ -3,7 +3,7 @@ import { Colors } from '../../../../tokens'
 import { ThemeType } from '../../../../types'
 import { ModalAddressCardProps } from './type'
 
-const ModalAddressCardStyled = styled.div<ModalAddressCardProps>`
+const ModalAddressCardRootStyled = styled.div<ModalAddressCardProps>`
   display: flex;
   padding: 11px 8px;
   flex-direction: column;
@@ -20,4 +20,4 @@ const ModalAddressCardStyled = styled.div<ModalAddressCardProps>`
   color: ${(props) => Colors[props.theme as ThemeType].neutral.neutral500};
 `
 
-export { ModalAddressCardStyled }
+export { ModalAddressCardRootStyled }

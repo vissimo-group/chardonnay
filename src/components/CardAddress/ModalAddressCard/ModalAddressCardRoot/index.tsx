@@ -1,5 +1,5 @@
 import React from 'react'
-import { ModalAddressCardStyled } from './style'
+import { ModalAddressCardRootStyled } from './style'
 import { ModalAddressCardProps } from './type'
 
 const ModalAddressCardRoot: React.FC<ModalAddressCardProps> = ({
@@ -9,9 +9,13 @@ const ModalAddressCardRoot: React.FC<ModalAddressCardProps> = ({
   ...restProps
 }) => {
   return (
-    <ModalAddressCardStyled theme={theme} selected={selected} {...restProps}>
+    <ModalAddressCardRootStyled
+      theme={theme}
+      selected={selected}
+      {...restProps}
+    >
       {children}
-    </ModalAddressCardStyled>
+    </ModalAddressCardRootStyled>
   )
 }
 

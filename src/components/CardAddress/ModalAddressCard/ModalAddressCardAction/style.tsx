@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const ModalAddressCardStyled = styled.button`
+const ModalAddressCardActionStyled = styled.button`
   margin-left: auto;
   cursor: pointer;
 
@@ -12,4 +12,4 @@ const ModalAddressCardStyled = styled.button`
   outline: none;
 `
 
-export { ModalAddressCardStyled }
+export { ModalAddressCardActionStyled }

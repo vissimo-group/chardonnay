@@ -1,5 +1,5 @@
 import React from 'react'
-import { ModalAddressCardStyled } from './style'
+import { ModalAddressCardActionStyled } from './style'
 import { ModalAddressCardActionProps } from './type'
 
 const ModalAddressCardAction: React.FC<ModalAddressCardActionProps> = ({
@@ -7,7 +7,9 @@ const ModalAddressCardAction: React.FC<ModalAddressCardActionProps> = ({
   ...restProps
 }) => {
   return (
-    <ModalAddressCardStyled {...restProps}>{children}</ModalAddressCardStyled>
+    <ModalAddressCardActionStyled {...restProps}>
+      {children}
+    </ModalAddressCardActionStyled>
   )
 }
 

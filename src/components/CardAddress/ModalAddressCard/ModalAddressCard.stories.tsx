@@ -92,7 +92,7 @@ export const ModalAddressCardNoSelected: Story = {
     <ModalAddressCard.Root selected {...args}>
       <ModalAddressCard.Title>
         <Text autosize weight="bold">
-          typeAddress
+          Casa
         </Text>
         {args.selected && (
           <ModalAddressCard.Icon>
@@ -106,22 +106,13 @@ export const ModalAddressCardNoSelected: Story = {
 
       <ModalAddressCard.Content>
         <Text autosize as="span">
-          address
-        </Text>
-        <Text autosize as="span">
-          postcode
+          Rua Pires da Mota, 974, CEP: 01415-000 Aclimação São paulo
         </Text>
       </ModalAddressCard.Content>
 
       <ModalAddressCard.Complement>
         <Text autosize as="span">
-          complement
-        </Text>
-        <Text autosize as="span">
-          complement
-        </Text>
-        <Text autosize as="span">
-          complement
+          Apto 41
         </Text>
       </ModalAddressCard.Complement>
     </ModalAddressCard.Root>
@@ -137,7 +128,7 @@ export const ModalAddressCardSelected: Story = {
     <ModalAddressCard.Root {...args}>
       <ModalAddressCard.Title>
         <Text autosize weight="bold">
-          typeAddress
+          Casa
         </Text>
         {args.selected && (
           <ModalAddressCard.Icon>
@@ -151,24 +142,106 @@ export const ModalAddressCardSelected: Story = {
 
       <ModalAddressCard.Content>
         <Text autosize as="span">
-          address
-        </Text>
-        <Text autosize as="span">
-          postcode
+          Rua Pires da Mota, 974, CEP: 01415-000 Aclimação São paulo
         </Text>
       </ModalAddressCard.Content>
 
       <ModalAddressCard.Complement>
         <Text autosize as="span">
-          complement
-        </Text>
-        <Text autosize as="span">
-          complement
-        </Text>
-        <Text autosize as="span">
-          complement
+          Apto 41
         </Text>
       </ModalAddressCard.Complement>
+    </ModalAddressCard.Root>
+  ),
+}
+
+export const ModalAddressCardWithoutAction: Story = {
+  args: {
+    selected: false,
+  },
+  name: 'Without Action',
+  render: (args) => (
+    <ModalAddressCard.Root {...args}>
+      <ModalAddressCard.Title>
+        <Text autosize weight="bold">
+          Casa
+        </Text>
+        {args.selected && (
+          <ModalAddressCard.Icon>
+            <Oficial color="#2391E1" />
+          </ModalAddressCard.Icon>
+        )}
+      </ModalAddressCard.Title>
+
+      <ModalAddressCard.Content>
+        <Text autosize as="span">
+          Rua Pires da Mota, 974, CEP: 01415-000 Aclimação São paulo
+        </Text>
+      </ModalAddressCard.Content>
+
+      <ModalAddressCard.Complement>
+        <Text autosize as="span">
+          Apto 41
+        </Text>
+      </ModalAddressCard.Complement>
+    </ModalAddressCard.Root>
+  ),
+}
+
+export const ModalAddressCardWithoutICon: Story = {
+  args: {
+    selected: true,
+  },
+  name: 'Selected Without Icon and Action',
+  render: (args) => (
+    <ModalAddressCard.Root {...args}>
+      <ModalAddressCard.Title>
+        <Text autosize weight="bold">
+          Casa
+        </Text>
+      </ModalAddressCard.Title>
+
+      <ModalAddressCard.Content>
+        <Text autosize as="span">
+          Rua Pires da Mota, 974, CEP: 01415-000 Aclimação São paulo
+        </Text>
+      </ModalAddressCard.Content>
+
+      <ModalAddressCard.Complement>
+        <Text autosize as="span">
+          Apto 41
+        </Text>
+      </ModalAddressCard.Complement>
+    </ModalAddressCard.Root>
+  ),
+}
+
+export const ModalAddressCardWithoutComplement: Story = {
+  args: {
+    selected: true,
+  },
+  name: 'Without Complement',
+  render: (args) => (
+    <ModalAddressCard.Root {...args}>
+      <ModalAddressCard.Title>
+        <Text autosize weight="bold">
+          Casa
+        </Text>
+        {args.selected && (
+          <ModalAddressCard.Icon>
+            <Oficial color="#2391E1" />
+          </ModalAddressCard.Icon>
+        )}
+        <ModalAddressCard.Action>
+          <Edit size={26} />
+        </ModalAddressCard.Action>
+      </ModalAddressCard.Title>
+
+      <ModalAddressCard.Content>
+        <Text autosize as="span">
+          Rua Pires da Mota, 974, CEP: 01415-000 Aclimação São paulo
+        </Text>
+      </ModalAddressCard.Content>
     </ModalAddressCard.Root>
   ),
 }
