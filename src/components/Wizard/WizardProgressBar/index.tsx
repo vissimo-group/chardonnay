@@ -12,8 +12,6 @@ const WizardProgressBar = ({
   error = false,
   customColor,
 }: WizardProgressBarProps) => {
-  console.log('##### customColor: ', customColor)
-
   return (
     <WizardProgressBarOutsideContainerStyled>
       <WizardProgressBarContainerStyled>
