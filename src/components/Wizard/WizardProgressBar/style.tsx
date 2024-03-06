@@ -29,8 +29,7 @@ const WizardProgressBarProgressStyled = styled.div<{
       ? Colors.light.feedback.feedbackError100
       : Colors.light.action.action100};
 
-  ${(props) =>
-    props.$customColor && `background-color: ${props.$customColor} !important;`}
+  ${(props) => props.$customColor && `background-color: ${props.$customColor};`}
 `
 
 const WizardProgressBarOutsideContainerStyled = styled.div`
