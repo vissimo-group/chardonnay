@@ -6,6 +6,7 @@ const WizardItemRootStyled = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  gap: 0.2rem;
 `
 
 export { WizardItemRootStyled }

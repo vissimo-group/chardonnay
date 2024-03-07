@@ -18,6 +18,11 @@ const meta: Meta<typeof WizardItemLabel> = {
       control: { type: 'boolean' },
       description: 'If true, add font-weight bold to the label.',
     },
+    customFontSize: {
+      control: { type: 'text' },
+      description:
+        'Custom font-size for the label. Fixed or relative units as "px" or "rem".',
+    },
   },
 }
 
@@ -25,12 +30,18 @@ export default meta
 type Story = StoryObj<typeof WizardItemLabel>
 
 export const Active: Story = {
-  args: { content: 'Product', inactive: false, bold: false },
+  args: {
+    content: 'Product',
+    inactive: false,
+    bold: false,
+    customFontSize: '',
+  },
   render: (args) => (
     <WizardItemLabel
       content={args.content}
       inactive={args.inactive}
       bold={args.bold}
+      customFontSize={args.customFontSize}
     />
   ),
 }
@@ -53,6 +64,23 @@ export const Inactive: Story = {
       content={args.content}
       inactive={args.inactive}
       bold={args.bold}
+    />
+  ),
+}
+
+export const WithCustomFontSize: Story = {
+  args: {
+    content: 'Smaller font',
+    inactive: false,
+    bold: false,
+    customFontSize: '0.75rem',
+  },
+  render: (args) => (
+    <WizardItemLabel
+      content={args.content}
+      inactive={args.inactive}
+      bold={args.bold}
+      customFontSize={args.customFontSize}
     />
   ),
 }

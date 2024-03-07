@@ -10,6 +10,7 @@ const variantColors = {
 
 const WizardItemPointStyled = styled.div<{
   $variant: WizardItemPointVariantTypes
+  $customColor?: string
 }>`
   width: 37px;
   height: 37px;
@@ -26,6 +27,11 @@ const WizardItemPointStyled = styled.div<{
     props.$variant === 'INACTIVE'
       ? `2px solid ${Colors.light.neutral.neutral200}`
       : 'none'};
+
+  ${(props) =>
+    props.$customColor &&
+    `background-color: ${props.$customColor};
+     border: 2px solid ${props.$customColor};`}
 `
 
 export { WizardItemPointStyled }
