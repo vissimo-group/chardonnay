@@ -1,0 +1,6 @@
+export { ModalAddressCardRoot as Root } from './ModalAddressCardRoot'
+export { ModalAddressCardIcon as Icon } from './ModalAddressCardIcon'
+export { ModalAddressCardTitle as Title } from './ModalAddressCardTitle'
+export { ModalAddressCardComplement as Complement } from './ModalAddressCardComplement'
+export { ModalAddressCardAction as Action } from './ModalAddressCardAction'
+export { ModalAddressCardContent as Content } from './ModalAddressCardContent'
