@@ -23,6 +23,7 @@ import * as Grid from './Grid'
 import * as WizardItem from './Wizard/WizardItem'
 import { WizardProgressBar } from './Wizard/WizardProgressBar'
 import * as ModalAddressCard from './CardAddress/ModalAddressCard'
+import * as FreeShippingProgress from './FreeShippingProgress'
 
 export {
   Border,
@@ -50,4 +51,5 @@ export {
   WizardItem,
   WizardProgressBar,
   ModalAddressCard,
+  FreeShippingProgress,
 }

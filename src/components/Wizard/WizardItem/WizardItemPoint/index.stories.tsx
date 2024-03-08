@@ -11,6 +11,11 @@ const meta: Meta<typeof WizardItemPoint> = {
       description:
         'Available variants "active", "inactive" and "error". Choose the most suitable one according to progress status. Default value "inactive".',
     },
+    customColor: {
+      control: { type: 'color' },
+      description:
+        'Custom color for the progress bar. Not required property. Overrides default colors, for example: error state color.',
+    },
   },
 }
 
@@ -35,8 +40,12 @@ export default meta
 type Story = StoryObj<typeof WizardItemPoint>
 
 export const Active: Story = {
-  args: { variant: 'ACTIVE' },
-  render: (args) => <WizardItemPoint variant={args.variant}>1</WizardItemPoint>,
+  args: { variant: 'ACTIVE', customColor: '' },
+  render: (args) => (
+    <WizardItemPoint variant={args.variant} customColor={args.customColor}>
+      1
+    </WizardItemPoint>
+  ),
 }
 
 export const ActiveWithIcon: Story = {
@@ -69,5 +78,14 @@ export const ErrorWithIcon: Story = {
   args: { variant: 'ERROR' },
   render: (args) => (
     <WizardItemPoint variant={args.variant}>{checkIcon()}</WizardItemPoint>
+  ),
+}
+
+export const WithCustomColor: Story = {
+  args: { variant: 'ACTIVE', customColor: '#9573D5' },
+  render: (args) => (
+    <WizardItemPoint variant={args.variant} customColor={args.customColor}>
+      1
+    </WizardItemPoint>
   ),
 }

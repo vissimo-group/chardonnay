@@ -26,6 +26,7 @@ import {
   WizardItem,
   WizardProgressBar,
   ModalAddressCard,
+  FreeShippingProgress,
 } from './components'
 
 export {
@@ -56,4 +57,5 @@ export {
   WizardItem,
   WizardProgressBar,
   ModalAddressCard,
+  FreeShippingProgress,
 }

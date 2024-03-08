@@ -54,6 +54,11 @@ const meta: Meta<typeof WizardProgressBar> = {
       control: { type: 'boolean' },
       description: 'Error variant, default value false.',
     },
+    customColor: {
+      control: { type: 'color' },
+      description:
+        'Custom color for the progress bar. Not required property. Overrides default colors, for example: error state color.',
+    },
   },
 }
 
@@ -61,9 +66,13 @@ export default meta
 type Story = StoryObj<typeof WizardProgressBar>
 
 export const WithPoints: Story = {
-  args: { progress: 75, children: wizardPoints },
+  args: { progress: 75, children: wizardPoints, customColor: '' },
   render: (args) => (
-    <WizardProgressBar progress={args.progress} error={args.error}>
+    <WizardProgressBar
+      progress={args.progress}
+      error={args.error}
+      customColor={args.customColor}
+    >
       {args.children}
     </WizardProgressBar>
   ),
@@ -86,4 +95,14 @@ export const WithoutPoints: Story = {
 export const ErrorWithoutPoints: Story = {
   args: { progress: 75 },
   render: (args) => <WizardProgressBar progress={args.progress} error />,
+}
+
+export const WithCustomColor: Story = {
+  args: { progress: 75, customColor: '#9573D5' },
+  render: (args) => (
+    <WizardProgressBar
+      progress={args.progress}
+      customColor={args.customColor}
+    />
+  ),
 }
