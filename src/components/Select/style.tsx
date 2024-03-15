@@ -30,7 +30,6 @@ const SelectContainer = styled.div<SelectProps>`
   position: relative;
   min-width: 1rem;
   height: 3.438rem;
-  margin-bottom: 20px;
   display: flex;
   align-items: center;
   border-radius: 8px;

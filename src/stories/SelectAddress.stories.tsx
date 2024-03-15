@@ -1,15 +1,8 @@
 import { Meta } from '@storybook/react'
 import React, { useState } from 'react'
-import SelectAddressComponent from '../components/CardAddress/Select'
-
-interface CardAddressProps {
-  theme?: 'light' | 'dark'
-  checked?: boolean
-  typeAddress: string
-  address: string
-  postcode: string
-  complement: string
-}
+import SelectAddressComponent, {
+  CardAddressProps,
+} from '../components/CardAddress/Select'
 
 export default {
   title: 'Components/Card Address/Select',
@@ -50,6 +43,8 @@ const SelectAddress = ({
       postcode={postcode}
       complement={complement}
       onClick={handleRadioChange}
+      isEditable
+      onEdit={() => null}
       {...args}
     />
   )

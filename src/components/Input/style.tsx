@@ -22,7 +22,6 @@ const InputContainer = styled.div<InputProps>`
   position: relative;
   min-width: 1rem;
   height: 3.438rem;
-  margin-bottom: 20px;
   display: flex;
   align-items: center;
   border-radius: ${BorderRadius['3']};
@@ -54,7 +53,7 @@ const InputContainer = styled.div<InputProps>`
       }
     `}
 
-  ${({ disabled, theme }) =>
+  ${({ disabled, theme }: InputProps & CommomProps) =>
     disabled &&
     css`
       border-color: ${Colors[theme].neutral.neutral200} !important;
@@ -80,6 +79,7 @@ const InputCustom = styled.input<InputProps>`
   background: none;
   outline: none;
   background-color: transparent;
+  width: 100%;
 
   &:focus ~ ${Label}, &:not(:focus):not(:placeholder-shown) ~ ${Label} {
     top: -0.02rem;
