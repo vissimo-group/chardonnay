@@ -11,6 +11,7 @@ const SidePanelOverlayStyled = styled.div`
   top: 0;
   bottom: 0;
   pointer-events: all;
+  z-index: 5;
 
   /** ANIMATIONS */
   @keyframes fadeIn {

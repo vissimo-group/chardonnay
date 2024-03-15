@@ -57,6 +57,12 @@ const SidePanelContentStyled = styled.aside<SidePanelContentProps>`
   &[data-state='closed'] {
     animation: closePanel 200ms ease-in;
   }
+
+  @media screen and (max-width: 768px) {
+    width: 100% !important;
+    max-width: 100%;
+    border-radius: 0;
+  }
 `
 
 const SidePanelScrollableStyled = styled.div`

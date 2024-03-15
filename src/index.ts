@@ -1,4 +1,5 @@
 import { lightTheme, darkTheme } from './theme'
+import { unMask, masker as Mask } from './components/Input/mask'
 
 import {
   Border,
@@ -58,4 +59,6 @@ export {
   WizardProgressBar,
   ModalAddressCard,
   FreeShippingProgress,
+  unMask,
+  Mask,
 }
