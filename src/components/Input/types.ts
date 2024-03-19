@@ -6,6 +6,7 @@ export interface InputProps extends HTMLAttributes<HTMLInputElement> {
   error?: null | undefined | boolean
   mask?: string | [] | undefined
   value?: string | undefined
+  disabled?: boolean
   theme?: ThemeType
   iconLeft?: React.ReactNode
   iconRight?: React.ReactNode

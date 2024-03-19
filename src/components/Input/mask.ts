@@ -17,9 +17,9 @@ const regexMap: RegExpMapProps = {
 }
 
 export const masker = (
-  value: string,
-  pattern: string,
-  options?: PatternOptions,
+    value: string,
+    pattern: string,
+    options?: PatternOptions,
 ) => {
   const patternCharList = pattern.split('')
   const unmaskedValue = unMask(String(value))
@@ -55,8 +55,8 @@ export const masker = (
     }
 
     if (
-      output.length < patternCharList.length &&
-      /\W/.test(output[output.length - 1])
+        output.length < patternCharList.length &&
+        /\W/.test(output[output.length - 1])
     ) {
       output.pop()
     }
@@ -68,24 +68,24 @@ export const masker = (
 }
 
 const multimasker = (
-  value: string,
-  patterns: string[],
-  options?: PatternOptions,
+    value: string,
+    patterns: string[],
+    options?: PatternOptions,
 ) =>
-  masker(
-    value,
-    patterns.reduce(
-      (memo, pattern) => (value.length <= unMask(memo).length ? memo : pattern),
-      patterns[0],
-    ),
-    options,
-  )
+    masker(
+        value,
+        patterns.reduce(
+            (memo, pattern) => (value.length <= unMask(memo).length ? memo : pattern),
+            patterns[0],
+        ),
+        options,
+    )
 
 export const maskInput = (
     value: string,
-    pattern: string | [] | undefined,
+    pattern: string | [] | string[] ,
     options?: PatternOptions,
 ): string =>
-  typeof pattern === 'string'
-    ? masker(value, pattern || '', options)
-    : multimasker(value, pattern, options)
+    typeof pattern === 'string'
+        ? masker(value, pattern || '', options)
+        : multimasker(value, pattern, options)

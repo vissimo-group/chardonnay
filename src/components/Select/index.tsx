@@ -29,22 +29,28 @@ const Select = forwardRef<SelectRef, SelectProps>((props, ref) => {
   useImperativeHandle(ref, () => selectRef.current!, [])
 
   return (
-    <SelectContainer
-      hasValue={hasValue}
-      error={error}
-      theme={theme}
-      disabled={disabled}
-    >
-      <IconLeft>{iconLeft}</IconLeft>
-      <SelectCustom disabled={disabled} ref={selectRef} iconLeft={iconLeft} {...selectProps}>
-        <option value="" />
-        {children}
-      </SelectCustom>
-      <Label theme={theme} hasValue={hasValue}>
-        {label}
-      </Label>
-      <IconRight>{iconRight}</IconRight>
-    </SelectContainer>
+      <SelectContainer
+          hasValue={hasValue}
+          error={error}
+          theme={theme}
+          disabled={disabled}
+      >
+        <IconLeft>{iconLeft}</IconLeft>
+        <SelectCustom
+            disabled={disabled}
+            ref={selectRef}
+            iconRight={iconRight}
+            iconLeft={iconLeft}
+            {...selectProps}
+        >
+          <option value="" />
+          {children}
+        </SelectCustom>
+        <Label theme={theme} hasValue={hasValue}>
+          {label}
+        </Label>
+        <IconRight  >{iconRight}</IconRight>
+      </SelectContainer>
   )
 })
 
