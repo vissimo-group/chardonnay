@@ -1,20 +1,24 @@
 import React, { HTMLAttributes } from 'react'
 import styled from 'styled-components'
+import { Edit } from 'semillon'
 import { Colors } from '../../../tokens'
 import { CommomProps, ThemeType } from '../../../types'
 
-interface CardAddressProps extends HTMLAttributes<HTMLInputElement> {
+export interface CardAddressProps extends HTMLAttributes<HTMLInputElement> {
   checked?: boolean
   theme?: ThemeType
   typeAddress?: string
   address?: string
   postcode?: string
   complement?: string
+  onEdit?: () => void
+  isEditable?: boolean
 }
 
 const RadioButtonLabel = styled.label`
   display: flex;
   align-items: center;
+  justify-content: space-between;
 `
 
 interface Crosschecked extends CommomProps {
@@ -98,6 +102,15 @@ const ComplementLine = styled.span<CommomProps>`
   text-align: left;
 `
 
+const Icon = styled.div`
+  cursor: pointer;
+`
+
+const ContainerRadioButton = styled.div`
+  display: flex;
+  align-items: flex-end;
+`
+
 const SelectAddress: React.FC<CardAddressProps> = ({
   checked,
   theme,
@@ -105,6 +118,8 @@ const SelectAddress: React.FC<CardAddressProps> = ({
   address,
   postcode,
   complement,
+  onEdit,
+  isEditable,
   ...cardAddressProps
 }) => {
   return (
@@ -113,13 +128,20 @@ const SelectAddress: React.FC<CardAddressProps> = ({
       theme={theme as ThemeType}
     >
       <RadioButtonLabel>
-        <RadioButtonInput
-          theme={theme as ThemeType}
-          type="radio"
-          checked={checked as boolean}
-          {...cardAddressProps}
-        />
-        <RadioButtonText>{typeAddress}</RadioButtonText>
+        <ContainerRadioButton>
+          <RadioButtonInput
+            theme={theme as ThemeType}
+            type="radio"
+            checked={checked as boolean}
+            {...cardAddressProps}
+          />
+          <RadioButtonText>{typeAddress}</RadioButtonText>
+        </ContainerRadioButton>
+        {isEditable && (
+          <Icon>
+            <Edit size={26} onClick={onEdit} />
+          </Icon>
+        )}
       </RadioButtonLabel>
       <AddressDetails>
         <AddressLine>{address}</AddressLine>

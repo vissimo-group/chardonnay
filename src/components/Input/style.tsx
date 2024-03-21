@@ -22,7 +22,6 @@ const InputContainer = styled.div<InputProps>`
   position: relative;
   min-width: 1rem;
   height: 3.438rem;
-  margin-bottom: 20px;
   display: flex;
   align-items: center;
   border-radius: ${BorderRadius['3']};
@@ -54,7 +53,7 @@ const InputContainer = styled.div<InputProps>`
       }
     `}
 
-  ${({ disabled, theme }) =>
+  ${({ disabled, theme }: InputProps & CommomProps) =>
     disabled &&
     css`
       border-color: ${Colors[theme].neutral.neutral200} !important;
@@ -64,7 +63,7 @@ const InputContainer = styled.div<InputProps>`
       }
     `}
 
-  &:focus-within {
+    &:focus-within {
     border-color: ${({ theme }: CommomProps) =>
       Colors[theme].feedback.feedbackInfo100};
   }
@@ -80,6 +79,7 @@ const InputCustom = styled.input<InputProps>`
   background: none;
   outline: none;
   background-color: transparent;
+  width: 100%;
 
   &:focus ~ ${Label}, &:not(:focus):not(:placeholder-shown) ~ ${Label} {
     top: -0.02rem;
@@ -107,7 +107,7 @@ const InputCustom = styled.input<InputProps>`
     `}
 
   &:-webkit-autofill,
-  &:-webkit-autofill:focus {
+    &:-webkit-autofill:focus {
     transition: background-color 600000s 0s;
     background-color: transparent !important;
   }

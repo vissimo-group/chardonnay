@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 
 import { SidePanelMeasures } from '../../../contexts/SidePanel/type'
 
@@ -9,4 +9,8 @@ type SidePanelContentProps = {
   fullscreen?: boolean
 }
 
-export type { SidePanelContentProps }
+type SidePanelContentPropsDiv = {
+  className?: string
+} & React.HTMLAttributes<HTMLDivElement>
+
+export type { SidePanelContentProps, SidePanelContentPropsDiv }

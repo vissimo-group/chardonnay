@@ -32,6 +32,8 @@ const ContainerShipping = styled.div<ShippingAddressProps>`
   border-radius: 8px;
 
   color: ${(props: CommomProps) => Colors[props.theme].neutral.neutral500};
+  background-color: ${(props: CommomProps) =>
+    Colors[props.theme].neutral.neutral100};
 `
 
 const Title = styled.span`
