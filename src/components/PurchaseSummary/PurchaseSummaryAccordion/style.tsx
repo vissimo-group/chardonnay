@@ -70,6 +70,6 @@ export const AccordionItem = styled.li`
   }
 
   .itemValue {
-    color: #03A678;
+    color: ${Colors.light.action.action100};
   }
 `

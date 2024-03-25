@@ -1,6 +1,7 @@
 type PurchaseSummaryProps = {
   title?: string
   productsLabel: string
+  labelItensText: string
   deliveryValue?: string 
   totalitems: number
   productsPrice: number

@@ -23,6 +23,7 @@ const PurchaseSummary: React.FC<PurchaseSummaryProps> = ({
   productsLabel,
   deliveryValue,
   totalitems,
+  labelItensText,
   productsPrice,
   deliveryCost,
   totalDiscount,
@@ -30,12 +31,7 @@ const PurchaseSummary: React.FC<PurchaseSummaryProps> = ({
   installmentPayment,
   discounts,
 }) => {
-  const itemsTitleText = totalitems <= 1 ? 'item' : 'itens';
   const hasDiscounts = discounts && discounts.length > 0;
-
-  const formatPrice = (price: number): string => {
-    return `R$ ${price.toFixed(2).replace('.', ',')}`;
-  };
 
   return (
     <Container>
@@ -44,9 +40,9 @@ const PurchaseSummary: React.FC<PurchaseSummaryProps> = ({
         <ItemText>
           {productsLabel}
           <ItemsTitle>
-            ({totalitems} {itemsTitleText})
+            ({totalitems} {labelItensText})
           </ItemsTitle>
-          <ProductsPrice>{formatPrice(productsPrice)}</ProductsPrice>
+          <ProductsPrice>{productsPrice}</ProductsPrice>
         </ItemText>
       </ItemContainer>
 
@@ -54,7 +50,7 @@ const PurchaseSummary: React.FC<PurchaseSummaryProps> = ({
         <ItemContainer>
           <ItemText>
             {deliveryValue}
-            <DeliveryPrice >{formatPrice(deliveryCost)}</DeliveryPrice>
+            <DeliveryPrice >{deliveryCost}</DeliveryPrice>
           </ItemText>
         </ItemContainer> 
       )}
@@ -63,7 +59,7 @@ const PurchaseSummary: React.FC<PurchaseSummaryProps> = ({
         <ItemContainer>
           <PurchaseSummaryAccordion
             title="Total de descontos"
-            value={formatPrice(totalDiscount)}
+            value={totalDiscount}
             listDiscount={discounts}
           />
         </ItemContainer>
@@ -74,7 +70,7 @@ const PurchaseSummary: React.FC<PurchaseSummaryProps> = ({
       <Footer>
         <FooterTitle>Total</FooterTitle>
         <FooterItems>
-          <Total>R${totalPrice.toFixed(2).replace('.', ',')}</Total>
+          <Total>R${totalPrice}</Total>
           {installmentPayment && <PaymentInstallments>{installmentPayment}</PaymentInstallments>}
         </FooterItems>
       </Footer>
