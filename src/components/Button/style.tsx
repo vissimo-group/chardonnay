@@ -88,25 +88,4 @@ const ButtonOutlinedStyled = styled(ButtonBaseStyled)`
   }
 `
 
-const ButtonFeedbackStyled = styled(ButtonBaseStyled)`
-  background-color: transparent;
-  color: ${(props) => typeColors[props.$type].DEFAULT};
-  border: 2px solid ${(props) => typeColors[props.$type].DEFAULT};
-
-  &:hover:not(:disabled) {
-    color: ${(props) => typeColors[props.$type].HOVER};
-    border: 2px solid ${(props) => typeColors[props.$type].HOVER};
-  }
-
-  &:active:not(:disabled) {
-    color: ${(props) => typeColors[props.$type].ACTIVE};
-    border: 2px solid ${(props) => typeColors[props.$type].ACTIVE};
-  }
-`
-
-export {
-  ButtonStyled,
-  ButtonNotFilledStyled,
-  ButtonOutlinedStyled,
-  ButtonFeedbackStyled,
-}
+export { ButtonStyled, ButtonNotFilledStyled, ButtonOutlinedStyled }

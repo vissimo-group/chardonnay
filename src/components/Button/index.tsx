@@ -2,7 +2,6 @@ import {
   ButtonStyled,
   ButtonNotFilledStyled,
   ButtonOutlinedStyled,
-  ButtonFeedbackStyled,
 } from './style'
 import { ButtonProps } from './type'
 
@@ -48,17 +47,6 @@ const Button = ({
       >
         {children}
       </ButtonOutlinedStyled>
-    ),
-    FEEDBACK: (
-      <ButtonFeedbackStyled
-        $type={buttonType}
-        $fullWidth={fullWidth}
-        $large={large}
-        disabled={disabled}
-        {...props}
-      >
-        {children}
-      </ButtonFeedbackStyled>
     ),
   }
 
