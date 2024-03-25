@@ -1,13 +1,13 @@
 type PurchaseSummaryProps = {
-  title: string
+  title?: string
   productsLabel: string
-  deliveryValue: string
+  deliveryValue?: string 
   totalitems: number
   productsPrice: number
   deliveryCost: number
   totalDiscount: number
   totalPrice: number
-  installmentPayment: string
+  installmentPayment?: string 
   discounts: Array<DiscountItem>
 }
 
