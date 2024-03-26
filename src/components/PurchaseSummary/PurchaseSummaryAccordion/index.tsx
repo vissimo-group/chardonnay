@@ -1,16 +1,22 @@
 import { useState } from 'react'
 import { ChevronDown, ChevronUp } from 'semillon'
 import {
-  AccordionContainer,
-  AccordionHeader,
-  AccordionContent,
-  AccordionItem,
+  PurchaseSummaryAccordionAccordionContainer,
+  PurchaseSummaryAccordionAccordionHeader,
+  PurchaseSummaryAccordionAccordionContent,
+  PurchaseSummaryAccordionAccordionItem,
+  PurchaseSummaryAccordionPriceHeader,
+  PurchaseSummaryAccordionchevronIcon,
+  PurchaseSummaryAccordionItemValue,
+  PurchaseSummaryAccordionAccordionTitle,
+  PurchaseSummaryAccordionAccordionSpanTitle,
+  PurchaseSummaryAccordionAccordionUlItens,
 } from './style'
 import { PurchaseSummaryAccordionProps } from './type'
 
 export function PurchaseSummaryAccordion({
   title,
-  value,
+  total,
   listDiscount,
 }: PurchaseSummaryAccordionProps) {
   const [isOpen, setIsOpen] = useState(false)
@@ -20,31 +26,39 @@ export function PurchaseSummaryAccordion({
   }
 
   return (
-    <AccordionContainer>
-      <AccordionHeader onClick={toggleAccordion}>
-        <span>{title}</span>
-        <span className="chevronIcon">
+    <PurchaseSummaryAccordionAccordionContainer>
+      <PurchaseSummaryAccordionAccordionHeader onClick={toggleAccordion}>
+        <PurchaseSummaryAccordionAccordionSpanTitle>
+          {title}
+        </PurchaseSummaryAccordionAccordionSpanTitle>
+        <PurchaseSummaryAccordionchevronIcon>
           {isOpen ? (
             <ChevronDown size={16} color="#1C1C1C" />
           ) : (
             <ChevronUp size={16} color="#1C1C1C" />
           )}
-        </span>
-        <span className="priceHeader">-{value}</span>
-      </AccordionHeader>
+        </PurchaseSummaryAccordionchevronIcon>
+        <PurchaseSummaryAccordionPriceHeader>
+          {total}
+        </PurchaseSummaryAccordionPriceHeader>
+      </PurchaseSummaryAccordionAccordionHeader>
 
       {isOpen && listDiscount && listDiscount.length > 0 && (
-        <AccordionContent>
-          <ul>
+        <PurchaseSummaryAccordionAccordionContent>
+          <PurchaseSummaryAccordionAccordionUlItens>
             {listDiscount.map((item) => (
-              <AccordionItem key={item.id}>
-                <li>{item.title}</li>
-                <span className="itemValue">-R$ {item.value}</span>
-              </AccordionItem>
+              <PurchaseSummaryAccordionAccordionItem key={item.id}>
+                <PurchaseSummaryAccordionAccordionTitle>
+                  {item.title}
+                </PurchaseSummaryAccordionAccordionTitle>
+                <PurchaseSummaryAccordionItemValue>
+                  {item.price}
+                </PurchaseSummaryAccordionItemValue>
+              </PurchaseSummaryAccordionAccordionItem>
             ))}
-          </ul>
-        </AccordionContent>
+          </PurchaseSummaryAccordionAccordionUlItens>
+        </PurchaseSummaryAccordionAccordionContent>
       )}
-    </AccordionContainer>
+    </PurchaseSummaryAccordionAccordionContainer>
   )
 }

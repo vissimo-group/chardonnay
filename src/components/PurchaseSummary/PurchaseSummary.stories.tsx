@@ -76,12 +76,12 @@ export const Default: Story = {
       {
         id: 1,
         title: 'Cupom de desconto',
-        value: '31,00',
+        price: '31,00',
       },
       {
         id: 2,
         title: 'Cashback',
-        value: '11,50',
+        price: '11,50',
       },
     ],
   },

@@ -63,7 +63,7 @@ const PurchaseSummary: React.FC<PurchaseSummaryProps> = ({
         <PurchaseSummaryItemContainer>
           <PurchaseSummaryAccordion
             title="Total de descontos"
-            value={totalDiscount}
+            total={totalDiscount}
             listDiscount={discounts}
           />
         </PurchaseSummaryItemContainer>
