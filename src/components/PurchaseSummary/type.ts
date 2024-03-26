@@ -3,19 +3,19 @@ type PurchaseSummaryProps = {
   productsLabel: string
   labelItensText: string
   deliveryValue?: string
-  totalitems: number
+  totalItems: number
   productsPrice: number
   deliveryCost: number
   totalDiscount: number
   totalPrice: number
   installmentPayment?: string
-  discounts: Array<PurchaseSummaryDiscountItem>
+  discounts: Array<PurchaseSummaryDiscountItemProps>
 }
 
-type PurchaseSummaryDiscountItem = {
+type PurchaseSummaryDiscountItemProps = {
   id: number
   title: string
   price: string
 }
 
-export type { PurchaseSummaryProps, PurchaseSummaryDiscountItem }
+export type { PurchaseSummaryProps, PurchaseSummaryDiscountItemProps }

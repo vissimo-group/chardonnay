@@ -1,9 +1,9 @@
-import { PurchaseSummaryDiscountItem } from '../type'
+import { PurchaseSummaryDiscountItemProps } from '../type'
 
 type PurchaseSummaryAccordionProps = {
   title: string
   total: number | string
-  listDiscount?: Array<PurchaseSummaryDiscountItem>
+  listDiscount?: Array<PurchaseSummaryDiscountItemProps>
 }
 
 export type { PurchaseSummaryAccordionProps }

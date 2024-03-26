@@ -22,7 +22,7 @@ const PurchaseSummary: React.FC<PurchaseSummaryProps> = ({
   title,
   productsLabel,
   deliveryValue,
-  totalitems,
+  totalItems,
   labelItensText,
   productsPrice,
   deliveryCost,
@@ -40,7 +40,7 @@ const PurchaseSummary: React.FC<PurchaseSummaryProps> = ({
         <PurchaseSummaryItemText>
           {productsLabel}
           <PurchaseSummaryItemsTitle>
-            ({totalitems} {labelItensText})
+            ({totalItems} {labelItensText})
           </PurchaseSummaryItemsTitle>
           <PurchaseSummaryProductsPrice>
             {productsPrice}
@@ -74,7 +74,7 @@ const PurchaseSummary: React.FC<PurchaseSummaryProps> = ({
       <PurchaseSummaryFooter>
         <PurchaseSummaryFooterTitle>Total</PurchaseSummaryFooterTitle>
         <PurchaseSummaryFooterItems>
-          <PurchaseSummaryTotal>R${totalPrice}</PurchaseSummaryTotal>
+          <PurchaseSummaryTotal>{totalPrice}</PurchaseSummaryTotal>
           {installmentPayment && (
             <PurchaseSummaryPaymentInstallments>
               {installmentPayment}
