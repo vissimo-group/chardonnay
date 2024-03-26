@@ -1,19 +1,19 @@
 import React from 'react'
 import { PurchaseSummaryProps } from './type'
 import {
-  Container,
-  Title,
-  ItemContainer,
-  ItemText,
-  ProductsPrice,
-  DeliveryPrice,
-  ItemsTitle,
-  LineDivider,
-  Footer,
-  FooterItems,
-  FooterTitle,
-  PaymentInstallments,
-  Total,
+  PurchaseSummaryContainer,
+  PurchaseSummaryTitle,
+  PurchaseSummaryItemContainer,
+  PurchaseSummaryItemText,
+  PurchaseSummaryProductsPrice,
+  PurchaseSummaryDeliveryPrice,
+  PurchaseSummaryItemsTitle,
+  PurchaseSummaryLineDivider,
+  PurchaseSummaryFooter,
+  PurchaseSummaryFooterItems,
+  PurchaseSummaryFooterTitle,
+  PurchaseSummaryTotal,
+  PurchaseSummaryPaymentInstallments,
 } from './style'
 
 import { PurchaseSummaryAccordion } from './PurchaseSummaryAccordion/index'
@@ -31,50 +31,58 @@ const PurchaseSummary: React.FC<PurchaseSummaryProps> = ({
   installmentPayment,
   discounts,
 }) => {
-  const hasDiscounts = discounts && discounts.length > 0;
+  const hasDiscounts = discounts && discounts.length > 0
 
   return (
-    <Container>
-      {title && <Title>{title}</Title>}
-      <ItemContainer>
-        <ItemText>
+    <PurchaseSummaryContainer>
+      {title && <PurchaseSummaryTitle>{title}</PurchaseSummaryTitle>}
+      <PurchaseSummaryItemContainer>
+        <PurchaseSummaryItemText>
           {productsLabel}
-          <ItemsTitle>
+          <PurchaseSummaryItemsTitle>
             ({totalitems} {labelItensText})
-          </ItemsTitle>
-          <ProductsPrice>{productsPrice}</ProductsPrice>
-        </ItemText>
-      </ItemContainer>
+          </PurchaseSummaryItemsTitle>
+          <PurchaseSummaryProductsPrice>
+            {productsPrice}
+          </PurchaseSummaryProductsPrice>
+        </PurchaseSummaryItemText>
+      </PurchaseSummaryItemContainer>
 
       {deliveryValue && (
-        <ItemContainer>
-          <ItemText>
+        <PurchaseSummaryItemContainer>
+          <PurchaseSummaryItemText>
             {deliveryValue}
-            <DeliveryPrice >{deliveryCost}</DeliveryPrice>
-          </ItemText>
-        </ItemContainer> 
+            <PurchaseSummaryDeliveryPrice>
+              {deliveryCost}
+            </PurchaseSummaryDeliveryPrice>
+          </PurchaseSummaryItemText>
+        </PurchaseSummaryItemContainer>
       )}
-      
+
       {hasDiscounts && (
-        <ItemContainer>
+        <PurchaseSummaryItemContainer>
           <PurchaseSummaryAccordion
             title="Total de descontos"
             value={totalDiscount}
             listDiscount={discounts}
           />
-        </ItemContainer>
+        </PurchaseSummaryItemContainer>
       )}
 
-      <LineDivider />
+      <PurchaseSummaryLineDivider />
 
-      <Footer>
-        <FooterTitle>Total</FooterTitle>
-        <FooterItems>
-          <Total>R${totalPrice}</Total>
-          {installmentPayment && <PaymentInstallments>{installmentPayment}</PaymentInstallments>}
-        </FooterItems>
-      </Footer>
-    </Container>
+      <PurchaseSummaryFooter>
+        <PurchaseSummaryFooterTitle>Total</PurchaseSummaryFooterTitle>
+        <PurchaseSummaryFooterItems>
+          <PurchaseSummaryTotal>R${totalPrice}</PurchaseSummaryTotal>
+          {installmentPayment && (
+            <PurchaseSummaryPaymentInstallments>
+              {installmentPayment}
+            </PurchaseSummaryPaymentInstallments>
+          )}
+        </PurchaseSummaryFooterItems>
+      </PurchaseSummaryFooter>
+    </PurchaseSummaryContainer>
   )
 }
 

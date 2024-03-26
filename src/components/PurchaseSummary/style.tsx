@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Colors, mediaQueries, BorderRadius } from '../../tokens'
 
-export const Container = styled.div`
+const PurchaseSummaryContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${Colors.light.neutral.neutral100};
@@ -13,23 +13,24 @@ export const Container = styled.div`
   border-radius: ${BorderRadius[3]};
 
   @media screen and (max-width: ${mediaQueries.screenXxs}) {
-    p, span {
+    p,
+    span {
       font-size: 12px;
     }
   }
 `
 
-export const Title = styled.h1`
+const PurchaseSummaryTitle = styled.h1`
   font-size: 20px;
   margin: 0 0 16px 0;
   color: ${Colors.dark.neutral.neutral600};
 `
 
-export const ItemContainer = styled.div`
+const PurchaseSummaryItemContainer = styled.div`
   margin-bottom: 16px;
 `
 
-export const ItemText = styled.p`
+const PurchaseSummaryItemText = styled.p`
   display: flex;
   justify-content: space-between;
   margin: 0;
@@ -41,39 +42,38 @@ export const ItemText = styled.p`
   }
 `
 
-export const ProductsPrice = styled.span`
+const PurchaseSummaryProductsPrice = styled.span`
   font-size: 14px;
   color: ${Colors.light.neutral.neutral500};
 `
-export const DeliveryPrice = styled.span`
+const PurchaseSummaryDeliveryPrice = styled.span`
   font-size: 14px;
   color: ${Colors.light.neutral.neutral500};
 `
 
-export const LineDivider = styled.hr`
+const PurchaseSummaryLineDivider = styled.hr`
   border: 0;
   border-top: 1px solid ${Colors.light.neutral.neutral200};
   margin: 0 0 16px 0;
-
 `
 
-export const TotalContainer = styled.div`
+const PurchaseSummaryTotalContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
 `
 
-export const TotalText = styled.p`
+const PurchaseSummaryTotalText = styled.p`
   margin: 0;
 `
-export const ItemsTitle = styled.span`
+const PurchaseSummaryItemsTitle = styled.span`
   color: ${Colors.light.neutral.neutral500};
   font-weight: bold;
-  margin-right: auto;           
+  margin-right: auto;
   margin-left: 3px;
 `
 
-export const Footer = styled.div`
+const PurchaseSummaryFooter = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -86,19 +86,19 @@ export const Footer = styled.div`
   }
 `
 
-export const FooterTitle = styled.span`
+const PurchaseSummaryFooterTitle = styled.span`
   font-weight: bold;
   color: ${Colors.light.neutral.neutral500};
 `
 
-export const FooterItems = styled.div`
+const PurchaseSummaryFooterItems = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0;
   padding: 0;
 `
 
-export const Total = styled.span`
+const PurchaseSummaryTotal = styled.span`
   font-size: 16px;
   font-weight: bold;
   color: ${Colors.light.neutral.neutral500};
@@ -108,7 +108,7 @@ export const Total = styled.span`
     font-size: 12px;
   }
 `
-export const PaymentInstallments = styled.div`
+const PurchaseSummaryPaymentInstallments = styled.div`
   text-decoration: underline;
   text-underline-offset: 4px;
   color: ${Colors.light.neutral.neutral500};
@@ -117,3 +117,20 @@ export const PaymentInstallments = styled.div`
     font-size: 12px;
   }
 `
+export {
+  PurchaseSummaryContainer,
+  PurchaseSummaryTitle,
+  PurchaseSummaryItemContainer,
+  PurchaseSummaryItemText,
+  PurchaseSummaryProductsPrice,
+  PurchaseSummaryDeliveryPrice,
+  PurchaseSummaryLineDivider,
+  PurchaseSummaryTotalContainer,
+  PurchaseSummaryTotalText,
+  PurchaseSummaryItemsTitle,
+  PurchaseSummaryFooter,
+  PurchaseSummaryFooterTitle,
+  PurchaseSummaryFooterItems,
+  PurchaseSummaryTotal,
+  PurchaseSummaryPaymentInstallments,
+}
