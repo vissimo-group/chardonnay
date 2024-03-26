@@ -16,8 +16,6 @@ import {
   PurchaseSummaryPaymentInstallments,
 } from './style'
 
-import { PurchaseSummaryAccordion } from './PurchaseSummaryAccordion/index'
-
 const PurchaseSummary: React.FC<PurchaseSummaryProps> = ({
   title,
   productsLabel,
@@ -26,13 +24,10 @@ const PurchaseSummary: React.FC<PurchaseSummaryProps> = ({
   labelItensText,
   productsPrice,
   deliveryCost,
-  totalDiscount,
   totalPrice,
   installmentPayment,
-  discounts,
+  children,
 }) => {
-  const hasDiscounts = discounts && discounts.length > 0
-
   return (
     <PurchaseSummaryContainer>
       {title && <PurchaseSummaryTitle>{title}</PurchaseSummaryTitle>}
@@ -59,14 +54,8 @@ const PurchaseSummary: React.FC<PurchaseSummaryProps> = ({
         </PurchaseSummaryItemContainer>
       )}
 
-      {hasDiscounts && (
-        <PurchaseSummaryItemContainer>
-          <PurchaseSummaryAccordion
-            title="Total de descontos"
-            total={totalDiscount}
-            listDiscount={discounts}
-          />
-        </PurchaseSummaryItemContainer>
+      {children && (
+        <PurchaseSummaryItemContainer>{children}</PurchaseSummaryItemContainer>
       )}
 
       <PurchaseSummaryLineDivider />

@@ -10,6 +10,8 @@ type PurchaseSummaryProps = {
   totalPrice: number
   installmentPayment?: string
   discounts: Array<PurchaseSummaryDiscountItemProps>
+  children?: React.ReactNode
+  discountLabel: string
 }
 
 type PurchaseSummaryDiscountItemProps = {

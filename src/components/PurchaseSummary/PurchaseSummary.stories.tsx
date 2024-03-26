@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { PurchaseSummary } from './index'
 import { PurchaseSummaryProps } from './type'
+import { PurchaseSummaryAccordion } from './PurchaseSummaryAccordion'
 
 export default {
   title: 'Components/PurchaseSummary',
@@ -86,6 +87,7 @@ export const WithDiscounts: Story = {
     title: '',
     productsLabel: 'Valor dos produtos',
     deliveryValue: 'Valor da entrega',
+    discountLabel: 'Total de descontos',
     totalItems: 1,
     labelItensText: 'item',
     productsPrice: 178.6,
@@ -106,7 +108,15 @@ export const WithDiscounts: Story = {
       },
     ],
   },
-  render: (args) => <PurchaseSummary {...args} />,
+  render: (args) => (
+    <PurchaseSummary {...args}>
+      <PurchaseSummaryAccordion
+        title={args.discountLabel}
+        total={args.totalDiscount}
+        listDiscount={args.discounts}
+      />
+    </PurchaseSummary>
+  ),
 }
 
 export const WithoutDiscounts: Story = {
