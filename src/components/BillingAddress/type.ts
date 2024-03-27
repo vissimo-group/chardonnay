@@ -3,7 +3,6 @@ type BillingAddressProps = {
   address: string
   postcode: string
   complement: string
-  checked: boolean
   labelLink: string
 }
 

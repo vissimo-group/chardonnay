@@ -9,34 +9,24 @@ export default {
   argTypes: {
     address: {
       control: 'text',
+      description: 'Address of the billing',
     },
     postcode: {
       control: 'text',
+      description: 'Postcode of the billing',
     },
     complement: {
       control: 'text',
+      description: 'Complement of the billing',
     },
-    checked: {
-      control: 'boolean',
+    label: {
+      control: 'text',
+      description: 'Label of the component',
     },
   },
 } as Meta<BillingAddressProps>
 
 type Story = StoryObj<BillingAddressProps>
-
-export const BillingAddressNotChecked: Story = {
-  args: {
-    label: 'Endereço de cobrança',
-    address: 'Rua Bela Cintra, 986',
-    postcode: 'CEP 01415-000',
-    complement: '15° andar, Consolação, São Paulo - SP',
-    checked: false,
-    labelLink: 'Alterar',
-  },
-  render: function Render(args: BillingAddressProps) {
-    return <BillingAddress {...args} />
-  },
-}
 
 export const BillingAddressDefault: Story = {
   args: {
@@ -44,7 +34,6 @@ export const BillingAddressDefault: Story = {
     address: 'Rua Bela Cintra, 986',
     postcode: 'CEP 01415-000',
     complement: '15° andar, Consolação, São Paulo - SP',
-    checked: true,
     labelLink: 'Alterar',
   },
   render: function Render(args: BillingAddressProps) {
