@@ -33,9 +33,9 @@ export function PurchaseSummaryAccordion({
         </PurchaseSummaryAccordionAccordionSpanTitle>
         <PurchaseSummaryAccordionchevronIcon>
           {isOpen ? (
-            <ChevronDown size={16} color="#1C1C1C" />
-          ) : (
             <ChevronUp size={16} color="#1C1C1C" />
+          ) : (
+            <ChevronDown size={16} color="#1C1C1C" />
           )}
         </PurchaseSummaryAccordionchevronIcon>
         <PurchaseSummaryAccordionPriceHeader>
