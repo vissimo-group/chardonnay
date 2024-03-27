@@ -69,6 +69,7 @@ const Colors: ThemeColors = {
       neutral300: '#B8B8B8',
       neutral400: '#707070',
       neutral500: '#292929',
+      neutral600: '#000000',
     },
     action: {
       action100: '#3AD883',
