@@ -6,7 +6,7 @@ const meta: Meta<typeof Button> = {
   component: Button,
   tags: ['autodocs'],
   argTypes: {
-    type: {
+    buttonType: {
       control: {
         type: 'select',
       },
@@ -111,7 +111,7 @@ const checkIcon = (
 export const Filled: Story = {
   args: {
     variant: 'FILLED',
-    type: 'PRIMARY',
+    buttonType: 'PRIMARY',
     fullWidth: true,
     large: false,
     disabled: false,
@@ -127,7 +127,7 @@ export const Filled: Story = {
 export const FilledDestructive: Story = {
   args: {
     variant: 'FILLED',
-    type: 'DESTRUCTIVE',
+    buttonType: 'DESTRUCTIVE',
     fullWidth: true,
     large: false,
   },
@@ -140,7 +140,12 @@ export const FilledDestructive: Story = {
 }
 
 export const Outlined: Story = {
-  args: { variant: 'OUTLINED', type: 'PRIMARY', fullWidth: true, large: false },
+  args: {
+    variant: 'OUTLINED',
+    buttonType: 'PRIMARY',
+    fullWidth: true,
+    large: false,
+  },
   render: (args) => (
     <Button {...args}>
       {addIcon(Colors.light.action.action100)}
@@ -152,7 +157,7 @@ export const Outlined: Story = {
 export const OutlinedDestructive: Story = {
   args: {
     variant: 'OUTLINED',
-    type: 'DESTRUCTIVE',
+    buttonType: 'DESTRUCTIVE',
     fullWidth: true,
     large: false,
   },
@@ -167,7 +172,7 @@ export const OutlinedDestructive: Story = {
 export const NotFilled: Story = {
   args: {
     variant: 'NOT_FILLED',
-    type: 'PRIMARY',
+    buttonType: 'PRIMARY',
     fullWidth: true,
     large: false,
   },
@@ -182,7 +187,7 @@ export const NotFilled: Story = {
 export const NotFilledDestructive: Story = {
   args: {
     variant: 'NOT_FILLED',
-    type: 'DESTRUCTIVE',
+    buttonType: 'DESTRUCTIVE',
     fullWidth: true,
     large: false,
   },
@@ -195,12 +200,22 @@ export const NotFilledDestructive: Story = {
 }
 
 export const WithAnimatedIcon: Story = {
-  args: { variant: 'FILLED', type: 'PRIMARY', fullWidth: true, large: false },
+  args: {
+    variant: 'FILLED',
+    buttonType: 'PRIMARY',
+    fullWidth: true,
+    large: false,
+  },
   render: (args) => <Button {...args}>{loadingIcon}</Button>,
 }
 
 export const Large: Story = {
-  args: { variant: 'FILLED', type: 'PRIMARY', fullWidth: true, large: true },
+  args: {
+    variant: 'FILLED',
+    buttonType: 'PRIMARY',
+    fullWidth: true,
+    large: true,
+  },
   render: (args) => (
     <Button {...args}>
       {addIcon()}
@@ -210,7 +225,12 @@ export const Large: Story = {
 }
 
 export const LargeOutlined: Story = {
-  args: { variant: 'OUTLINED', type: 'PRIMARY', fullWidth: true, large: true },
+  args: {
+    variant: 'OUTLINED',
+    buttonType: 'PRIMARY',
+    fullWidth: true,
+    large: true,
+  },
   render: (args) => (
     <Button {...args}>
       {addIcon(Colors.light.action.action100)}
@@ -222,7 +242,7 @@ export const LargeOutlined: Story = {
 export const LargeNotFilled: Story = {
   args: {
     variant: 'NOT_FILLED',
-    type: 'PRIMARY',
+    buttonType: 'PRIMARY',
     fullWidth: true,
     large: true,
   },
@@ -237,7 +257,7 @@ export const LargeNotFilled: Story = {
 export const Disabled: Story = {
   args: {
     variant: 'FILLED',
-    type: 'PRIMARY',
+    buttonType: 'PRIMARY',
     fullWidth: true,
     large: false,
     disabled: true,
@@ -253,7 +273,7 @@ export const Disabled: Story = {
 export const Feedback: Story = {
   args: {
     variant: 'OUTLINED',
-    type: 'FEEDBACK',
+    buttonType: 'FEEDBACK',
     fullWidth: true,
     large: false,
   },
@@ -266,7 +286,7 @@ export const Feedback: Story = {
 }
 
 export const NotFullWidth: Story = {
-  args: { variant: 'FILLED', type: 'PRIMARY', fullWidth: false },
+  args: { variant: 'FILLED', buttonType: 'PRIMARY', fullWidth: false },
   render: (args) => (
     <Button {...args}>
       {addIcon()}
@@ -276,7 +296,12 @@ export const NotFullWidth: Story = {
 }
 
 export const NotFullWidthLarge: Story = {
-  args: { variant: 'FILLED', type: 'PRIMARY', fullWidth: false, large: true },
+  args: {
+    variant: 'FILLED',
+    buttonType: 'PRIMARY',
+    fullWidth: false,
+    large: true,
+  },
   render: (args) => (
     <Button {...args}>
       {addIcon()}

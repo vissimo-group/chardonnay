@@ -6,7 +6,7 @@ type ButtonProps = {
   children: React.ReactNode
   variant?: ButtonVariant
   fullWidth?: boolean
-  type?: ButtonType
+  buttonType?: ButtonType
   large?: boolean
   disabled?: boolean
 } & React.HTMLAttributes<HTMLButtonElement>

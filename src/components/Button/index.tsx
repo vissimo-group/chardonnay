@@ -2,23 +2,22 @@ import {
   ButtonStyled,
   ButtonNotFilledStyled,
   ButtonOutlinedStyled,
-  ButtonFeedbackStyled,
 } from './style'
 import { ButtonProps } from './type'
 
 const Button = ({
   children,
   variant = 'FILLED',
-  type = 'PRIMARY',
+  buttonType = 'PRIMARY',
   fullWidth = false,
   disabled = false,
   large = false,
   ...props
 }: ButtonProps) => {
-  const buttonType = {
+  const buttonVariants = {
     FILLED: (
       <ButtonStyled
-        $type={type}
+        $type={buttonType}
         $fullWidth={fullWidth}
         $large={large}
         disabled={disabled}
@@ -29,7 +28,7 @@ const Button = ({
     ),
     NOT_FILLED: (
       <ButtonNotFilledStyled
-        $type={type}
+        $type={buttonType}
         $fullWidth={fullWidth}
         $large={large}
         disabled={disabled}
@@ -40,7 +39,7 @@ const Button = ({
     ),
     OUTLINED: (
       <ButtonOutlinedStyled
-        $type={type}
+        $type={buttonType}
         $fullWidth={fullWidth}
         $large={large}
         disabled={disabled}
@@ -49,20 +48,9 @@ const Button = ({
         {children}
       </ButtonOutlinedStyled>
     ),
-    FEEDBACK: (
-      <ButtonFeedbackStyled
-        $type={type}
-        $fullWidth={fullWidth}
-        $large={large}
-        disabled={disabled}
-        {...props}
-      >
-        {children}
-      </ButtonFeedbackStyled>
-    ),
   }
 
-  return buttonType[variant]
+  return buttonVariants[variant]
 }
 
 export { Button }
