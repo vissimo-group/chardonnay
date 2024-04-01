@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
-const RadioTagLabelStyled = styled.label<{ width?: string }>`
+const RadioTagLabelStyled = styled.label<{ width?: string; fontSize?: string }>`
+  font-size: ${(props) => (props.fontSize ? props.fontSize : '1rem')};
   width: ${(props) => (props.width ? props.width : 'fit-content')};
   display: flex;
   align-items: center;

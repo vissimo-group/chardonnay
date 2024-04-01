@@ -7,7 +7,10 @@ const meta: Meta<typeof RadioTagContainer> = {
   component: RadioTagContainer,
   tags: ['autodocs'],
   argTypes: {
-    width: { control: 'text' },
+    width: {
+      control: 'text',
+      description: 'Container width. If no value was set, fit-content.',
+    },
   },
 }
 
