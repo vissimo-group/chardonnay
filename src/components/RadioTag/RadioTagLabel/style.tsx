@@ -21,10 +21,8 @@ const RadioTagLabelStyled = styled.label<{ width?: string; fontSize?: string }>`
     color: ${(props) => props.theme.colors.action.action100};
   }
 
-  // TODO: ADJUST DISABLED STATE
   input[type='radio']:disabled + & {
     cursor: not-allowed;
-    border: 1px solid red;
   }
 
   &:not(:disabled) {
