@@ -1,5 +1,5 @@
 import { PaymentMethodsContainerStyled } from './style'
-import { PaymentMethodsContainerProps } from '../PaymentMethodsContainer/type'
+import { PaymentMethodsContainerProps } from './type'
 
 const PaymentMethodsLabel = ({
   children,

@@ -9,6 +9,11 @@ const PaymentMethodsContainerStyled = styled.label`
   gap: 0.5rem;
   align-items: center;
   cursor: pointer;
+  width: 100%;
+
+  .new-card-label {
+    color: ${Colors.light.neutral.neutral400};
+  }
 `
 
 export { PaymentMethodsContainerStyled }
