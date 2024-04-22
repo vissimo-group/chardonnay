@@ -1,8 +1,15 @@
-type PaymentMethodsContainerProps = {
+import React from 'react'
+
+type PaymentMethodsProps = {
   children: React.ReactNode
-  icon: React.ReactNode
-  installment?: string
-  link?: string
+  title: string
+  paymentData: {
+    id: number
+    icon: React.ReactNode
+    label: string
+    installment?: string
+    isNewCard?: boolean
+  }[]
 }
 
-export type { PaymentMethodsContainerProps }
+export type { PaymentMethodsProps }

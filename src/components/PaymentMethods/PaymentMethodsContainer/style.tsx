@@ -1,59 +1,122 @@
 import styled from 'styled-components'
-import { Colors, BorderRadius } from '../../../tokens'
+import { Colors, BorderRadius, mediaQueries } from '../../../tokens'
 
-const PaymentMethodsContainerStyled = styled.div`
+const ContainerCard = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  max-width: 53rem;
+  gap: 1.5rem;
   background-color: ${Colors.light.neutral.neutral100};
-  padding: 0 1rem 1rem 1rem;
+  padding: 1.1875rem;
   border-radius: ${BorderRadius[3]};
-  border: 0.063rem solid ${Colors.light.neutral.neutral200};
+  border: 1px solid ${Colors.light.neutral.neutral200};
+
+  color: ${Colors.light.neutral.neutral500};
 `
 
-const PaymentMethodsContainerChildren = styled.div`
+const ContainerCardTitle = styled.h1`
+  font-size: 1rem;
+  font-weight: 600;
+  color: ${Colors.light.neutral.neutral500};
+  margin-bottom: 0.5rem;
+`
+
+const PaymentContainer = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
   justify-content: space-between;
+
+  font-size: 1.5rem;
+  background-color: ${Colors.light.neutral.neutral100};
+  border: none;
 `
 
-const PaymentMethodsContainerItems = styled.div`
+const PaymentContainerItems = styled.button`
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
+  align-items: center;
   justify-content: space-between;
-  margin: 1rem 0 1rem 0;
+  width: 100%;
+  background-color: ${Colors.light.neutral.neutral100};
+  border: none;
+  cursor: pointer;
 `
 
-const PaymentMethodsContainerTitle = styled.h2`
-  font-size: 1.125rem;
-  font-weight: 500;
+const PaymentContainerInstallmentsLink = styled.span`
   color: ${Colors.light.neutral.neutral500};
+  font-weight: 200;
 `
 
-const PaymentMethodsContainerNewCreditCard = styled.span`
-  color: ${Colors.light.neutral.neutral400};
-  font-size: 1rem;
+const PaymentContainerInstallment = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-right: 1.5rem;
+
+  @media screen and (max-width: ${mediaQueries.screenXs}) {
+    display: flex;
+    margin-top: 6rem;
+    position: absolute;
+    left: 2.75rem;
+    width: 20.25rem;
+    justify-content: space-between;
+  }
+
+  @media screen and (max-width: ${mediaQueries.screenXxs}) {
+    display: flex;
+    margin-top: 7.625rem;
+    position: absolute;
+    left: 2.75rem;
+    width: 11.1875rem;
+    justify-content: flex-start;
+    gap: 0.0625rem;
+  }
+
+  span {
+    font-size: 0.875rem;
+  }
+
+  a {
+    text-decoration: underline;
+    text-underline-offset: 0.25rem;
+    color: ${Colors.light.neutral.neutral500};
+    font-weight: bold;
+    font-size: 0.875rem;
+  }
 `
 
-const PaymentMethodsContainerInstallment = styled.div``
+const LineDivisor = styled.hr<{
+  $installment?: string
+}>`
+  width: 100%;
+  background-color: ${Colors.light.neutral.neutral200};
+  height: 1px;
+  border: none;
 
-const PaymmentMethodsContainerSpan = styled.span`
-  color: ${Colors.light.neutral.neutral500};
+  @media screen and (max-width: ${mediaQueries.screenXs}) {
+    margin-top: ${(props) => (props.$installment ? '3.5rem' : '0.625rem')};
+  }
+
+  @media screen and (max-width: ${mediaQueries.screenXxs}) {
+    margin-top: ${(props) => (props.$installment ? '4.375rem' : '0.625rem')};
+  }
 `
 
-const PaymentMethodsContainerLink = styled.a`
-  color: ${Colors.light.neutral.neutral500};
-  font-weight: bold;
+const PaymentContainerInstallmentItems = styled.div`
+  font-size: 0.875rem;
 `
 
 export {
-  PaymentMethodsContainerStyled,
-  PaymentMethodsContainerChildren,
-  PaymentMethodsContainerItems,
-  PaymentMethodsContainerTitle,
-  PaymentMethodsContainerNewCreditCard,
-  PaymentMethodsContainerInstallment,
-  PaymmentMethodsContainerSpan,
-  PaymentMethodsContainerLink,
+  ContainerCard,
+  ContainerCardTitle,
+  PaymentContainer,
+  PaymentContainerItems,
+  PaymentContainerInstallment,
+  PaymentContainerInstallmentItems,
+  PaymentContainerInstallmentsLink,
+  LineDivisor,
 }
