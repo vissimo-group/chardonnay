@@ -21,7 +21,7 @@ const PaymentMethodInputStyled = styled.input.attrs({ type: 'checkbox' })`
   &:before {
     content: '';
     position: absolute;
-    padding: 4px;
+    padding: 0.25rem;
     background-color: ${Colors.light.action.action100};
     border-radius: 50%;
     opacity: 0;
