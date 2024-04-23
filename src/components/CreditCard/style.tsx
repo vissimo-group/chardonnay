@@ -7,7 +7,7 @@ const CardContainer = styled.div<{
 }>`
   max-width: 267px;
   width: 100%;
-  height: 165px;
+  height: 150px;
   background-color: ${(props) =>
     props.$backgroundCardColor || Colors.light.action.action500};
   border-radius: 10px;
