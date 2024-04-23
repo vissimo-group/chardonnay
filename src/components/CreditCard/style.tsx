@@ -24,7 +24,9 @@ const CardContainer = styled.div<{
   box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.75);
 `
 
-const CardContainerFront = styled.div``
+const CardContainerFront = styled.div`
+  overflow: hidden;
+`
 
 const CardContainerHeader = styled.div`
   display: flex;

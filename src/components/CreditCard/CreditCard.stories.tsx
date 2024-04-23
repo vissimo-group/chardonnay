@@ -29,9 +29,7 @@ export default {
   },
   decorators: [
     (Story) => (
-      <div
-        style={{ padding: '16px', backgroundColor: '#FFF', height: '390px' }}
-      >
+      <div>
         <Story />
       </div>
     ),
