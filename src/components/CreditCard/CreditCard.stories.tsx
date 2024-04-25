@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { Alemanha, Argentina } from 'semillon'
+import { Hipercard, Dinersclub } from 'semillon'
 import { CreditCard } from './index'
 import { CreditCardProps } from './type'
 
@@ -22,7 +22,8 @@ export default {
     },
     cardNumber: {
       control: 'text',
-      description: 'Card number',
+      description:
+        'Card number is the value that is passed to display the users card number, by default if nothing is passed it will display ***',
     },
     cardNumberColor: {
       control: 'color',
@@ -31,29 +32,31 @@ export default {
     isFlipped: {
       control: 'boolean',
       description:
-        'Value to control the front and back of the card to be displayed',
+        'Value to control the front and back of the card to be displayed, by default its value is false, which means that if the property is not passed it will receive false.',
     },
     cardBanner: {
-      control: 'object',
-      description: 'Banner displayed on the card',
-      label: {
-        options: ['Alemanha', 'Argentina'],
-        mapping: {
-          Alemanha: {
-            title: '<Alemanha />',
-            size: '24',
-          },
-          Argentina: {
-            title: '<Argentina />',
-            size: '24',
-          },
-        },
+      control: {
+        type: 'select',
+      },
+      description:
+        'cardBanner is displayed in the top left corner, it represents the users card flag.',
+      options: ['cardBanner', 'logoCard'],
+      mapping: {
+        cardBanner: <Hipercard size={24} color="#FF0000" />,
+        logoCard: <Dinersclub size={24} color="#000" />,
       },
     },
-    children: {
-      control: '',
+    logoCard: {
+      control: {
+        type: 'select',
+      },
       description:
-        'HTML element that can be inserted within the context in which it is available',
+        'LogoCard refers to the logo displayed on the top right side of the card, if no value is entered, nothing will be displayed.',
+      options: ['logoCard', 'cardBanner'],
+      mapping: {
+        logoCard: <Hipercard size={24} color="#FF0000" />,
+        cardBanner: <Dinersclub size={24} color="#000" />,
+      },
     },
   },
   decorators: [
@@ -67,15 +70,14 @@ export default {
 
 type Story = StoryObj<CreditCardProps>
 
-export const FrontCreditCard: Story = {
-  name: 'FrontCreditCard',
+export const WithCardData: Story = {
   args: {
     name: 'Jhon Smith',
     nameColor: '#FFFFFF',
     date: '05/27',
     isFlipped: false,
-    CardBanner: <Alemanha size={24} />,
-    logoCard: <Argentina size={24} />,
+    cardBanner: <Hipercard size={24} color="#000" />,
+    logoCard: <Dinersclub size={24} color="#000" />,
     backgroundCardColor: '#866EAF',
     cardNumber: '5114 7706 9586 0783',
     cardNumberColor: '#FFFFFF',
@@ -84,19 +86,30 @@ export const FrontCreditCard: Story = {
 }
 
 export const BackCreditCard: Story = {
-  name: 'BackCreditCard',
   args: {
     isFlipped: true,
-    backgroundCardColor: '#866EAF',
+  },
+  render: (args) => <CreditCard {...args} />,
+}
+
+export const WithCustomBackgroundColor: Story = {
+  args: {
+    backgroundCardColor: '#000',
+  },
+  render: (args) => <CreditCard {...args} />,
+}
+
+export const WithBanners: Story = {
+  args: {
+    cardBanner: <Hipercard size={24} color="#000" />,
+    logoCard: <Dinersclub size={24} color="#000" />,
   },
   render: (args) => <CreditCard {...args} />,
 }
 
 export const NewCreditCard: Story = {
-  name: 'NewCreditCard',
   args: {
     isFlipped: false,
-    cardNumber: '**** **** **** ****',
   },
   render: (args) => <CreditCard {...args} />,
 }

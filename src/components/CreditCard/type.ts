@@ -3,11 +3,9 @@ type CreditCardProps = {
   nameColor: string
   date?: string
   isFlipped?: boolean
-  CardBanner?: React.ReactNode
+  cardBanner?: React.ReactNode
   logoCard?: React.ReactNode
   backgroundCardColor?: string
-  children: React.ReactNode
-  newCreditCard?: boolean
   cardNumber?: string
   cardNumberColor?: string
 }
