@@ -11,7 +11,7 @@ const CardContainer = styled.div<{
   background-color: ${(props) =>
     props.$backgroundCardColor || Colors.light.action.action500};
   border-radius: 10px;
-  padding: 16px 16px 39px 16px;
+  padding: 16px;
   position: relative;
   overflow: hidden;
 
@@ -29,10 +29,11 @@ const CardContainer = styled.div<{
     width: 250px;
     border-radius: 100% 100% 100% 100% / 100% 100% 100% 100%;
     background-color: hsl(0, 0%, 100%, 0.15);
-    top: 55px;
-    left: 120px;
+    top: 50px;
+    left: 137px;
     bottom: 140px;
     display: ${(props) => (props.$isFlipped ? 'none' : 'block')};
+    transform: rotate(-35deg);
   }
 `
 
@@ -59,7 +60,7 @@ const CardContainerContentText = styled.div<{
 }>`
   color: ${(props) =>
     props.$cardNumberColor || Colors.light.neutral.neutral600};
-  font-size: 14px;
+  font-size: 16px;
 `
 
 const CardContainerFooter = styled.div<{
@@ -75,7 +76,7 @@ const CardContainerFooter = styled.div<{
 const CardContainerFooterSpan = styled.span`
   font-size: 14px;
   font-weight: 400;
-  /*  margin-top: 15px; */
+  margin-top: 10px;
 `
 
 const CardContainerHeaderitems = styled.div`
