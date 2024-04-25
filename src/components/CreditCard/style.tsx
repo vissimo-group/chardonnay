@@ -3,7 +3,7 @@ import { Colors } from '../../tokens'
 
 const CardContainer = styled.div<{
   $backgroundCardColor?: string
-  $newCreditCard?: boolean
+  $isFlipped?: boolean
 }>`
   max-width: 267px;
   width: 100%;
@@ -11,17 +11,29 @@ const CardContainer = styled.div<{
   background-color: ${(props) =>
     props.$backgroundCardColor || Colors.light.action.action500};
   border-radius: 10px;
+  padding: 16px 16px 39px 16px;
+  position: relative;
+  overflow: hidden;
 
   display: flex;
   flex-direction: column;
-  color: ${(props) =>
-    props.$newCreditCard
-      ? Colors.dark.neutral.neutral400
-      : Colors.light.neutral.neutral100};
 
   -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.75);
+
+  &:before {
+    content: '';
+    position: absolute;
+    height: 300px;
+    width: 250px;
+    border-radius: 100% 100% 100% 100% / 100% 100% 100% 100%;
+    background-color: hsl(0, 0%, 100%, 0.15);
+    top: 55px;
+    left: 120px;
+    bottom: 140px;
+    display: ${(props) => (props.$isFlipped ? 'none' : 'block')};
+  }
 `
 
 const CardContainerFront = styled.div`
@@ -33,50 +45,37 @@ const CardContainerHeader = styled.div`
   flex-direction: row;
   justify-content: space-between;
   position: relative;
-  padding: 16px 16px 0 16px;
-
-  &:before {
-    content: '';
-    position: absolute;
-    height: 300px;
-    width: 250px;
-    border-radius: 100% 100% 100% 100% / 100% 100% 100% 100%;
-    background-color: hsl(0, 0%, 100%, 0.15);
-    top: 55px;
-    left: 107px;
-    bottom: 140px;
-  }
+  padding: 0 0 33px 0;
 `
 
 const CardContainerContent = styled.div`
   display: flex;
   text-align: center;
   justify-content: center;
-  margin-top: 20px;
 `
 
 const CardContainerContentText = styled.div<{
-  $newCreditCard?: boolean
+  $cardNumberColor?: string
 }>`
   color: ${(props) =>
-    props.$newCreditCard
-      ? Colors.dark.neutral.neutral400
-      : Colors.light.neutral.neutral100};
+    props.$cardNumberColor || Colors.light.neutral.neutral600};
   font-size: 14px;
 `
 
-const CardContainerFooter = styled.div`
+const CardContainerFooter = styled.div<{
+  $nameColor?: string
+}>`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 16px 24px 16px;
+  color: ${(props) => props.$nameColor};
 `
 
 const CardContainerFooterSpan = styled.span`
   font-size: 14px;
   font-weight: 400;
-  margin-top: 15px;
+  /*  margin-top: 15px; */
 `
 
 const CardContainerHeaderitems = styled.div`
@@ -91,7 +90,8 @@ const CardContainerHeaderBlackLine = styled.div`
   padding: 0px;
   margin-top: 24px;
   background-color: ${Colors.dark.neutral.neutral600};
-  width: 100%;
+  width: 267px;
+  margin-left: -16px;
   height: 32px;
   position: relative;
 

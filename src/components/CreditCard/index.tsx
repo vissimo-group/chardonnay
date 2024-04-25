@@ -14,19 +14,20 @@ import {
 import { CreditCardProps } from './type'
 
 const CreditCard = ({
-  name,
-  date,
+  name = 'Nome Completo',
+  nameColor = '#707070',
+  cardNumber,
+  cardNumberColor = '#707070',
+  date = 'MM/AA',
   isFlipped,
   CardBanner,
   logoCard,
-  backgroundCardColor,
-  children,
-  newCreditCard,
+  backgroundCardColor = '#969696',
 }: CreditCardProps) => {
   return (
     <CardContainer
       $backgroundCardColor={backgroundCardColor}
-      $newCreditCard={newCreditCard}
+      $isFlipped={isFlipped}
     >
       {isFlipped ? (
         <CardContainerHeaderitems>
@@ -45,12 +46,12 @@ const CreditCard = ({
           </CardContainerHeader>
 
           <CardContainerContent>
-            <CardContainerContentText $newCreditCard={newCreditCard}>
-              {children}
+            <CardContainerContentText $cardNumberColor={cardNumberColor}>
+              {cardNumber}
             </CardContainerContentText>
           </CardContainerContent>
 
-          <CardContainerFooter>
+          <CardContainerFooter $nameColor={nameColor}>
             <CardContainerFooterSpan>{name}</CardContainerFooterSpan>
             <CardContainerFooterSpan>{date}</CardContainerFooterSpan>
           </CardContainerFooter>
