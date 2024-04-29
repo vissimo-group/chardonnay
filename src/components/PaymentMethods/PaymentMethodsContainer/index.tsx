@@ -8,53 +8,47 @@ import {
   PaymentContainerInstallment,
   PaymentContainerInstallmentItems,
   PaymentContainerInstallmentsLink,
+  LineDivisorContainer,
   LineDivisor,
 } from './style'
 import { PaymentMethodsProps } from './type'
 
 const PaymentMethods = ({
-  title,
+  title = 'Cartão de crédito',
   children,
-  paymentData,
+  id,
+  icon,
+  label = 'Novo Cartão de crédito',
+  labelColor = '#585757',
+  installment,
 }: PaymentMethodsProps) => {
   return (
     <div>
       {title && <ContainerCardTitle>{title}</ContainerCardTitle>}
       <ContainerCard>
-        {paymentData.map(
-          (
-            { id, icon, label, installment: itemInstallment, isNewCard },
-            index,
-          ) => (
-            <PaymentContainer key={id}>
-              <PaymentContainerItems>
-                <PaymentLabel icon={icon}>
-                  {isNewCard ? (
-                    <span className="new-card-label">{label}</span>
-                  ) : (
-                    label
-                  )}
-                </PaymentLabel>
-                {itemInstallment && (
-                  <PaymentContainerInstallment>
-                    <PaymentContainerInstallmentItems>
-                      <span>{itemInstallment}</span>
-                    </PaymentContainerInstallmentItems>
-                    <PaymentContainerInstallmentItems>
-                      <PaymentContainerInstallmentsLink>
-                        {children}
-                      </PaymentContainerInstallmentsLink>
-                    </PaymentContainerInstallmentItems>
-                  </PaymentContainerInstallment>
-                )}
-                <PaymentInput />
-              </PaymentContainerItems>
-              {index !== paymentData.length - 1 && (
-                <LineDivisor $installment={itemInstallment} />
-              )}
-            </PaymentContainer>
-          ),
-        )}
+        <PaymentContainer key={id}>
+          <PaymentContainerItems>
+            <PaymentLabel icon={icon} labelColor={labelColor}>
+              {label}
+            </PaymentLabel>
+            {installment && (
+              <PaymentContainerInstallment>
+                <PaymentContainerInstallmentItems>
+                  <span>{installment}</span>
+                </PaymentContainerInstallmentItems>
+                <PaymentContainerInstallmentItems>
+                  <PaymentContainerInstallmentsLink>
+                    {children}
+                  </PaymentContainerInstallmentsLink>
+                </PaymentContainerInstallmentItems>
+              </PaymentContainerInstallment>
+            )}
+            <PaymentInput />
+          </PaymentContainerItems>
+          <LineDivisorContainer>
+            <LineDivisor $installment={installment} />
+          </LineDivisorContainer>
+        </PaymentContainer>
       </ContainerCard>
     </div>
   )

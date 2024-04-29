@@ -32,6 +32,13 @@ const PaymentContainer = styled.div`
   background-color: ${Colors.light.neutral.neutral100};
   border: none;
 `
+const LineDivisorContainer = styled.div`
+  &:last-child {
+    hr {
+      display: none;
+    }
+  }
+`
 
 const PaymentContainerItems = styled.button`
   display: flex;
@@ -108,6 +115,7 @@ const LineDivisor = styled.hr<{
 
 const PaymentContainerInstallmentItems = styled.div`
   font-size: 0.875rem;
+  cursor: text;
 `
 
 export {
@@ -118,5 +126,6 @@ export {
   PaymentContainerInstallment,
   PaymentContainerInstallmentItems,
   PaymentContainerInstallmentsLink,
+  LineDivisorContainer,
   LineDivisor,
 }
