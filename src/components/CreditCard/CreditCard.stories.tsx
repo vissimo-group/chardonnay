@@ -12,9 +12,10 @@ export default {
       control: 'text',
       description: 'Name of card holder',
     },
-    nameColor: {
+    textColor: {
       control: 'color',
-      description: 'Color of card holder name',
+      description:
+        'Property to set the color of the card texts, by default its value is #707070',
     },
     date: {
       control: 'text',
@@ -24,10 +25,6 @@ export default {
       control: 'text',
       description:
         'Card number is the value that is passed to display the users card number, by default if nothing is passed it will display ***',
-    },
-    cardNumberColor: {
-      control: 'color',
-      description: 'Color of card number',
     },
     isFlipped: {
       control: 'boolean',
@@ -73,14 +70,13 @@ type Story = StoryObj<CreditCardProps>
 export const WithCardData: Story = {
   args: {
     name: 'Jhon Smith',
-    nameColor: '#FFFFFF',
+    textColor: '#FFFFFF',
     date: '05/27',
     isFlipped: false,
     cardBanner: <Hipercard size={24} color="#000" />,
     logoCard: <Dinersclub size={24} color="#000" />,
     backgroundCardColor: '#866EAF',
     cardNumber: '5114 7706 9586 0783',
-    cardNumberColor: '#FFFFFF',
   },
   render: (args) => <CreditCard {...args} />,
 }

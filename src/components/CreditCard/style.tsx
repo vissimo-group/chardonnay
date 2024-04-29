@@ -56,21 +56,20 @@ const CardContainerContent = styled.div`
 `
 
 const CardContainerContentText = styled.div<{
-  $cardNumberColor?: string
+  $textColor?: string
 }>`
-  color: ${(props) =>
-    props.$cardNumberColor || Colors.light.neutral.neutral600};
+  color: ${(props) => props.$textColor || Colors.light.neutral.neutral600};
   font-size: 16px;
 `
 
 const CardContainerFooter = styled.div<{
-  $nameColor?: string
+  $textColor?: string
 }>`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  color: ${(props) => props.$nameColor};
+  color: ${(props) => props.$textColor || Colors.light.neutral.neutral100};
 `
 
 const CardContainerFooterSpan = styled.span`

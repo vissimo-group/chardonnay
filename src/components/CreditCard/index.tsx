@@ -15,9 +15,8 @@ import { CreditCardProps } from './type'
 
 const CreditCard = ({
   name = 'Nome Completo',
-  nameColor = '#707070',
+  textColor = '#707070',
   cardNumber = '**** **** **** ****',
-  cardNumberColor = '#707070',
   date = 'MM/AA',
   isFlipped = false,
   cardBanner,
@@ -46,12 +45,12 @@ const CreditCard = ({
           </CardContainerHeader>
 
           <CardContainerContent>
-            <CardContainerContentText $cardNumberColor={cardNumberColor}>
+            <CardContainerContentText $textColor={textColor}>
               {cardNumber}
             </CardContainerContentText>
           </CardContainerContent>
 
-          <CardContainerFooter $nameColor={nameColor}>
+          <CardContainerFooter $textColor={textColor}>
             <CardContainerFooterSpan>{name}</CardContainerFooterSpan>
             <CardContainerFooterSpan>{date}</CardContainerFooterSpan>
           </CardContainerFooter>
