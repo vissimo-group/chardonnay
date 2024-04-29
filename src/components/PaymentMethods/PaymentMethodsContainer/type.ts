@@ -6,7 +6,7 @@ type PaymentMethodsProps = {
   id: number
   icon: React.ReactNode
   label: string
-  labelColor: string
+  labelColor?: string
   installment?: string
   isNewCard?: boolean
 }

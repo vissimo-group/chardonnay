@@ -1,5 +1,5 @@
 type PaymentMethodsContainerProps = {
-  labelColor: string
+  labelColor?: string
   icon: React.ReactNode
   children: React.ReactNode
 }
