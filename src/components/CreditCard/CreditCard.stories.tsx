@@ -56,13 +56,6 @@ export default {
       },
     },
   },
-  decorators: [
-    (Story) => (
-      <div>
-        <Story />
-      </div>
-    ),
-  ],
 } as Meta<CreditCardProps>
 
 type Story = StoryObj<CreditCardProps>
