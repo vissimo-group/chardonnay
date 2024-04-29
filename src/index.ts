@@ -28,6 +28,7 @@ import {
   WizardProgressBar,
   ModalAddressCard,
   FreeShippingProgress,
+  RadioTag,
 } from './components'
 
 export {
@@ -61,4 +62,5 @@ export {
   FreeShippingProgress,
   unMask,
   Mask,
+  RadioTag,
 }

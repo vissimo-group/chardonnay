@@ -24,6 +24,7 @@ import * as WizardItem from './Wizard/WizardItem'
 import { WizardProgressBar } from './Wizard/WizardProgressBar'
 import * as ModalAddressCard from './CardAddress/ModalAddressCard'
 import * as FreeShippingProgress from './FreeShippingProgress'
+import * as RadioTag from './RadioTag'
 
 export {
   Border,
@@ -52,4 +53,5 @@ export {
   WizardProgressBar,
   ModalAddressCard,
   FreeShippingProgress,
+  RadioTag,
 }
