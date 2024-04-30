@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { BorderRadius, Colors, Spacing } from '../../../tokens'
+import { BorderRadius, Colors } from '../../../tokens'
 import { SidePanelContentProps } from './types'
 
 const SidePanelContentStyled = styled.aside<SidePanelContentProps>`
@@ -10,7 +10,6 @@ const SidePanelContentStyled = styled.aside<SidePanelContentProps>`
   border-radius: ${BorderRadius['3']} 0px 0px ${BorderRadius['3']};
 
   margin: 0;
-  padding: ${Spacing['6']} ${Spacing['4']};
 
   position: fixed;
   top: 0;
