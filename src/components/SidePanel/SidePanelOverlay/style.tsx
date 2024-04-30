@@ -3,7 +3,6 @@ import { Colors } from '../../../tokens'
 
 const SidePanelOverlayStyled = styled.div`
   background-color: ${Colors.light.neutral.neutral500};
-  opacity: 0.3;
   position: fixed;
   display: flex;
   width: 100%;
@@ -12,33 +11,7 @@ const SidePanelOverlayStyled = styled.div`
   bottom: 0;
   pointer-events: all;
   z-index: 5;
-
-  /** ANIMATIONS */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 0.3;
-    }
-  }
-
-  @keyframes fadeOut {
-    from {
-      opacity: 0.3;
-    }
-    to {
-      opacity: 0;
-    }
-  }
-
-  &[data-state='open'] {
-    animation: fadeIn 400ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  &[data-state='closed'] {
-    animation: fadeOut 400ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
+  opacity: 0.3;
 `
 
 export { SidePanelOverlayStyled }
