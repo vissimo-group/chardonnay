@@ -1,23 +1,29 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Colors, BorderRadius, mediaQueries } from '../../../tokens'
 
-const ContainerCard = styled.div`
+const ContainerCard = styled.div<{
+  $installment?: string
+}>`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  background-color: ${Colors.light.neutral.neutral100};
   padding: 1.1875rem;
   border-radius: ${BorderRadius[3]};
   border: 1px solid ${Colors.light.neutral.neutral200};
-
   color: ${Colors.light.neutral.neutral500};
-`
+  width: 100%;
 
-const ContainerCardTitle = styled.h1`
-  font-size: 1rem;
-  font-weight: 600;
-  color: ${Colors.light.neutral.neutral500};
-  margin-bottom: 0.5rem;
+  ${(props) =>
+    props.$installment &&
+    css`
+      @media screen and (max-width: ${mediaQueries.screenXs}) {
+        height: 130px;
+      }
+
+      @media screen and (max-width: ${mediaQueries.screenXxs}) {
+        height: 150px;
+      }
+    `};
 `
 
 const PaymentContainer = styled.div`
@@ -27,20 +33,12 @@ const PaymentContainer = styled.div`
   gap: 0.5rem;
   align-items: center;
   justify-content: space-between;
-
   font-size: 1.5rem;
   background-color: ${Colors.light.neutral.neutral100};
   border: none;
 `
-const LineDivisorContainer = styled.div`
-  &:last-child {
-    hr {
-      display: none;
-    }
-  }
-`
 
-const PaymentContainerItems = styled.button`
+const PaymentMethodsContainerItems = styled.button`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -96,23 +94,6 @@ const PaymentContainerInstallment = styled.div`
   }
 `
 
-const LineDivisor = styled.hr<{
-  $installment?: string
-}>`
-  width: 100%;
-  background-color: ${Colors.light.neutral.neutral200};
-  height: 1px;
-  border: none;
-
-  @media screen and (max-width: ${mediaQueries.screenXs}) {
-    margin-top: ${(props) => (props.$installment ? '3.5rem' : '0.625rem')};
-  }
-
-  @media screen and (max-width: ${mediaQueries.screenXxs}) {
-    margin-top: ${(props) => (props.$installment ? '4.375rem' : '0.625rem')};
-  }
-`
-
 const PaymentContainerInstallmentItems = styled.div`
   font-size: 0.875rem;
   cursor: text;
@@ -120,12 +101,9 @@ const PaymentContainerInstallmentItems = styled.div`
 
 export {
   ContainerCard,
-  ContainerCardTitle,
   PaymentContainer,
-  PaymentContainerItems,
+  PaymentMethodsContainerItems,
   PaymentContainerInstallment,
   PaymentContainerInstallmentItems,
   PaymentContainerInstallmentsLink,
-  LineDivisorContainer,
-  LineDivisor,
 }
