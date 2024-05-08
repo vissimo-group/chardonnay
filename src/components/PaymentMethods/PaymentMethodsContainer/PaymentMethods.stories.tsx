@@ -9,10 +9,13 @@ import {
 } from 'semillon'
 import { Card } from '../../Card'
 import { PaymentMethods } from './index'
-import { PaymentMethodsInput as PaymentInput } from '../PaymentMethodsInput/index'
 import { PaymentMethodsLabel as PaymentLabel } from '../PaymentMethodsLabel/index'
 import { PaymentContainerInstallment as PaymentInstallment } from '../PaymentsMethodsInstallment'
 import { PaymentMethodsProps } from './type'
+
+import { PaymentMethodsInput } from './style'
+
+import { Radio } from '../../Radio'
 
 export default {
   title: 'Components/PaymentMethods',
@@ -48,13 +51,6 @@ export default {
         'installment that appears on the right side of the component',
     },
   },
-  decorators: [
-    (Story) => (
-      <div>
-        <Story />
-      </div>
-    ),
-  ],
 } as Meta<PaymentMethodsProps>
 
 type Story = StoryObj<PaymentMethodsProps>
@@ -75,7 +71,9 @@ export const WithInstallment: Story = {
         <PaymentInstallment installment={args.installment}>
           <a href="/#">Alterar Parcelas</a>
         </PaymentInstallment>
-        <PaymentInput />
+        <PaymentMethodsInput>
+          <Radio theme="light" />
+        </PaymentMethodsInput>
       </PaymentMethods>
     </Card>
   ),
@@ -93,7 +91,9 @@ export const WithoutInstallment: Story = {
           {args.icon}
           Visa **** 5490
         </PaymentLabel>
-        <PaymentInput />
+        <PaymentMethodsInput>
+          <Radio theme="light" />
+        </PaymentMethodsInput>
       </PaymentMethods>
     </Card>
   ),
@@ -107,7 +107,9 @@ export const WithoutIcon: Story = {
     <Card theme="light" maxWidth="824px" borderRadius="8px">
       <PaymentMethods {...args}>
         <PaymentLabel labelColor="#585757">Visa **** 5490</PaymentLabel>
-        <PaymentInput />
+        <PaymentMethodsInput>
+          <Radio theme="light" />
+        </PaymentMethodsInput>
       </PaymentMethods>
     </Card>
   ),

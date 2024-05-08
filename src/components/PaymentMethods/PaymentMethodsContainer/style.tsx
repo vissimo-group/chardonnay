@@ -99,6 +99,12 @@ const PaymentContainerInstallmentItems = styled.div`
   cursor: text;
 `
 
+const PaymentMethodsInput = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`
+
 export {
   ContainerCard,
   PaymentContainer,
@@ -106,4 +112,5 @@ export {
   PaymentContainerInstallment,
   PaymentContainerInstallmentItems,
   PaymentContainerInstallmentsLink,
+  PaymentMethodsInput,
 }
