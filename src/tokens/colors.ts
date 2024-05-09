@@ -30,6 +30,7 @@ const Colors: ThemeColors = {
       action200: '#088A66',
       action300: '#0D6F53',
       action400: '#125341',
+      action500: '#866EAF',
     },
     brand: {
       brand100: '#CE2A36',
