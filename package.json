@@ -1,6 +1,6 @@
 {
   "name": "chardonnay",
-  "version": "1.0.27",
+  "version": "1.0.30",
   "description": "A mobile first frontend framework made with wine",
   "homepage": "https://vissimo-group.github.io/chardonnay/",
   "main": "./dist/index.js",
