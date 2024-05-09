@@ -2,12 +2,14 @@ import { PaymentMethodsContainerStyled } from './style'
 import { PaymentMethodsContainerProps } from './type'
 
 const PaymentMethodsLabel = ({
-  labelColor,
-  children,
+  label,
+  labelColor = '#1c1c1c',
+  icon,
 }: PaymentMethodsContainerProps) => {
   return (
     <PaymentMethodsContainerStyled $labelColor={labelColor}>
-      {children}
+      {icon}
+      {label}
     </PaymentMethodsContainerStyled>
   )
 }

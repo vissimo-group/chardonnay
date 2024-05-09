@@ -1,7 +1,7 @@
 type PaymentMethodsContainerProps = {
+  label: string
   labelColor?: string
   icon?: React.ReactNode
-  children: React.ReactNode
 }
 
 export type { PaymentMethodsContainerProps }
