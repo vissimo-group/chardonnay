@@ -25,6 +25,7 @@ import { WizardProgressBar } from './Wizard/WizardProgressBar'
 import * as ModalAddressCard from './CardAddress/ModalAddressCard'
 import * as FreeShippingProgress from './FreeShippingProgress'
 import * as RadioTag from './RadioTag'
+import * as PaymentMethod from './PaymentMethods'
 
 export {
   Border,
@@ -54,4 +55,5 @@ export {
   ModalAddressCard,
   FreeShippingProgress,
   RadioTag,
+  PaymentMethod,
 }
