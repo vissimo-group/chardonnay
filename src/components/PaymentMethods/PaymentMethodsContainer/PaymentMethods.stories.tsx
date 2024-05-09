@@ -7,25 +7,16 @@ import {
   Hipercard,
   Apple,
 } from 'semillon'
-import { Card } from '../../Card'
+
 import { PaymentMethods } from './index'
-import { PaymentMethodsLabel as PaymentLabel } from '../PaymentMethodsLabel/index'
 import { PaymentContainerInstallment as PaymentInstallment } from '../PaymentsMethodsInstallment'
 import { PaymentMethodsProps } from './type'
-
-import { PaymentMethodsInput } from './style'
-
-import { Radio } from '../../Radio'
 
 export default {
   title: 'Components/PaymentMethods',
   component: PaymentMethods,
   tags: ['autodocs'],
   argTypes: {
-    id: {
-      control: 'number',
-      description: 'id of the component',
-    },
     icon: {
       control: {
         type: 'select',
@@ -40,6 +31,12 @@ export default {
         Apple: <Apple size={36} color="#1A1919" />,
         CardIcon: <CardIcon size={36} color="#585757" />,
       },
+    },
+    labelColor: {
+      control: 'color',
+      defaultValue: '#1c1c1c',
+      description:
+        'color of the label, if not passed, the default color is #1c1c1c',
     },
     label: {
       control: 'text',
@@ -60,57 +57,33 @@ export const WithInstallment: Story = {
     icon: <Visa size={36} color="#585757" />,
     installment: '1x de 59,85 sem juros',
     labelColor: '#585757',
+    label: 'Visa **** 5490',
   },
   render: (args) => (
-    <Card theme="light" maxWidth="824px" borderRadius="8px">
-      <PaymentMethods {...args}>
-        <PaymentLabel labelColor={args.labelColor}>
-          {args.icon}
-          Visa **** 5490
-        </PaymentLabel>
+    <PaymentMethods {...args}>
+      {args.installment && (
         <PaymentInstallment installment={args.installment}>
           <a href="/#">Alterar Parcelas</a>
         </PaymentInstallment>
-        <PaymentMethodsInput>
-          <Radio theme="light" />
-        </PaymentMethodsInput>
-      </PaymentMethods>
-    </Card>
+      )}
+    </PaymentMethods>
   ),
 }
 
 export const WithoutInstallment: Story = {
   args: {
     icon: <Visa size={36} color="#585757" />,
-    installment: '1x de 59,85 sem juros',
+    labelColor: '#585757',
+    label: 'Visa **** 5490',
   },
-  render: (args) => (
-    <Card theme="light" maxWidth="824px" borderRadius="8px">
-      <PaymentMethods {...args}>
-        <PaymentLabel labelColor="#585757">
-          {args.icon}
-          Visa **** 5490
-        </PaymentLabel>
-        <PaymentMethodsInput>
-          <Radio theme="light" />
-        </PaymentMethodsInput>
-      </PaymentMethods>
-    </Card>
-  ),
+  render: (args) => <PaymentMethods {...args} />,
 }
 
 export const WithoutIcon: Story = {
   args: {
     installment: '1x de 59,85 sem juros',
+    label: 'Visa **** 5490',
+    labelColor: '#585757',
   },
-  render: (args) => (
-    <Card theme="light" maxWidth="824px" borderRadius="8px">
-      <PaymentMethods {...args}>
-        <PaymentLabel labelColor="#585757">Visa **** 5490</PaymentLabel>
-        <PaymentMethodsInput>
-          <Radio theme="light" />
-        </PaymentMethodsInput>
-      </PaymentMethods>
-    </Card>
-  ),
+  render: (args) => <PaymentMethods {...args} />,
 }
