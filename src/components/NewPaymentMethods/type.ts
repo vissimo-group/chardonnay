@@ -1,7 +1,7 @@
 import { HTMLAttributes } from 'react'
 
 type NewPaymentMethodsProps = {
-  label: string
+  label?: string | undefined
   labelColor?: string
   icon?: JSX.Element
   installment?: string

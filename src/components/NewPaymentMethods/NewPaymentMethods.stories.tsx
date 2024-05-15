@@ -7,9 +7,16 @@ import {
   Visa,
   Card as CardIcon,
 } from 'semillon'
-import { NewPaymentMethods } from './index'
+import { useState } from 'react'
+import { NewPaymentMethods } from '.'
 import { NewPaymentMethodsProps } from './type'
 import { Radio } from '../Radio'
+import { NewPaymentMethodsContainerStyled } from './Container/container'
+import { ContainteStyled } from './Container/ContainteStyled'
+import { TitleStyled } from './Container/title'
+import { InstallmentStyle } from './Container/installment'
+import { Button } from '../Button'
+import { Card } from '../Card'
 
 export default {
   title: 'Components/NewPaymentMethods',
@@ -51,6 +58,9 @@ export default {
 
 type Story = StoryObj<NewPaymentMethodsProps>
 
+const label = '4115 **** 1989'
+const icon = <Visa size={36} color="#01326F" />
+
 export const WithInstallment: Story = {
   args: {
     installment: '1x de 59,85 sem juros',
@@ -74,4 +84,30 @@ export const WithInstallment: Story = {
       </div>
     </NewPaymentMethods>
   ),
+}
+
+export const teste = () => {
+  return (
+    <>
+      <NewPaymentMethodsContainerStyled>
+        <ContainteStyled>
+          <TitleStyled>
+            {icon}
+            {label}
+          </TitleStyled>
+
+          <InstallmentStyle>
+            <h1>2x de 59,85 sem juros</h1>
+            <div>
+              <Button variant="FILLED" buttonType="PRIMARY">
+                Alterar
+              </Button>
+
+              <Radio checked theme="light" />
+            </div>
+          </InstallmentStyle>
+        </ContainteStyled>
+      </NewPaymentMethodsContainerStyled>
+    </>
+  )
 }
