@@ -11,19 +11,19 @@ const PaymentMethodInstallmentContainer = styled.div`
 
   @media screen and (max-width: ${mediaQueries.screenXs}) {
     display: flex;
-    margin-top: 6rem;
+    margin-top: 8rem;
     position: absolute;
-    left: 2.75rem;
+    left: 2.45rem;
     width: 20.25rem;
     justify-content: space-between;
   }
 
   @media screen and (max-width: ${mediaQueries.screenXxs}) {
     display: flex;
-    margin-top: 7.625rem;
+    margin-top: 8.625rem;
     position: absolute;
-    left: 3.75rem;
-    width: 11.1875rem;
+    left: 2.45rem;
+    width: 13.1875rem;
     gap: 0.0625rem;
   }
 
@@ -33,7 +33,6 @@ const PaymentMethodInstallmentContainer = styled.div`
 
   a {
     text-decoration: underline;
-    text-underline-offset: 0.25rem;
     color: ${Colors.light.neutral.neutral500};
     font-weight: bold;
     font-size: 0.875rem;
