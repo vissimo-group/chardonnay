@@ -1,30 +1,5 @@
-import React from 'react'
-import {
-  NewPaymentMethodsContainer,
-  NewPaymentMethodsItems,
-  NewPaymentMethodsInstallment,
-  NewPaymentMethodsItemsContainer,
-} from './style'
-import { NewPaymentMethodsProps } from './type'
-/* import { Radio } from '../Radio' */
-
-const NewPaymentMethods: React.FC<NewPaymentMethodsProps> = ({
-  label,
-  icon,
-  children,
-}) => {
-  return (
-    <NewPaymentMethodsContainer>
-      <NewPaymentMethodsItemsContainer>
-        <NewPaymentMethodsItems>
-          {icon}
-          <span style={{ color: '#000' }}>{label}</span>
-        </NewPaymentMethodsItems>
-
-        <NewPaymentMethodsInstallment>{children}</NewPaymentMethodsInstallment>
-      </NewPaymentMethodsItemsContainer>
-    </NewPaymentMethodsContainer>
-  )
-}
-
-export { NewPaymentMethods }
+export { PaymentMethodsContainer as Root } from './PaymentMethodsContainer'
+export { ContainteStyled as Content } from './PaymentMethodsComplement'
+export { PaymentMethodsTitle as Title } from './PaymentMethodsTitle'
+export { InstallmentStyle as Items } from './PaymentMethodsInstallment'
+export { PaymentMethodsSubItems as SubItems } from './PaymentMethodsSubItems'

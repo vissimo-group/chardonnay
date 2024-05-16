@@ -7,20 +7,13 @@ import {
   Visa,
   Card as CardIcon,
 } from 'semillon'
-import { useState } from 'react'
-import { NewPaymentMethods } from '.'
 import { NewPaymentMethodsProps } from './type'
 import { Radio } from '../Radio'
-import { NewPaymentMethodsContainerStyled } from './Container/container'
-import { ContainteStyled } from './Container/ContainteStyled'
-import { TitleStyled } from './Container/title'
-import { InstallmentStyle } from './Container/installment'
-import { Button } from '../Button'
-import { Card } from '../Card'
+import * as PaymentMethodsContainer from './index'
+import { Text } from '../Text'
 
 export default {
   title: 'Components/NewPaymentMethods',
-  component: NewPaymentMethods,
   tags: ['autodocs'],
   argTypes: {
     icon: {
@@ -38,12 +31,6 @@ export default {
         CardIcon: <CardIcon size={36} color="#585757" />,
       },
     },
-    labelColor: {
-      control: 'color',
-      defaultValue: '#1c1c1c',
-      description:
-        'color of the label, if not passed, the default color is #1c1c1c',
-    },
     label: {
       control: 'text',
       description: 'label that appears on the right side of the component',
@@ -58,9 +45,6 @@ export default {
 
 type Story = StoryObj<NewPaymentMethodsProps>
 
-const label = '4115 **** 1989'
-const icon = <Visa size={36} color="#01326F" />
-
 export const WithInstallment: Story = {
   args: {
     installment: '1x de 59,85 sem juros',
@@ -68,46 +52,99 @@ export const WithInstallment: Story = {
     icon: <Visa size={36} color="#01326F" />,
   },
   render: (args) => (
-    <NewPaymentMethods {...args}>
-      <div>
-        <span style={{ color: '#000' }}>{args.installment}</span>
-        <a
-          href="/#"
-          style={{ color: '#000', marginLeft: '1rem', marginRight: '24px' }}
-        >
-          Alterar
-        </a>
-      </div>
+    <PaymentMethodsContainer.Root>
+      <PaymentMethodsContainer.Content>
+        <PaymentMethodsContainer.Title>
+          {args.icon}
+          {args.label}
+        </PaymentMethodsContainer.Title>
 
-      <div>
-        <Radio theme="light" />
-      </div>
-    </NewPaymentMethods>
+        <PaymentMethodsContainer.Items>
+          <PaymentMethodsContainer.SubItems>
+            <Text>{args.installment}</Text>
+            <a href="/#">Alterar</a>
+          </PaymentMethodsContainer.SubItems>
+          <div>
+            <Radio theme="light" />
+          </div>
+        </PaymentMethodsContainer.Items>
+      </PaymentMethodsContainer.Content>
+    </PaymentMethodsContainer.Root>
   ),
 }
 
-export const teste = () => {
-  return (
-    <>
-      <NewPaymentMethodsContainerStyled>
-        <ContainteStyled>
-          <TitleStyled>
-            {icon}
-            {label}
-          </TitleStyled>
+export const WithoutInstallment: Story = {
+  args: {
+    label: '4115 **** 1989',
+    icon: <Visa size={36} color="#01326F" />,
+  },
+  render: (args) => (
+    <PaymentMethodsContainer.Root>
+      <PaymentMethodsContainer.Content>
+        <PaymentMethodsContainer.Title>
+          {args.icon}
+          {args.label}
+        </PaymentMethodsContainer.Title>
 
-          <InstallmentStyle>
-            <h1>2x de 59,85 sem juros</h1>
-            <div>
-              <Button variant="FILLED" buttonType="PRIMARY">
-                Alterar
-              </Button>
+        <PaymentMethodsContainer.Items>
+          <PaymentMethodsContainer.SubItems>
+            <Text>{args.installment}</Text>
+          </PaymentMethodsContainer.SubItems>
+          <div>
+            <Radio theme="light" />
+          </div>
+        </PaymentMethodsContainer.Items>
+      </PaymentMethodsContainer.Content>
+    </PaymentMethodsContainer.Root>
+  ),
+}
 
-              <Radio checked theme="light" />
-            </div>
-          </InstallmentStyle>
-        </ContainteStyled>
-      </NewPaymentMethodsContainerStyled>
-    </>
-  )
+export const WithoutIcon: Story = {
+  args: {
+    installment: '1x de 59,85 sem juros',
+    label: '4115 **** 1989',
+  },
+  render: (args) => (
+    <PaymentMethodsContainer.Root>
+      <PaymentMethodsContainer.Content>
+        <PaymentMethodsContainer.Title>
+          {args.icon}
+          {args.label}
+        </PaymentMethodsContainer.Title>
+
+        <PaymentMethodsContainer.Items>
+          <PaymentMethodsContainer.SubItems>
+            <Text>{args.installment}</Text>
+            <a href="/#">Alterar</a>
+          </PaymentMethodsContainer.SubItems>
+          <div>
+            <Radio theme="light" />
+          </div>
+        </PaymentMethodsContainer.Items>
+      </PaymentMethodsContainer.Content>
+    </PaymentMethodsContainer.Root>
+  ),
+}
+
+export const WithoutText: Story = {
+  args: {
+    icon: <Visa size={36} color="#01326F" />,
+  },
+  render: (args) => (
+    <PaymentMethodsContainer.Root>
+      <PaymentMethodsContainer.Content>
+        <PaymentMethodsContainer.Title>
+          {args.icon}
+          {args.label}
+        </PaymentMethodsContainer.Title>
+
+        <PaymentMethodsContainer.Items>
+          <Text>{args.installment}</Text>
+          <div>
+            <Radio theme="light" />
+          </div>
+        </PaymentMethodsContainer.Items>
+      </PaymentMethodsContainer.Content>
+    </PaymentMethodsContainer.Root>
+  ),
 }
