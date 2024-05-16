@@ -1,8 +1,8 @@
 import React from 'react'
-import { NewPaymentMethodsProps } from '../type'
+import { PaymentMethodsProps } from '../type'
 import { NewPaymentMethodsInstallment } from './style'
 
-const InstallmentStyle: React.FC<NewPaymentMethodsProps> = ({ children }) => {
+const InstallmentStyle: React.FC<PaymentMethodsProps> = ({ children }) => {
   return <NewPaymentMethodsInstallment>{children}</NewPaymentMethodsInstallment>
 }
 

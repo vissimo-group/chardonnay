@@ -7,13 +7,13 @@ import {
   Visa,
   Card as CardIcon,
 } from 'semillon'
-import { NewPaymentMethodsProps } from './type'
+import { PaymentMethodsProps } from './type'
 import { Radio } from '../Radio'
 import * as PaymentMethodsContainer from './index'
 import { Text } from '../Text'
 
 export default {
-  title: 'Components/NewPaymentMethods',
+  title: 'Components/PaymentMethods',
   tags: ['autodocs'],
   argTypes: {
     icon: {
@@ -41,9 +41,9 @@ export default {
         'installment that appears on the right side of the component',
     },
   },
-} as Meta<NewPaymentMethodsProps>
+} as Meta<PaymentMethodsProps>
 
-type Story = StoryObj<NewPaymentMethodsProps>
+type Story = StoryObj<PaymentMethodsProps>
 
 export const WithInstallment: Story = {
   args: {

@@ -1,31 +1,11 @@
-import {
-  ContainerCard,
-  PaymentContainer,
-  PaymentMethodsContainerItems,
-  PaymentMethodsInput,
-} from './style'
-import { PaymentMethodsProps } from './type'
-import { Radio } from '../../Radio'
+import React from 'react'
+import { NewPaymentMethodsContainer } from './style'
+import { PaymentMethodsProps } from '../type'
 
-const PaymentMethods = ({
-  label,
-  labelColor,
-  icon,
+const PaymentMethodsContainer: React.FC<PaymentMethodsProps> = ({
   children,
-  installment,
-}: PaymentMethodsProps) => {
-  return (
-    <ContainerCard $installment={installment}>
-      <PaymentContainer>
-        <PaymentMethodsContainerItems>
-          {children}
-          <PaymentMethodsInput>
-            <Radio theme="light" />
-          </PaymentMethodsInput>
-        </PaymentMethodsContainerItems>
-      </PaymentContainer>
-    </ContainerCard>
-  )
+}) => {
+  return <NewPaymentMethodsContainer>{children}</NewPaymentMethodsContainer>
 }
 
-export { PaymentMethods }
+export { PaymentMethodsContainer }

@@ -1,8 +1,8 @@
 import React from 'react'
-import { NewPaymentMethodsProps } from '../type'
+import { PaymentMethodsProps } from '../type'
 import { NewPaymentMethodsItemsContainer } from './style'
 
-const ContainteStyled: React.FC<NewPaymentMethodsProps> = ({ children }) => {
+const ContainteStyled: React.FC<PaymentMethodsProps> = ({ children }) => {
   return (
     <NewPaymentMethodsItemsContainer>
       {children}
