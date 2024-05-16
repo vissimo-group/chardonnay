@@ -2,7 +2,7 @@ import React from 'react'
 import { PaymentMethodsProps } from '../type'
 import { NewPaymentMethodsItemsContainer } from './style'
 
-const ContainteStyled: React.FC<PaymentMethodsProps> = ({ children }) => {
+const ContentStyled: React.FC<PaymentMethodsProps> = ({ children }) => {
   return (
     <NewPaymentMethodsItemsContainer>
       {children}
@@ -10,4 +10,4 @@ const ContainteStyled: React.FC<PaymentMethodsProps> = ({ children }) => {
   )
 }
 
-export { ContainteStyled }
+export { ContentStyled }
