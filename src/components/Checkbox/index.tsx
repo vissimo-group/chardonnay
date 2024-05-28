@@ -1,8 +1,12 @@
+import { forwardRef } from 'react'
 import { CheckboxStyled } from './style'
 import { CheckboxProps } from './types'
 
-const Checkbox = ({ theme = 'light', ...props }: CheckboxProps) => {
-  return <CheckboxStyled {...props} type="checkbox" $theme={theme} />
-}
+const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(function Checkbox(
+  { theme = 'light', ...props },
+  ref,
+) {
+  return <CheckboxStyled {...props} type="checkbox" ref={ref} $theme={theme} />
+})
 
 export { Checkbox }
