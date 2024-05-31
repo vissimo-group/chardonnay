@@ -6,6 +6,7 @@ import {
   Mastercard,
   Visa,
   Card as CardIcon,
+  Amex,
 } from 'semillon'
 import { PaymentMethodsProps } from './type'
 import { Radio } from '../Radio'
@@ -21,14 +22,23 @@ export default {
         type: 'select',
       },
       description: 'icon that appears on the left side of the component',
-      options: ['Visa', 'Mastercard', 'Elo', 'Hipercard', 'Apple', 'CardIcon'],
+      options: [
+        'Amex',
+        'Apple',
+        'CardIcon',
+        'Elo',
+        'Hipercard',
+        'Mastercard',
+        'Visa',
+      ],
       mapping: {
         Visa: <Visa size={36} color="#01326F" />,
         Mastercard: <Mastercard size={36} color="#01326F" />,
         Hipercard: <Hipercard size={36} color="#B3131B" />,
         Elo: <Elo size={36} color="#000000" />,
-        Apple: <Apple size={36} color="#1A1919" />,
-        CardIcon: <CardIcon size={36} color="#585757" />,
+        Amex: <Amex size={36} color="#1D71B9" />,
+        Apple: <Apple size={18} color="#1A1919" />,
+        CardIcon: <CardIcon size={18} color="#585757" />,
       },
     },
     label: {
