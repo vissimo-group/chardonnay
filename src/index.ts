@@ -29,7 +29,7 @@ import {
   ModalAddressCard,
   FreeShippingProgress,
   RadioTag,
-  CreditCard,
+  PaymentMethod,
 } from './components'
 
 export {
@@ -64,5 +64,5 @@ export {
   unMask,
   Mask,
   RadioTag,
-  CreditCard,
+  PaymentMethod,
 }
