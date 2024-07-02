@@ -30,6 +30,7 @@ import {
   FreeShippingProgress,
   RadioTag,
   PaymentMethod,
+  PurchaseSummary,
 } from './components'
 
 export {
@@ -65,4 +66,5 @@ export {
   Mask,
   RadioTag,
   PaymentMethod,
+  PurchaseSummary,
 }

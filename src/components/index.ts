@@ -26,6 +26,7 @@ import * as ModalAddressCard from './CardAddress/ModalAddressCard'
 import * as FreeShippingProgress from './FreeShippingProgress'
 import * as RadioTag from './RadioTag'
 import * as PaymentMethod from './PaymentMethods'
+import * as PurchaseSummary from './PurchaseSummary/PurchaseSummary'
 
 export {
   Border,
@@ -56,4 +57,5 @@ export {
   FreeShippingProgress,
   RadioTag,
   PaymentMethod,
+  PurchaseSummary,
 }
