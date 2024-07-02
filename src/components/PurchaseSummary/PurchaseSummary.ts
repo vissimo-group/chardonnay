@@ -14,6 +14,8 @@ export {
   PurchaseSummaryPaymentInstallments as PaymentInstallments,
 } from './style'
 
+export { PurchaseSummaryAccordion } from './PurchaseSummaryAccordion'
+
 export { PurchaseSummary } from './index'
 
 export type { PurchaseSummaryProps } from './type'

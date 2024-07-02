@@ -14,6 +14,8 @@ import {
 } from './style'
 import { PurchaseSummaryAccordionProps } from './type'
 
+export * as PurchaseSummaryAccordionRoot from './style'
+
 export function PurchaseSummaryAccordion({
   title,
   total,
