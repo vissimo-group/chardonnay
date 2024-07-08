@@ -31,6 +31,7 @@ import {
   RadioTag,
   PaymentMethod,
   PurchaseSummary,
+  CreditCard,
 } from './components'
 
 export {
@@ -67,4 +68,5 @@ export {
   RadioTag,
   PaymentMethod,
   PurchaseSummary,
+  CreditCard,
 }

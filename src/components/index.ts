@@ -27,6 +27,7 @@ import * as FreeShippingProgress from './FreeShippingProgress'
 import * as RadioTag from './RadioTag'
 import * as PaymentMethod from './PaymentMethods'
 import * as PurchaseSummary from './PurchaseSummary/PurchaseSummary'
+import { CreditCard } from './CreditCard'
 
 export {
   Border,
@@ -58,4 +59,5 @@ export {
   RadioTag,
   PaymentMethod,
   PurchaseSummary,
+  CreditCard,
 }
