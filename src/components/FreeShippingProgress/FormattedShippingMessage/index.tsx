@@ -7,7 +7,7 @@ import { FormattedShippingMessageProps } from './type'
 const FormattedShippingMessage = ({
   message,
 }: FormattedShippingMessageProps) => {
-  const moneyPattern = /R\$\d{1,3}(?:,\d{2}|(?:\.\d{3})*,\d{2}|\.\d{2})/
+  const moneyPattern = /R\$ ?\d{1,3}(?:,\d{2}|(?:\.\d{3})*,\d{2}|\.\d{2})/
   const moneyValue = message.match(moneyPattern)
 
   const splittedMessage = message.split(moneyPattern)
