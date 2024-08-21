@@ -25,19 +25,21 @@ const Input = forwardRef<InputRef, InputProps>((props, ref) => {
     iconLeft,
     iconRight,
     mask,
+    value,
+    onChange,
     ...restProps
   } = props
 
-  const [inputValue, setInputValue] = useState<string | undefined>()
+  const [inputValue, setInputValue] = useState<string>('')
   const inputRef = useRef<HTMLInputElement | null>(null)
 
   useEffect(() => {
-    if (props.value) {
-      setInputValue(props.value)
+    if (value) {
+      setInputValue(value)
     }
-  }, [])
+  }, [value])
 
-  useImperativeHandle(ref, () => inputRef.current!, [inputRef.current])
+  useImperativeHandle(ref, () => inputRef.current!, [])
 
   const handleChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,11 +48,11 @@ const Input = forwardRef<InputRef, InputProps>((props, ref) => {
       const valueMask = mask ? maskInput(valueUnMask, mask) : newValue
 
       setInputValue(valueMask)
-      if (props.onChange) {
-        props.onChange(event)
+      if (onChange) {
+        onChange(event)
       }
     },
-    [mask, props.onChange],
+    [mask, onChange],
   )
 
   return (
