@@ -11,6 +11,18 @@ const ContainerCep = styled.div`
   align-items: center;
   gap: 8px;
   cursor: pointer;
+
+  & > p {
+    font: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    border: none;
+    color: inherit;
+    background: none;
+  }
 `
 
 const TagCep: React.FC<CepProps> = ({ cepText }) => (

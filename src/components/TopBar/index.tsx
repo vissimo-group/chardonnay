@@ -8,7 +8,7 @@ export interface TopBarProps {
 }
 
 const ContainerTopBar = styled.div`
-  height: 40px;
+  height: auto;
   background-color: ${Colors.light.brand.brand100};
   color: ${Colors.light.background.background100};
   display: grid;
@@ -19,6 +19,12 @@ const ContainerTopBar = styled.div`
   align-self: stretch;
   white-space: nowrap;
   align-content: center;
+
+  & > * {
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 17.5px;
+  }
 
   position: fixed;
   width: 100%;
