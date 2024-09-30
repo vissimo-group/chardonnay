@@ -17,8 +17,9 @@ const ContainerInfo = styled.div`
     color: inherit;
     background: none;
     cursor: pointer;
-    font-weight: 600;
-    line-height: 18px;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 17.5px;
     letter-spacing: -0.0025em;
     text-align: left;
   }
