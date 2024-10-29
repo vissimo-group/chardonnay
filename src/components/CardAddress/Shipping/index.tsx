@@ -26,6 +26,12 @@ const ContainerHeader = styled.header<ShippingAddressProps>`
     ${(props: CommomProps) => Colors[props.theme].neutral.neutral200};
 `
 
+const WrapperAddressType = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`
+
 const ContainerShipping = styled.div<ShippingAddressProps>`
   border: 1px solid
     ${(props: CommomProps) => Colors[props.theme].neutral.neutral200};
@@ -74,7 +80,6 @@ const Deadline = styled.span`
 const Line = styled.div<ShippingAddressProps>`
   border: 1px solid
     ${(props: CommomProps) => Colors[props.theme].neutral.neutral200};
-  margin: 8px 0;
 `
 
 const Text = styled.span``
@@ -97,8 +102,10 @@ const ShippingAddress: React.FC<ShippingAddressProps> = ({
   return (
     <ContainerShipping theme={theme}>
       <ContainerHeader theme={theme}>
-        <Delivery size={24} color={colorIcon} />
-        <Title>{typeAddress}</Title>
+        <WrapperAddressType>
+          <Delivery size={24} color={colorIcon} />
+          <Title>{typeAddress}</Title>
+        </WrapperAddressType>
         <Button {...propsButton}>Editar</Button>
       </ContainerHeader>
       <ContainerBody>
