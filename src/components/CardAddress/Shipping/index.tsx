@@ -72,9 +72,16 @@ const ContainerBody = styled.div`
   gap: 8px;
 `
 
-const ContainerDeadline = styled.div``
+const Text = styled.span`
+  font-size: 0.875rem;
+`
+
+const ContainerDeadline = styled.div`
+  font-size: 0.875rem;
+`
 const Deadline = styled.span`
   font-weight: bold;
+  font-size: 0.875rem;
 `
 
 const Line = styled.div<ShippingAddressProps>`
@@ -82,7 +89,6 @@ const Line = styled.div<ShippingAddressProps>`
     ${(props: CommomProps) => Colors[props.theme].neutral.neutral200};
 `
 
-const Text = styled.span``
 const DataUser = styled.div`
   display: flex;
   flex-direction: column;
