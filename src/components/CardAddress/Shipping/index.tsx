@@ -26,6 +26,12 @@ const ContainerHeader = styled.header<ShippingAddressProps>`
     ${(props: CommomProps) => Colors[props.theme].neutral.neutral200};
 `
 
+const WrapperAddressType = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`
+
 const ContainerShipping = styled.div<ShippingAddressProps>`
   border: 1px solid
     ${(props: CommomProps) => Colors[props.theme].neutral.neutral200};
@@ -66,18 +72,23 @@ const ContainerBody = styled.div`
   gap: 8px;
 `
 
-const ContainerDeadline = styled.div``
+const Text = styled.span`
+  font-size: 0.875rem;
+`
+
+const ContainerDeadline = styled.div`
+  font-size: 0.875rem;
+`
 const Deadline = styled.span`
   font-weight: bold;
+  font-size: 0.875rem;
 `
 
 const Line = styled.div<ShippingAddressProps>`
   border: 1px solid
     ${(props: CommomProps) => Colors[props.theme].neutral.neutral200};
-  margin: 8px 0;
 `
 
-const Text = styled.span``
 const DataUser = styled.div`
   display: flex;
   flex-direction: column;
@@ -97,8 +108,10 @@ const ShippingAddress: React.FC<ShippingAddressProps> = ({
   return (
     <ContainerShipping theme={theme}>
       <ContainerHeader theme={theme}>
-        <Delivery size={24} color={colorIcon} />
-        <Title>{typeAddress}</Title>
+        <WrapperAddressType>
+          <Delivery size={24} color={colorIcon} />
+          <Title>{typeAddress}</Title>
+        </WrapperAddressType>
         <Button {...propsButton}>Editar</Button>
       </ContainerHeader>
       <ContainerBody>
