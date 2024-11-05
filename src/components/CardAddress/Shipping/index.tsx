@@ -116,9 +116,11 @@ const ShippingAddress: React.FC<ShippingAddressProps> = ({
       </ContainerHeader>
       <ContainerBody>
         <Text>{address}</Text>
-        <ContainerDeadline>
-          {deliveryDeadlineLabel} <Deadline>{deadline}</Deadline>
-        </ContainerDeadline>
+        {deliveryDeadlineLabel && (
+          <ContainerDeadline>
+            {deliveryDeadlineLabel} <Deadline>{deadline}</Deadline>
+          </ContainerDeadline>
+        )}
         <Line theme={theme} />
         <DataUser>
           <Text>{name}</Text>
