@@ -85,7 +85,7 @@ const Deadline = styled.span`
 `
 
 const Line = styled.div<ShippingAddressProps>`
-  border: 1px solid
+  border-bottom: 1px solid
     ${(props: CommomProps) => Colors[props.theme].neutral.neutral200};
 `
 
@@ -116,9 +116,11 @@ const ShippingAddress: React.FC<ShippingAddressProps> = ({
       </ContainerHeader>
       <ContainerBody>
         <Text>{address}</Text>
-        <ContainerDeadline>
-          {deliveryDeadlineLabel} <Deadline>{deadline}</Deadline>
-        </ContainerDeadline>
+        {deliveryDeadlineLabel && (
+          <ContainerDeadline>
+            {deliveryDeadlineLabel} <Deadline>{deadline}</Deadline>
+          </ContainerDeadline>
+        )}
         <Line theme={theme} />
         <DataUser>
           <Text>{name}</Text>
