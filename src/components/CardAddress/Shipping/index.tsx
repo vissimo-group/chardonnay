@@ -85,7 +85,7 @@ const Deadline = styled.span`
 `
 
 const Line = styled.div<ShippingAddressProps>`
-  border: 1px solid
+  border-bottom: 1px solid
     ${(props: CommomProps) => Colors[props.theme].neutral.neutral200};
 `
 
