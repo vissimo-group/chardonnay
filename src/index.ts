@@ -32,6 +32,7 @@ import {
   PaymentMethod,
   PurchaseSummary,
   CreditCard,
+  Badge,
 } from './components'
 
 export {
@@ -69,4 +70,5 @@ export {
   PaymentMethod,
   PurchaseSummary,
   CreditCard,
+  Badge,
 }

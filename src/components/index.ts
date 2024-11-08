@@ -28,6 +28,7 @@ import * as RadioTag from './RadioTag'
 import * as PaymentMethod from './PaymentMethods'
 import * as PurchaseSummary from './PurchaseSummary/PurchaseSummary'
 import { CreditCard } from './CreditCard'
+import { Badge } from './Badge'
 
 export {
   Border,
@@ -60,4 +61,5 @@ export {
   PaymentMethod,
   PurchaseSummary,
   CreditCard,
+  Badge,
 }
