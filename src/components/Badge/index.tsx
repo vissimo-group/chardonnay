@@ -5,9 +5,14 @@ const Badge = ({
   size = 'small',
   backgroundColor = '#2391E1',
   children,
+  fullWidth = false,
 }: BadgeProps) => {
   return (
-    <BadgeStyled $size={size} $backgroundColor={backgroundColor}>
+    <BadgeStyled
+      $size={size}
+      $backgroundColor={backgroundColor}
+      $fullWidth={fullWidth}
+    >
       {children}
     </BadgeStyled>
   )

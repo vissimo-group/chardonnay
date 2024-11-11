@@ -15,6 +15,11 @@ const meta: Meta<typeof Badge> = {
       control: { type: 'color' },
       description: 'The background color of the Badge.',
     },
+    fullWidth: {
+      control: { type: 'boolean' },
+      description:
+        'If true, the Badge will take up the full width of its container.',
+    },
   },
   decorators: [
     (Story) => (
@@ -38,6 +43,14 @@ export const Small: Story = {
 export const Normal: Story = {
   args: {
     size: 'normal',
+  },
+  render: (args) => <Badge {...args}>A nice label</Badge>,
+}
+
+export const WithFullWidth: Story = {
+  args: {
+    size: 'normal',
+    fullWidth: true,
   },
   render: (args) => <Badge {...args}>A nice label</Badge>,
 }
