@@ -1,9 +1,10 @@
 import { BadgeProps } from './type'
 import { BadgeStyled } from './style'
+import { Colors } from '../../tokens'
 
 const Badge = ({
   size = 'small',
-  backgroundColor = '#2391E1',
+  backgroundColor = `${Colors.light.feedback.feedbackInfo100}`,
   children,
   fullWidth = false,
 }: BadgeProps) => {
