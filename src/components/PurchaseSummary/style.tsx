@@ -7,7 +7,6 @@ const PurchaseSummaryContainer = styled.div`
   background-color: ${Colors.light.neutral.neutral100};
   flex-wrap: wrap;
   padding: 16px;
-  max-width: 420px;
   width: 100%;
   border: 1px solid ${Colors.light.neutral.neutral200};
   border-radius: ${BorderRadius[3]};
